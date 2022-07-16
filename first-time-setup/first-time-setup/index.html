@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/first-time-setup/first-time-setup/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>First Time Setup - MacServer Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "First Time Setup";
+        var mkdocs_page_input_path = "first-time-setup/first-time-setup.md";
+        var mkdocs_page_url = "/first-time-setup/first-time-setup/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MacServer Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">First Time Setup</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">First Time Setup</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../macos-sharing-settings/">macOS Sharing Settings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Server Apps</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server-apps/macos-server/">macOS Server</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server-apps/teamviewer/">TeamViewer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server-apps/jellyfin/">Jellyfin</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server-apps/homebridge/">Homebridge</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server-apps/scrypted/">scrypted</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server-apps/node-red/">Node-RED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server-apps/pihole/">Pihole</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Troubleshooting</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/reboot/">Reboot</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/live-tv-data-not-up-to-date/">Live TV Guide Data Issues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/no-response-homekit/">Smart Devices showing as “No Response”/Orange Exclamation mark</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MacServer Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>First Time Setup &raquo;</li><li>First Time Setup</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="users">Users</h2>
+<p>When first setting up the Mac, create a generic “MacMini” (or whatever type of Mac) admin user. This user will be logged in and serving apps/content. Other users will be created later, but just create this user for now. </p>
+<h2 id="network">Network</h2>
+<p>The Mac needs to have a Static IP address. </p>
+<ol>
+<li>Find the Ethernet Mac Address under Apple Menu (hold OPTION) -&gt; System Information -&gt; Network</li>
+<li>In modem settings (192.168.0.1) -&gt; Advanced Setup -&gt; DHCP Reservation, enter (or choose) the MAC address and set a static IP (192.168.0.2)</li>
+<li>In System Preferences -&gt; Network -&gt; Ethernet -&gt; Advanced change ‘Configure IPv4’ to Using DHCP with manual address. Enter 192.168.0.2 for IP address</li>
+<li>Reboot mac, and ensure that IP address listed in System Preferences is 192.168.0.2</li>
+</ol>
+<h2 id="macos-settings">macOS Settings</h2>
+<p>Enable automatic login for the MacMini user: 
+    System Preferences -&gt; Users and Groups -&gt; Login Options</p>
+<p>Automatically start apps on MacMini user login</p>
+<ul>
+<li>Docker</li>
+<li>Jellyfin</li>
+</ul>
+<p>Energy Saver:</p>
+<ul>
+<li>Turn Display Off after: never</li>
+<li>Prevent your Mac from automatically sleeping when the display is off</li>
+<li>Put hard disks to sleep when possible</li>
+<li>Wake for network access</li>
+<li>Start up automatically after a power failure</li>
+<li>Enable Power Nap</li>
+</ul>
+<p>Full Disk Access:</p>
+<ul>
+<li>Ensure /bin/bash has full disk access in System Preferences -&gt; Security and Privacy -&gt; Privacy </li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../macos-sharing-settings/" class="btn btn-neutral float-right" title="macOS Sharing Settings">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../macos-sharing-settings/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

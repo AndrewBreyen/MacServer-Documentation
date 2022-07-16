@@ -6,7 +6,62 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/about/</loc>
+         <loc>https://example.com/first-time-setup/first-time-setup/</loc>
+         <lastmod>2022-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/first-time-setup/macos-sharing-settings/</loc>
+         <lastmod>2022-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/server-apps/homebridge/</loc>
+         <lastmod>2022-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/server-apps/jellyfin/</loc>
+         <lastmod>2022-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/server-apps/macos-server/</loc>
+         <lastmod>2022-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/server-apps/node-red/</loc>
+         <lastmod>2022-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/server-apps/pihole/</loc>
+         <lastmod>2022-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/server-apps/scrypted/</loc>
+         <lastmod>2022-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/server-apps/teamviewer/</loc>
+         <lastmod>2022-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/troubleshooting/live-tv-data-not-up-to-date/</loc>
+         <lastmod>2022-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/troubleshooting/no-response-homekit/</loc>
+         <lastmod>2022-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/troubleshooting/reboot/</loc>
          <lastmod>2022-07-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
