@@ -17,6 +17,30 @@ nav:
       - 'Reboot': 'troubleshooting/reboot.md'
       - 'Live TV Guide Data Issues': 'troubleshooting/live-tv-data-issues.md'
       - 'Smart Devices showing as “No Response”/Orange Exclamation mark': 'troubleshooting/no-response-homekit.md'
-theme: readthedocs
+theme:
+  name: material
+  logo: img/macmini-icon.png
+  favicon: img/macmini-icon.png
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - navigation.top
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: grey
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: grey
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
 markdown_extensions:
   - attr_list
