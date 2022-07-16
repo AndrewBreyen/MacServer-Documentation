@@ -33,7 +33,7 @@ RUN in terminal of PiHole VM:
 - `sudo nano /etc/netplan/00-installer-config.yaml`
 - Copy these contents into the file that is generated, change IP address as needed                                      
 
-```
+``` yaml
 # This is the network config written by 'subiquity'
 network:
   version: 2
@@ -67,7 +67,7 @@ RUN in terminal of PiHole VM:
 
 Edit the file that is generated with these contents, change username to username of VM user (`pihole` in this case):
 
-```
+``` yaml
 [Service]
 ExecStart=
 ExecStart=-/sbin/agetty --noissue --autologin pihole %I $TERM
@@ -83,11 +83,12 @@ Type=idle
 [https://www.whatroute.net/software/vboxlaunchagent.sh.zip](https://www.whatroute.net/software/vboxlaunchagent.sh.zip)
 
 Directions from this website:
-> LaunchAgents are configured with an Apple plist XML file installed in the users Library/LaunchAgents folder. When the user logs in to their account on the Mac, launchd will inspect these plist files and invoke the required program with specified arguments.
-> 
-> It can get a bit tricky to create a plist manually. They have very fussy and very unforgiving syntax requirements. This shell script will create the plist and install it in the LaunchAgents directory.
-> 
-> You can download the script from vboxlaunchagent.sh. Unzip the file and copy the script to a suitable directory on your machine.
+!!! quote " "
+    LaunchAgents are configured with an Apple plist XML file installed in the users Library/LaunchAgents folder. When the user logs in to their account on the Mac, launchd will inspect these plist files and invoke the required program with specified arguments.
+
+    It can get a bit tricky to create a plist manually. They have very fussy and very unforgiving syntax requirements. This shell script will create the plist and install it in the LaunchAgents directory.
+
+    You can download the script from vboxlaunchagent.sh. Unzip the file and copy the script to a suitable directory on your machine.
 
 
 Run the script using this syntax:

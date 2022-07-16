@@ -21,18 +21,18 @@ Use Terminal on a Mac, or “Termius” iOS app
     - Connection success if prompt changes to `macserver:~ macmini$`
 2. Enter `sudo shutdown -r now` at prompt
 3. Enter macmini user password
-4. Final shutdown message will be shown:
-```
+4. Final shutdown message will be shown:  
+```  
 Shutdown NOW!
                                                                                
 *** FINAL System shutdown message from macmini@macserver.local ***           
-System going down IMMEDIATELY                                                  
-                                                                               
-                                                                               
+System going down IMMEDIATELY
+
+
 
 System shutdown time has arrived
 Connection to macserver.local closed by remote host.
 Connection to macserver.local closed.
-```
+```  
 5. Connection should be closed automatically, verify that MacServer comes back up.
 

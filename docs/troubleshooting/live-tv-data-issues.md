@@ -11,7 +11,7 @@ If container is setup, running, and healthy:
 Open the file `/Users/Shared/xmltvdata/xmltv.xml` with a text editor and see if the file has up to date data.
 
 Find the start of the `<programme></programme>` block (around line 500), and see that it has data similar to
-```
+``` xml
 <programme start="YYYYMMDD090000 +0000" stop="YYYYMMDD100000 +0000" channel="I2.1.21634.zap2it.com"> 
 ```
 

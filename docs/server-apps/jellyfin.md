@@ -25,7 +25,7 @@ Create a Docker container for the [Zap2XML Docker Container](https://github.com/
 3. In Docker Desktop: Settings -> Resources -> File Sharing add the `/Users/Shared/xmltvdata` folder created in step 1
 4. Run terminal command: replace `your_zap2it_email@email.com` and `your_zap2it_password` with your [https://tvlistings.zap2it.com/](https://tvlistings.zap2it.com/) account details. 
 
-````
+````sh
 docker run "-d --name zap2xml -v /xmltvdata:/data -e USERNAME=your_zap2it_email@email.com -e PASSWORD=your_zap2it_password -e OPT_ARGS="-I -D -Z 55303" -e XMLTV_FILENAME=xmltv.xml shuaiscott/zap2xml"
 ````
 
@@ -44,7 +44,7 @@ Will run in 43200 seconds
 
 6. In macOS Finder, verify that a xmltv.xml file was created at location `/Users/Shared/xmltvdata`. File should start with something like:
    
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tv SYSTEM "xmltv.dtd">
 
@@ -58,7 +58,7 @@ Will run in 43200 seconds
 
 Scroll down past the `<channel></channel>` sections, and verify that there are `</programme></programme>` tags, with contents similar to
 
-```
+```xml
 <programme start="20220311023000 +0000" stop="20220311040000 +0000" channel="I2.1.21634.zap2it.com">
 		<title lang="en">Endeavour: The Evolution</title>
 		<desc lang="en">A look at how …..</desc>

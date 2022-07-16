@@ -1,8 +1,10 @@
 # Node-RED
 Node-RED is used to control automations that require more settings/control than HomeKit or HomeBridge can provide natively. 
 
-> " Node-RED is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways.  
-> It provides a browser-based editor that makes it easy to wire together flows using the wide range of nodes in the palette that can be deployed to its runtime in a single-click."
+!!! quote " "
+        Node-RED is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways.  
+        
+        It provides a browser-based editor that makes it easy to wire together flows using the wide range of nodes in the palette that can be deployed to its runtime in a single-click."
 
 ## Installation
 Install Node-RED locally using directions provided here: [https://nodered.org/docs/getting-started/local](https://nodered.org/docs/getting-started/local)
