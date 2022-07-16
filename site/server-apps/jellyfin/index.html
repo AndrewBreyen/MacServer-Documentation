@@ -48,7 +48,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/first-time-setup/">First Time Setup</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/macos-sharing-settings/">macOS Sharing Settings</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/macos-settings/">macOS Settings</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Server Apps</span></p>
@@ -58,10 +58,22 @@
                   <li class="toctree-l1"><a class="reference internal" href="../teamviewer/">TeamViewer</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Jellyfin</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#configure-libraries">Configure Libraries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#live-tv-configuration">Live TV Configuration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#setup-live-tv-according-to-jellyfin-documentation">Setup Live TV according to Jellyfin documentation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#add-guide-data">Add Guide Data:</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../homebridge/">Homebridge</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../scrypted/">scrypted</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../scrypted/">Scrypted</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../node-red/">Node-RED</a>
                   </li>
@@ -72,7 +84,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/reboot/">Reboot</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/live-tv-data-not-up-to-date/">Live TV Guide Data Issues</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/live-tv-data-issues/">Live TV Guide Data Issues</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/no-response-homekit/">Smart Devices showing as “No Response”/Orange Exclamation mark</a>
                   </li>
@@ -101,55 +113,69 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>Jellyfin
-Jellyfin is used to serve media content, manage and record live TV content, and more. 
+                <h1 id="jellyfin">Jellyfin</h1>
+<p>Jellyfin is used to serve media content, manage and record live TV content, and more. 
 Install Jellyfin locally: https://repo.jellyfin.org/releases/server/macos/stable/</p>
-<p>Configure Libraries:</p>
-<p>Live TV Configuration:
-Ensure HDHomeRun has a static IP address:
-Find HDHomeRun MAC address at http://hdhomerun.local/system.html
-In modem settings (192.168.0.1) -&gt; Advanced Setup -&gt; DHCP Reservation, enter (or choose) the MAC address and set a static IP (whatever IP was already set on the HDHR system menu web page)</p>
-<p>Setup Live TV according to Jellyfin documentation: https://jellyfin.org/docs/general/server/live-tv/setup-guide.html</p>
-<p>Add Guide Data:
-Install Docker Desktop (https://www.docker.com/products/docker-desktop)
-Create a Docker container for the Zap2XML Docker Container (https://github.com/shuaiscott/zap2xml)
-Create a folder /Users/Shared/xmltvdata
-Open Docker Desktop app
-In Settings -&gt; Resources -&gt; File Sharing add the /Users/Shared/xmltvdata folder created in step 1
-Run terminal command: replace your_zap2it_email@email.com and your_zap2it_password with your https://tvlistings.zap2it.com/ account details. </p>
+<h2 id="configure-libraries">Configure Libraries</h2>
+<p>WIP</p>
+<h2 id="live-tv-configuration">Live TV Configuration</h2>
+<p>Ensure HDHomeRun has a static IP address:</p>
+<ol>
+<li>Find HDHomeRun MAC address at <a href="http://hdhomerun.local/system.html">http://hdhomerun.local/system.html</a></li>
+<li>In <a href="http://192.168.0.1/index.html">modem settings</a> -&gt; Advanced Setup -&gt; DHCP Reservation:<br />
+Enter (or choose) the MAC address and set a static IP (whatever IP was already set on the HDHR system menu web page)</li>
+</ol>
+<h3 id="setup-live-tv-according-to-jellyfin-documentation">Setup Live TV according to Jellyfin documentation</h3>
+<p><a href="https://jellyfin.org/docs/general/server/live-tv/setup-guide.html">https://jellyfin.org/docs/general/server/live-tv/setup-guide.html</a></p>
+<h3 id="add-guide-data">Add Guide Data:</h3>
+<p>Install <a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a><br />
+Create a Docker container for the <a href="https://github.com/shuaiscott/zap2xml">Zap2XML Docker Container</a></p>
+<ol>
+<li>Create a folder on the Mac: <code>/Users/Shared/xmltvdata</code></li>
+<li>Open Docker Desktop app</li>
+<li>In Docker Desktop: Settings -&gt; Resources -&gt; File Sharing add the <code>/Users/Shared/xmltvdata</code> folder created in step 1</li>
+<li>Run terminal command: replace <code>your_zap2it_email@email.com</code> and <code>your_zap2it_password</code> with your <a href="https://tvlistings.zap2it.com/">https://tvlistings.zap2it.com/</a> account details. </li>
+</ol>
+<pre><code>docker run &quot;-d --name zap2xml -v /xmltvdata:/data -e USERNAME=your_zap2it_email@email.com -e PASSWORD=your_zap2it_password -e OPT_ARGS=&quot;-I -D -Z 55303&quot; -e XMLTV_FILENAME=xmltv.xml shuaiscott/zap2xml&quot;
+</code></pre>
 <p>By default, new guide data will be fetched by this Docker container every 12 hours. Additional command line arguments can be added/changed. See details on GitHub - shuaiscott/zap2xml README.</p>
-<p>docker run "-d --name zap2xml -v /xmltvdata:/data -e USERNAME=your_zap2it_email@email.com -e PASSWORD=your_zap2it_password -e OPT_ARGS="-I -D -Z 55303" -e XMLTV_FILENAME=xmltv.xml shuaiscott/zap2xml"</p>
-<p>Open Docker Desktop and view logs, let it run. When complete, a status message will print like this:</p>
-<p>Downloaded 1090062 bytes in 291 http requests using 2 sockets.
+<ol>
+<li>Open Docker Desktop and view logs, let it run. When complete, a status message will print like this:</li>
+</ol>
+<pre><code>Downloaded 1090062 bytes in 291 http requests using 2 sockets.
 Writing XML file: /data/xmltv.xml
 Completed in 167s (Parse: 164s) 81 stations, 7895 programs, 17063 scheduled.
 Last run time: Fri Mar 11 04:12:49 UTC 2022
-Will run in 43200 seconds</p>
-<p>In macOS Finder, verify that a xmltv.xml file was created at location /Users/Shared/xmltvdata. File should start with something like:</p>
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE tv SYSTEM "xmltv.dtd">
-
-<p><tv source-info-url="http://tvlistings.zap2it.com/" source-info-name="zap2it.com" generator-info-name="zap2xml" generator-info-url="zap2xml@gmail.com">
-    <channel id="I2.1.21634.zap2it.com">
-        <display-name>2.1 KTCADT</display-name>
-        <display-name>2.1</display-name>
-        <display-name>KTCADT</display-name>
-        <icon src="https://zap2it.tmsimg.com/h3/NowShowing/21634/s32356_h3_aa.png" /></p>
-<pre><code>Scroll down past the &lt;channel&gt;&lt;/channel&gt; sections, and verify that there are &lt;/programme&gt;&lt;/programme&gt; tags, with contents similar to
+Will run in 43200 seconds
 </code></pre>
-<p><programme start="20220311023000 +0000" stop="20220311040000 +0000" channel="I2.1.21634.zap2it.com">
-        <title lang="en">Endeavour: The Evolution</title>
-        <desc lang="en">A look at how …..</desc>
-        <category lang="en">Documentary</category>
-        <category lang="en">Special</category>
-        <length units="minutes">90</length>
-        <icon src="https://zap2it.tmsimg.com/assets/p21373423_b_v13_aa.jpg" />
-        <url>https://tvlistings.zap2it.com//overview.html?programSeriesId=SH04161006&amp;tmsId=SH041610060000</url>
-        <episode-num system="dd_progid">SH04161006.0000</episode-num>
-        <previously-shown />
-        <subtitles type="teletext" />
-    </programme></p>
-<p>Once the file looks correct, it can be added into Jellyfin. See details on Setup Guide | Documentation - Jellyfin Project</p>
+<ol>
+<li>In macOS Finder, verify that a xmltv.xml file was created at location <code>/Users/Shared/xmltvdata</code>. File should start with something like:</li>
+</ol>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE tv SYSTEM &quot;xmltv.dtd&quot;&gt;
+
+&lt;tv source-info-url=&quot;http://tvlistings.zap2it.com/&quot; source-info-name=&quot;zap2it.com&quot; generator-info-name=&quot;zap2xml&quot; generator-info-url=&quot;zap2xml@gmail.com&quot;&gt;
+    &lt;channel id=&quot;I2.1.21634.zap2it.com&quot;&gt;
+        &lt;display-name&gt;2.1 KTCADT&lt;/display-name&gt;
+        &lt;display-name&gt;2.1&lt;/display-name&gt;
+        &lt;display-name&gt;KTCADT&lt;/display-name&gt;
+        &lt;icon src=&quot;https://zap2it.tmsimg.com/h3/NowShowing/21634/s32356_h3_aa.png&quot; /&gt;
+</code></pre>
+<p>Scroll down past the <code>&lt;channel&gt;&lt;/channel&gt;</code> sections, and verify that there are <code>&lt;/programme&gt;&lt;/programme&gt;</code> tags, with contents similar to</p>
+<pre><code>&lt;programme start=&quot;20220311023000 +0000&quot; stop=&quot;20220311040000 +0000&quot; channel=&quot;I2.1.21634.zap2it.com&quot;&gt;
+        &lt;title lang=&quot;en&quot;&gt;Endeavour: The Evolution&lt;/title&gt;
+        &lt;desc lang=&quot;en&quot;&gt;A look at how …..&lt;/desc&gt;
+        &lt;category lang=&quot;en&quot;&gt;Documentary&lt;/category&gt;
+        &lt;category lang=&quot;en&quot;&gt;Special&lt;/category&gt;
+        &lt;length units=&quot;minutes&quot;&gt;90&lt;/length&gt;
+        &lt;icon src=&quot;https://zap2it.tmsimg.com/assets/p21373423_b_v13_aa.jpg&quot; /&gt;
+        &lt;url&gt;https://tvlistings.zap2it.com//overview.html?programSeriesId=SH04161006&amp;amp;tmsId=SH041610060000&lt;/url&gt;
+        &lt;episode-num system=&quot;dd_progid&quot;&gt;SH04161006.0000&lt;/episode-num&gt;
+        &lt;previously-shown /&gt;
+        &lt;subtitles type=&quot;teletext&quot; /&gt;
+&lt;/programme&gt;
+</code></pre>
+<p>Once the file looks correct, it can be added into Jellyfin. See details on <a href="https://jellyfin.org/docs/general/server/live-tv/setup-guide.html#adding-guide-data">Setup Guide | Documentation - Jellyfin Project</a></p>
               
             </div>
           </div><footer>

@@ -48,7 +48,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/first-time-setup/">First Time Setup</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/macos-sharing-settings/">macOS Sharing Settings</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/macos-settings/">macOS Settings</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Server Apps</span></p>
@@ -61,12 +61,42 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../homebridge/">Homebridge</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../scrypted/">scrypted</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../scrypted/">Scrypted</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../node-red/">Node-RED</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Pihole</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#create-a-virtualbox-vm">Create a Virtualbox VM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#add-iso-as-a-boot-medium">Add ISO as a boot medium</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-ubuntu-server-with-default-settings-pihole-user-password-pihole">Install Ubuntu Server with default settings, pihole user, password pihole</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configure-a-static-ip-for-the-vm">Configure a Static IP for the VM</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-pihole">Install PiHole</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#set-dhcp-server">Set DHCP Server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#set-the-vm-to-auto-login">Set the VM to auto-login</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#set-the-vm-to-auto-launch-in-headless-mode-on-mac-login">Set the VM to auto-launch in headless mode on Mac login</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting-sites-not-loading">Troubleshooting Sites not Loading</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#updating-pihole">Updating Pihole</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#via-ssh">Via SSH:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#via-apple-remote-desktop">Via Apple Remote Desktop</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                   </li>
               </ul>
@@ -74,7 +104,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/reboot/">Reboot</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/live-tv-data-not-up-to-date/">Live TV Guide Data Issues</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/live-tv-data-issues/">Live TV Guide Data Issues</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/no-response-homekit/">Smart Devices showing as “No Response”/Orange Exclamation mark</a>
                   </li>
@@ -103,116 +133,171 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>Pihole
-Pihole is used as a network wide Ad blocker using DNS.
-Create a Virtualbox VM for PiHole (these are purposefully low-powered settings, it’s designed for a Raspberry Pi, so a powerful VM is not needed)
-1 GB memory
-10 GB storage
-bridged network
-50% CPU Execution cap</p>
-<p>Download ISO of LTS edition from https://ubuntu.com/download/server
-Add ISO as a boot medium 
-Settings of VM -&gt; Storage
-Controller: IDE -&gt; Empty
-Click the circle CD icon and pick ‘choose a disk file…’
-Pick the downloaded ISO
-Click OK
-Start VM in headless mode (click arrow next to start -&gt; headless mode)</p>
-<p>Install Ubuntu Server with default settings, pihole user, password pihole
-When asked for the network settings, take note of the MAC address and add a IP reservation to modem settings
-After applying assigned IP, reset the VM and restart setup. This will force the VM to get a static IP. If this doesn't work, continue with setup, and do “configure a static IP for VM'' setup below</p>
-<p>Configure a Static IP for the VM
-Set static IP on APTC via MAC address
-(MAC address listed under $[ip addr])</p>
-<p>RUN: sudo nano /etc/netplan/00-installer-config.yaml<br />
-Copy these contents into the file that is generated, change IP address as needed                                      </p>
-<h1 id="this-is-the-network-config-written-by-subiquity">This is the network config written by 'subiquity'</h1>
-<p>network:
+                <h1 id="pihole">Pihole</h1>
+<p>Pihole is used as a network wide Ad blocker using DNS.</p>
+<h2 id="setup">Setup</h2>
+<h3 id="create-a-virtualbox-vm">Create a Virtualbox VM</h3>
+<p>(these are purposefully low-powered settings, it’s designed for a Raspberry Pi, so a powerful VM is not needed)</p>
+<ul>
+<li>1 GB memory</li>
+<li>10 GB storage</li>
+<li>bridged network</li>
+<li>50% CPU Execution cap</li>
+</ul>
+<h3 id="add-iso-as-a-boot-medium">Add ISO as a boot medium</h3>
+<p>Download ISO of LTS edition from <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a></p>
+<ul>
+<li>Settings of VM -&gt; Storage</li>
+<li>Controller: IDE -&gt; Empty</li>
+<li>Click the circle CD icon and pick ‘choose a disk file…’</li>
+<li>Pick the downloaded ISO</li>
+<li>Click OK</li>
+<li>Start VM in headless mode (click arrow next to start -&gt; headless mode)</li>
+</ul>
+<h3 id="install-ubuntu-server-with-default-settings-pihole-user-password-pihole">Install Ubuntu Server with default settings, pihole user, password pihole</h3>
+<ul>
+<li>When asked for the network settings, take note of the MAC address and add a IP reservation to modem settings</li>
+<li>After applying assigned IP, reset the VM and restart setup. This will force the VM to get a static IP. If this doesn't work, continue with setup, and do “configure a static IP for VM'' setup below</li>
+</ul>
+<h3 id="configure-a-static-ip-for-the-vm">Configure a Static IP for the VM</h3>
+<p>Set static IP on Modem via MAC address
+(MAC address listed under <code>$[ip addr]</code>)</p>
+<p>RUN in terminal of PiHole VM:</p>
+<ul>
+<li><code>sudo nano /etc/netplan/00-installer-config.yaml</code></li>
+<li>Copy these contents into the file that is generated, change IP address as needed                                      </li>
+</ul>
+<pre><code># This is the network config written by 'subiquity'
+network:
   version: 2
   ethernets:
     enp0s3:
       addresses:
-        - <strong>IP ADDRESS SET ON MODEM</strong>/24
+        - **IP ADDRESS SET ON MODEM**/24
       gateway4: 10.0.1.1
       nameservers:
         addresses:
           - 10.0.1.53
-          - 8.8.4.4</p>
-<p>RUN: sudo netplan generate
-RUN: sudo netplan apply
-RUN: reboot</p>
-<p>Install PiHole: https://github.com/pi-hole/pi-hole/#curl--ssl-httpsinstallpi-holenet--bash
-Set the IP address of the VM as the DHCP server in: modem settings (192.168.0.1) -&gt; Advanced Setup -&gt; DHCP Settings -&gt; Set the DNS servers allocated with DHCP requests. -&gt; Custom Servers -&gt; enter VM ip address as server 1, and Open DNS backup server (8.8.4.4) as server 2
-Set the VM to auto-login (https://askubuntu.com/a/819154)
-RUN: sudo systemctl edit getty@tty1.service
-Edit the file that is generated with these contents, change username to username of VM user:</p>
-<p>[Service]
+          - 8.8.4.4
+</code></pre>
+<ul>
+<li><code>sudo netplan generate</code></li>
+<li><code>sudo netplan apply</code></li>
+<li><code>reboot</code></li>
+</ul>
+<h3 id="install-pihole">Install PiHole</h3>
+<p>Follow directions from <a href="https://github.com/pi-hole/pi-hole/#curl--ssl-httpsinstallpi-holenet--bash">https://github.com/pi-hole/pi-hole/#curl--ssl-httpsinstallpi-holenet--bash</a></p>
+<h3 id="set-dhcp-server">Set DHCP Server</h3>
+<p>Set the IP address of the VM as the DHCP server in: modem settings <a href="192.168.0.1/">192.168.0.1</a> -&gt; Advanced Setup -&gt; DHCP Settings -&gt; Set the DNS servers allocated with DHCP requests. -&gt; Custom Servers -&gt; enter VM ip address as server 1, and Open DNS backup server (8.8.4.4) as server 2</p>
+<h3 id="set-the-vm-to-auto-login">Set the VM to auto-login</h3>
+<p><a href="https://askubuntu.com/a/819154">https://askubuntu.com/a/819154</a></p>
+<p>RUN in terminal of PiHole VM:</p>
+<ul>
+<li><code>sudo systemctl edit getty@tty1.service</code></li>
+</ul>
+<p>Edit the file that is generated with these contents, change username to username of VM user (<code>pihole</code> in this case):</p>
+<pre><code>[Service]
 ExecStart=
 ExecStart=-/sbin/agetty --noissue --autologin pihole %I $TERM
-Type=idle</p>
-<pre><code>    Save with CTRL + X
-    Reboot machine and see if it auto-logs in as Pihole user
+Type=idle
 </code></pre>
-<p>Set the VM to auto-launch in headless mode on Mac login:</p>
-<p>Download the script vboxlaunchagent.sh from 
-https://www.whatroute.net/software/vboxlaunchagent.sh.zip</p>
-<p>Directions from this website:
-LaunchAgents are configured with an Apple plist XML file installed in the users Library/LaunchAgents folder. When the user logs in to their account on the Mac, launchd will inspect these plist files and invoke the required program with specified arguments.</p>
+<ul>
+<li>Save with CTRL + X</li>
+<li>Reboot machine and see if it auto-logs in as Pihole user</li>
+</ul>
+<h3 id="set-the-vm-to-auto-launch-in-headless-mode-on-mac-login">Set the VM to auto-launch in headless mode on Mac login</h3>
+<ul>
+<li>Download the script vboxlaunchagent.sh from 
+<a href="https://www.whatroute.net/software/vboxlaunchagent.sh.zip">https://www.whatroute.net/software/vboxlaunchagent.sh.zip</a></li>
+</ul>
+<p>Directions from this website:</p>
+<blockquote>
+<p>LaunchAgents are configured with an Apple plist XML file installed in the users Library/LaunchAgents folder. When the user logs in to their account on the Mac, launchd will inspect these plist files and invoke the required program with specified arguments.</p>
 <p>It can get a bit tricky to create a plist manually. They have very fussy and very unforgiving syntax requirements. This shell script will create the plist and install it in the LaunchAgents directory.</p>
 <p>You can download the script from vboxlaunchagent.sh. Unzip the file and copy the script to a suitable directory on your machine.</p>
-<p>Run the script using this syntax:
-Find the name of the VM: In a terminal, run: VBoxManage list vms</p>
-<p>macmini@macserver ~ % VBoxManage list vms
-"Pihole" {c7ac734f-3fc7-4645-997b-3c78ef32d8f4}</p>
-<p>In this example, Pihole is the name of the VM.
-In a terminal, run sh vboxlaunchagent.sh --headless --verbose "VMName", replacing ‘VMName’ with the name of the VM from the previous step</p>
+</blockquote>
+<p>Run the script using this syntax:</p>
+<p>Find the name of the VM: In a terminal on macOS, run: <code>VBoxManage list vms</code>
+Should result in output similar to:  </p>
+<pre><code>macmini@macserver ~ % VBoxManage list vms
+&quot;Pihole&quot; {c7ac734f-3fc7-4645-997b-3c78ef32d8f4}
+</code></pre>
+<p>In this example, Pihole is the name of the VM.</p>
+<p>In a terminal, run <code>sh vboxlaunchagent.sh --headless --verbose "VMName"</code>, replacing ‘VMName’ with the name of the VM from the previous step</p>
 <p>Reboot the Mac and ensure the VM auto-starts on login</p>
-<p>Troubleshooting Sites not Loading
-Pihole is a tracking and ad-blocker. Because of this, some sites may not load, or be missing content. </p>
-<p>Updating Pihole
-If you see red text at the bottom of the PiHole web UI ‘Update Available’, it needs an update. This is currently a manual process, work in progress to automate it. There are two options, both do exactly the same thing. The SSH option may be easier. 
-Via SSH:</p>
-<p>Open a Terminal and enter command: ssh pihole@pi.hole
-If you get a message similar to:
-The authenticity of host 'pi.hole (192.168.0.4)' can't be established.
+<h2 id="troubleshooting-sites-not-loading">Troubleshooting Sites not Loading</h2>
+<p>Pihole is a tracking and ad-blocker. Because of this, some sites may not load, or be missing content. </p>
+<h2 id="updating-pihole">Updating Pihole</h2>
+<p>If you see red text at the bottom of the PiHole web UI ‘Update Available’, it needs an update. This is currently a manual process, work in progress to automate it. There are two options, both do exactly the same thing. The SSH option may be easier. </p>
+<h3 id="via-ssh">Via SSH:</h3>
+<ol>
+<li>Open a Terminal and enter command: <code>ssh pihole@pi.hole</code><br />
+If you get a message similar to:  </li>
+</ol>
+<pre><code>The authenticity of host 'pi.hole (192.168.0.4)' can't be established.
 ED25519 key fingerprint is SHA256:jWxxjslC9ObhMty4d0UNERghKP6UWmetfEj80CKW6QY.
 This host key is known by the following other names/addresses:
     ~/.ssh/known_hosts:8: 192.168.0.4
-Are you sure you want to continue connecting (yes/no/[fingerprint])?</p>
-<p>this is likely because you have not connected to the PiHole VM using SSH previously. Verify the IP address is 192.168.0.4 and if it’s correct, type ‘yes’ at the prompt. 
- At the prompt pihole@pi.hole's password: enter the PiHole user password. Once successfully connected, you should see a prompt similar to pihole@pihole:~$. You are now SSHed into the PiHole VM
-Run command pihole -up
-If prompted [sudo] password for pihole:  enter the PiHole user password
-Wait for it to update. On success, you should see   [✓] Everything is up to date!</p>
-<p>It’s also a good idea to update the underlying Ubuntu instance periodically, especially if there is a notice then you logged into the Pihole VM similar to: 
-91 updates can be applied immediately.
-9 of these updates are standard security updates.</p>
-<p>To do this:
-Run sudo apt upgrade
-You may be prompted ‘After this operation, 430 MB of additional disk space will be used.
-Do you want to continue? [Y/n]’ Enter ‘y’
-Wait for it to update. This may take a while, depending on the number of updates</p>
-<p>Via Apple Remote Desktop:
-Open Apple Remote Desktop
-Select ‘MacServer’ from All Computers
-Click on ‘Control’ or from the taskbar, choose Interact &gt; Control or Interact &gt; Control
-A new window will open with the MacServer display. 
-From the Dock, Applications Folder or Spotlight, open VirtualBox
-Ensure ‘Pihole’ is selected in the sidebar 
-Click ‘Show’ 
-A new window will open with the PiHole VM. 
-In that new window, ensure you have a pihole@pihole:~$ prompt. If you do not, press enter a few times to get to a new line. 
-Run command pihole -up
-If prompted [sudo] password for pihole:  enter the PiHole user password
-Wait for it to update. On success, you should see   [✓] Everything is up to date!</p>
-<p>It’s also a good idea to update the underlying Ubuntu instance periodically, especially if there is a notice then you logged into the Pihole VM similar to: 
-91 updates can be applied immediately.
-9 of these updates are standard security updates.</p>
-<p>To do this:
-Run sudo apt upgrade
-You may be prompted ‘After this operation, 430 MB of additional disk space will be used.
-Do you want to continue? [Y/n]’ Enter ‘y’
-Wait for it to update. This may take a while, depending on the number of updates</p>
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+</code></pre>
+<p>this is likely because you have not connected to the PiHole VM using SSH previously. Verify the IP address is 192.168.0.4 and if it’s correct, type ‘yes’ at the prompt. </p>
+<ol>
+<li>
+<p>At the prompt <code>pihole@pi.hole's password:</code> enter the PiHole user password. Once successfully connected, you should see a prompt similar to <code>pihole@pihole:~$</code>. You are now SSHed into the PiHole VM!</p>
+</li>
+<li>
+<p>Run command <code>pihole -up</code>   </p>
+</li>
+<li>If prompted <code>[sudo] password for pihole:</code>  enter the PiHole user password  </li>
+<li>Wait for it to update. On success, you should see   <code>[✓] Everything is up to date!</code></li>
+</ol>
+<p>It’s also a good idea to update the underlying Ubuntu instance periodically, especially if there is a notice then you logged into the Pihole VM similar to: </p>
+<pre><code>91 updates can be applied immediately.
+9 of these updates are standard security updates.
+</code></pre>
+<p>To do this:</p>
+<ol>
+<li>Run <code>sudo apt upgrade</code></li>
+<li>You may be prompted:</li>
+</ol>
+<pre><code>After this operation, 430 MB of additional disk space will be used.`
+Do you want to continue? [Y/n]
+</code></pre>
+<p>Enter ‘y’</p>
+<ol>
+<li>Wait for it to update. This may take a while, depending on the number of updates.</li>
+</ol>
+<h3 id="via-apple-remote-desktop">Via Apple Remote Desktop</h3>
+<ol>
+<li>Open Apple Remote Desktop</li>
+<li>Select <code>MacServer</code> from All Computers</li>
+<li>Click on <code>Control</code> or from the taskbar, or choose <code>Interact &gt; Control</code> </li>
+<li>A new window will open with the MacServer display. </li>
+<li>From the Dock, Applications Folder or Spotlight, open <code>VirtualBox</code></li>
+<li>Ensure <code>Pihole</code> is selected in the sidebar <img alt="virtualbox-pihole-running.png" src="../../img/virtualbox/virtualbox-pihole-running.png" style="height:40px;width:200px" /></li>
+<li>Click <code>Show</code> <img alt="virtualbox-pihole-running.png" src="../../img/virtualbox/virtualbox-show.png" style="height:40px;width:40px" /></li>
+<li>A new window will open with the PiHole VM. </li>
+<li>In that new window, ensure you have a <code>pihole@pihole:~$</code> prompt. If you do not, press enter a few times to get to a new line. </li>
+<li>Run command <code>pihole -up</code></li>
+<li>If prompted <code>[sudo] password for pihole:</code>  enter the PiHole user password</li>
+<li>Wait for it to update. On success, you should see   <code>[✓] Everything is up to date!</code></li>
+</ol>
+<p>It’s also a good idea to update the underlying Ubuntu instance periodically, especially if there is a notice then you logged into the Pihole VM similar to: </p>
+<pre><code>91 updates can be applied immediately.
+9 of these updates are standard security updates.
+</code></pre>
+<p>To do this:</p>
+<ol>
+<li>Run <code>sudo apt upgrade</code></li>
+<li>You may be prompted:</li>
+</ol>
+<pre><code>After this operation, 430 MB of additional disk space will be used.`
+Do you want to continue? [Y/n]
+</code></pre>
+<p>Enter ‘y’</p>
+<ol>
+<li>Wait for it to update. This may take a while, depending on the number of updates.</li>
+</ol>
               
             </div>
           </div><footer>

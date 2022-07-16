@@ -48,7 +48,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/first-time-setup/">First Time Setup</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/macos-sharing-settings/">macOS Sharing Settings</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/macos-settings/">macOS Settings</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Server Apps</span></p>
@@ -61,7 +61,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../server-apps/homebridge/">Homebridge</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server-apps/scrypted/">scrypted</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server-apps/scrypted/">Scrypted</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../server-apps/node-red/">Node-RED</a>
                   </li>
@@ -71,8 +71,14 @@
               <p class="caption"><span class="caption-text">Troubleshooting</span></p>
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Reboot</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#easiest-apple-remote-desktop-ard">Easiest - Apple Remote Desktop (ARD)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ssh">SSH</a>
+    </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../live-tv-data-not-up-to-date/">Live TV Guide Data Issues</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../live-tv-data-issues/">Live TV Guide Data Issues</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../no-response-homekit/">Smart Devices showing as “No Response”/Orange Exclamation mark</a>
                   </li>
@@ -101,37 +107,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>Reboot
-Most issues can be solved by rebooting the Mac. If configured correctly, the mac should auto-login and all services should auto-start upon boot. </p>
+                <h1 id="reboot">Reboot</h1>
+<p>Most issues can be solved by rebooting the Mac. If configured correctly, the mac should auto-login and all services should auto-start upon boot. </p>
 <p>To reboot the machine, there are a couple different ways:</p>
-<p>Easiest - Apple Remote Desktop (ARD)
-Open ARD 
-Select ‘MacServer’ in the list
-Choose Manage -&gt; Restart
-Select ‘Users lose unsaved changes’
-Click Restart
-After the Mac has restarted, ‘Current Status’ should change to ‘Available’</p>
-<p>SSH</p>
-<p>Use Terminal on a Mac, or “Termius” iOS app 
-Connect to MacServer over ssh:
-In a terminal: ssh macmini@macserver.local
-At prompt: (macmini@macserver.local) Password: enter MacMini user password (no characters will be shown when typed)
-Connection success if prompt changes to macserver:~ macmini$
-Enter sudo shutdown -r now at prompt
-Enter macmini user password
-Final shutdown message will be shown:
-Shutdown NOW!</p>
-<p><strong><em> FINAL System shutdown message from macmini@macserver.local </em></strong>         <br />
-System going down IMMEDIATELY                                                  </p>
-<p>System shutdown time has arrived
+<h3 id="easiest-apple-remote-desktop-ard">Easiest - Apple Remote Desktop (ARD)</h3>
+<ol>
+<li>Open ARD</li>
+<li>Select ‘MacServer’ in the list</li>
+<li>Choose Manage -&gt; Restart</li>
+<li>Select ‘Users lose unsaved changes’</li>
+<li>Click Restart</li>
+<li>After the Mac has restarted, ‘Current Status’ should change to ‘Available’</li>
+</ol>
+<h3 id="ssh">SSH</h3>
+<p>Use Terminal on a Mac, or “Termius” iOS app</p>
+<ol>
+<li>Connect to MacServer over ssh:<ul>
+<li>In a terminal: <code>ssh macmini@macserver.local</code></li>
+<li>At prompt: <code>(macmini@macserver.local) Password:</code> enter MacMini user password (no characters will be shown when typed)</li>
+<li>Connection success if prompt changes to <code>macserver:~ macmini$</code></li>
+</ul>
+</li>
+<li>Enter <code>sudo shutdown -r now</code> at prompt</li>
+<li>Enter macmini user password</li>
+<li>Final shutdown message will be shown:</li>
+</ol>
+<pre><code>Shutdown NOW!
+
+*** FINAL System shutdown message from macmini@macserver.local ***           
+System going down IMMEDIATELY                                                  
+
+
+
+System shutdown time has arrived
 Connection to macserver.local closed by remote host.
-Connection to macserver.local closed.</p>
+Connection to macserver.local closed.
+</code></pre>
+<ol>
+<li>Connection should be closed automatically, verify that MacServer comes back up.</li>
+</ol>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../../server-apps/pihole/" class="btn btn-neutral float-left" title="Pihole"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../live-tv-data-not-up-to-date/" class="btn btn-neutral float-right" title="Live TV Guide Data Issues">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../live-tv-data-issues/" class="btn btn-neutral float-right" title="Live TV Guide Data Issues">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -157,7 +177,7 @@ Connection to macserver.local closed.</p>
       <span><a href="../../server-apps/pihole/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../live-tv-data-not-up-to-date/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../live-tv-data-issues/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

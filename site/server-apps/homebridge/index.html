@@ -48,7 +48,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/first-time-setup/">First Time Setup</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/macos-sharing-settings/">macOS Sharing Settings</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/macos-settings/">macOS Settings</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Server Apps</span></p>
@@ -60,8 +60,18 @@
                   <li class="toctree-l1"><a class="reference internal" href="../jellyfin/">Jellyfin</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Homebridge</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#install-locally">Install locally</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#install-plugins">Install plugins</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configure-homebridge-tuya-platform-plugin">Configure Homebridge Tuya Platform plugin</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup-and-configure">Setup and Configure</a>
+    </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../scrypted/">scrypted</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../scrypted/">Scrypted</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../node-red/">Node-RED</a>
                   </li>
@@ -72,7 +82,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/reboot/">Reboot</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/live-tv-data-not-up-to-date/">Live TV Guide Data Issues</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/live-tv-data-issues/">Live TV Guide Data Issues</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/no-response-homekit/">Smart Devices showing as “No Response”/Orange Exclamation mark</a>
                   </li>
@@ -101,29 +111,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>Homebridge is used for Home Controls of Plugs, Garage Door. 
-Install locally: https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-macOS
-Install plugins: Homebridge Tuya Platform (https://github.com/tuya/tuya-homebridge), 
-Configure plugins: 
-Name: TuyaPlatform
-Username: andrew.breyen@gmail.com
-Password: [encrypted-value]
-Access ID: [encrypted-value]
-Access Key: [encrypted-value]
-Language Code: en
-Project Type: PaaS
-PaaS Platform: Smart Life
-Country Code: 1
-Once the Homebridge Tuya Platform plugin is added, click the power icon on the top right to restart
-Once back up, click ‘Accessories’ and verify that all accessories have been added
-Scan QR code from Status screen using Home App -&gt; Add Accessories
-Add the bridge to room ‘ZAccessories’, continue setup within Home app, place accessories into correct rooms</p>
+                <h1 id="homebridge">Homebridge</h1>
+<p>Homebridge is used for Home Controls of Plugs, Garage Door.</p>
+<h2 id="install-locally">Install locally</h2>
+<p><a href="https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-macOS">https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-macOS</a></p>
+<h2 id="install-plugins">Install plugins</h2>
+<p>Homebridge Tuya Platform <a href="https://github.com/tuya/tuya-homebridge">https://github.com/tuya/tuya-homebridge</a></p>
+<h2 id="configure-homebridge-tuya-platform-plugin">Configure Homebridge Tuya Platform plugin</h2>
+<ul>
+<li>Name: TuyaPlatform</li>
+<li>Username: andrew.breyen@gmail.com</li>
+<li>Password: [encrypted-value]</li>
+<li>Access ID: [encrypted-value]</li>
+<li>Access Key: [encrypted-value]</li>
+<li>Language Code: en</li>
+<li>Project Type: PaaS</li>
+<li>PaaS Platform: Smart Life</li>
+<li>Country Code: 1</li>
+</ul>
+<h2 id="setup-and-configure">Setup and Configure</h2>
+<p>Once the Homebridge Tuya Platform plugin is added, click the power icon on the top right to restart</p>
+<p>Once back up, click <code>Accessories</code> and verify that all accessories have been added</p>
+<p>Scan QR code from Status screen using Home App -&gt; Add Accessories</p>
+<p>Add the bridge to room <code>ZAccessories</code>, continue setup within Home app, place accessories into correct rooms</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../jellyfin/" class="btn btn-neutral float-left" title="Jellyfin"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../scrypted/" class="btn btn-neutral float-right" title="scrypted">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../scrypted/" class="btn btn-neutral float-right" title="Scrypted">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

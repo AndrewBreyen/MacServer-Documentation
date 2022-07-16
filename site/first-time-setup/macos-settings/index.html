@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/first-time-setup/macos-sharing-settings/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/first-time-setup/macos-settings/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>macOS Sharing Settings - MacServer Documentation</title>
+    <title>macOS Settings - MacServer Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "macOS Sharing Settings";
-        var mkdocs_page_input_path = "first-time-setup/macos-sharing-settings.md";
-        var mkdocs_page_url = "/first-time-setup/macos-sharing-settings/";
+        var mkdocs_page_name = "macOS Settings";
+        var mkdocs_page_input_path = "first-time-setup/macos-settings.md";
+        var mkdocs_page_url = "/first-time-setup/macos-settings/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -48,7 +48,37 @@
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../first-time-setup/">First Time Setup</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">macOS Sharing Settings</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">macOS Settings</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#automatic-login">Automatic Login</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#auto-start-apps">Auto Start Apps</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#energy-saver">Energy Saver:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#full-disk-access">Full Disk Access:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#system-preferences-sharing">System Preferences -&gt; Sharing</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#file-sharing">File Sharing</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#enable-time-machine-backups">Enable Time Machine Backups:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#permissions">Permissions:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#remote-login">Remote Login</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#remote-management">Remote Management</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#remote-apple-events">Remote Apple Events</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#content-caching">Content Caching</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Server Apps</span></p>
@@ -61,7 +91,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../server-apps/homebridge/">Homebridge</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../server-apps/scrypted/">scrypted</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../server-apps/scrypted/">Scrypted</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../server-apps/node-red/">Node-RED</a>
                   </li>
@@ -72,7 +102,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/reboot/">Reboot</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/live-tv-data-not-up-to-date/">Live TV Guide Data Issues</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/live-tv-data-issues/">Live TV Guide Data Issues</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/no-response-homekit/">Smart Devices showing as “No Response”/Orange Exclamation mark</a>
                   </li>
@@ -91,7 +121,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>First Time Setup &raquo;</li><li>macOS Sharing Settings</li>
+          <li>First Time Setup &raquo;</li><li>macOS Settings</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -101,30 +131,81 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>macOS Sharing Settings
-In System Preferences Sharing Settings:
-File Sharing
-Add folders: 
-/Users/Shared/macOS Server Shares/AllShare
-​​/Users/Shared/macOS Server Shares/Scans
-Add volumes:
-/Volumes/Media
-/Volumes/Time Machine Backups
-Right Click -&gt; advanced options -&gt; Share as a Time Machine backup destination
-For all locations, allow ‘Everyone’ to read and write
-Remote Login
-[CHECK] Allow full disk access for remote users
-Allow access for: All users
-Remote Management
-Allow access for: All users
-Computer Settings:
-[CHECK] Always show Remote Management status in menu bar
-[CHECK] Anyone may request permission to control screen
-Remote Apple Events
-Allow access for: All users
-Content Caching
-Cache: All content
-Options -&gt; Cache size: 30 GB (change as needed)</p>
+                <h1 id="macos-settings">macOS Settings</h1>
+<h3 id="automatic-login">Automatic Login</h3>
+<p>Enable automatic login for the MacMini user:<br />
+System Preferences -&gt; Users and Groups -&gt; Login Options</p>
+<ul>
+<li>Automatic Login: macmini</li>
+</ul>
+<h3 id="auto-start-apps">Auto Start Apps</h3>
+<p>Automatically start apps on MacMini user login</p>
+<p>System Preferences -&gt; Users and Groups -&gt; macmini -&gt; Login Items</p>
+<ul>
+<li>Docker</li>
+<li>Jellyfin</li>
+</ul>
+<h3 id="energy-saver">Energy Saver:</h3>
+<ul>
+<li>Turn Display Off after: never</li>
+<li>[CHECK] Prevent your Mac from automatically sleeping when the display is off</li>
+<li>[CHECK] Put hard disks to sleep when possible</li>
+<li>[CHECK] Wake for network access</li>
+<li>[CHECK] Start up automatically after a power failure</li>
+<li>[CHECK] Enable Power Nap</li>
+</ul>
+<h3 id="full-disk-access">Full Disk Access:</h3>
+<ul>
+<li>Ensure /bin/bash has full disk access in System Preferences -&gt; Security and Privacy -&gt; Privacy </li>
+</ul>
+<h3 id="system-preferences-sharing">System Preferences -&gt; Sharing</h3>
+<h4 id="file-sharing">File Sharing</h4>
+<p>Ensure 'Computer Name' is set to <code>MacServer</code></p>
+<p>Add folders: </p>
+<ul>
+<li>/Users/Shared/macOS Server Shares/AllShare</li>
+<li>​/Users/Shared/macOS Server Shares/Scans</li>
+</ul>
+<p>Add volumes:</p>
+<ul>
+<li>/Volumes/Media</li>
+<li>/Volumes/Time Machine Backups</li>
+</ul>
+<h5 id="enable-time-machine-backups">Enable Time Machine Backups:</h5>
+<p>Right Click <code>Time Machine Backups</code> -&gt; Advanced Options -&gt; [CHECK] Share as a Time Machine backup destination</p>
+<h5 id="permissions">Permissions:</h5>
+<p>For all folders and volumes:</p>
+<ul>
+<li>‘Everyone’: Read Only</li>
+<li>'AllLocalUsers': Read &amp; Write</li>
+</ul>
+<h4 id="remote-login">Remote Login</h4>
+<ul>
+<li>[CHECK] Allow full disk access for remote users</li>
+<li>Allow access for: <code>All users</code></li>
+</ul>
+<h4 id="remote-management">Remote Management</h4>
+<ul>
+<li>Allow access for: <code>All users</code></li>
+<li>Computer Settings:<ul>
+<li>[CHECK] Always show Remote Management status in menu bar</li>
+<li>[CHECK] Anyone may request permission to control screen</li>
+</ul>
+</li>
+</ul>
+<h4 id="remote-apple-events">Remote Apple Events</h4>
+<ul>
+<li>Allow access for: <code>All users</code></li>
+</ul>
+<h4 id="content-caching">Content Caching</h4>
+<ul>
+<li>Cache: <code>All content</code></li>
+<li>Options<ul>
+<li>Cache Location: <code>Macintosh HD</code></li>
+<li>Cache size: <code>30 GB</code> (change as needed)</li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div><footer>
