@@ -48,7 +48,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/first-time-setup/">First Time Setup</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/macos-sharing-settings/">macOS Sharing Settings</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/macos-settings/">macOS Settings</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Server Apps</span></p>
@@ -61,9 +61,19 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../homebridge/">Homebridge</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../scrypted/">scrypted</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../scrypted/">Scrypted</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Node-RED</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#additional-palette-items">Additional Palette items</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#enabling-node-red-to-start-on-computer-boot">Enabling Node-RED to start on computer boot</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#importing-flows">Importing Flows</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pihole/">Pihole</a>
                   </li>
@@ -72,7 +82,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/reboot/">Reboot</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/live-tv-data-not-up-to-date/">Live TV Guide Data Issues</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/live-tv-data-issues/">Live TV Guide Data Issues</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/no-response-homekit/">Smart Devices showing as “No Response”/Orange Exclamation mark</a>
                   </li>
@@ -101,37 +111,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>Node-RED
-Node-RED is used to control automations that require more settings/control than HomeKit or HomeBridge can provide natively. </p>
-<p>“Node-RED is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways.</p>
-<p>It provides a browser-based editor that makes it easy to wire together flows using the wide range of nodes in the palette that can be deployed to its runtime in a single-click.”</p>
-<p>Installation:
-Install Node-RED locally using directions provided here: https://nodered.org/docs/getting-started/local</p>
-<p>Additional Palette items:
-Once Node-RED is running and you can access via a web browser, install these additional items by clicking the three lines hamburger button in the top right, and selecting ‘Manage Palette’, then move to the ‘Install’ tab</p>
-<p>node-red
-node-red-contrib-cron
-node-red-contrib-homebridge-automation
-node-red-contrib-slack-files
-node-red-contrib-stoptimer</p>
-<p>Enabling Node-RED to start on computer boot
-Follow directions here to use pm2 to have Node-RED start on boot: https://nodered.org/docs/faq/starting-node-red-on-boot</p>
-<p>Importing Flows
-Go to https://github.com/AndrewBreyen/Node-RED-flows/ and pick which flow you want to start importing
-Copy the contents of desired flows’ (use the button for ease of use)
-Click the three lines hamburger button in the top right, and selecting ‘Import’
-Paste in value copied to clipboard
-Go to https://api.slack.com/apps/A03JPNEBPC4/incoming-webhooks to retrieve the Webhook URL, copy to clipboard
-Double click on the  node(s)
-Paste in the Webhook URL copied to clipboard
-Double click on the and nodes, ensure that the correct device and Homebridge Pin are selected
-Repeat with the other flows you want to import
-Test it out!</p>
+                <h1 id="node-red">Node-RED</h1>
+<p>Node-RED is used to control automations that require more settings/control than HomeKit or HomeBridge can provide natively. </p>
+<blockquote>
+<p>" Node-RED is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways.<br />
+It provides a browser-based editor that makes it easy to wire together flows using the wide range of nodes in the palette that can be deployed to its runtime in a single-click."</p>
+</blockquote>
+<h2 id="installation">Installation</h2>
+<p>Install Node-RED locally using directions provided here: <a href="https://nodered.org/docs/getting-started/local">https://nodered.org/docs/getting-started/local</a></p>
+<h2 id="additional-palette-items">Additional Palette items</h2>
+<p>Once Node-RED is running and you can access via a web browser, install these additional items by clicking the three lines hamburger button in the top right, and selecting ‘Manage Palette’, then move to the ‘Install’ tab</p>
+<ul>
+<li>node-red</li>
+<li>node-red-contrib-cron</li>
+<li>node-red-contrib-homebridge-automation</li>
+<li>node-red-contrib-slack-files</li>
+<li>node-red-contrib-stoptimer</li>
+</ul>
+<h2 id="enabling-node-red-to-start-on-computer-boot">Enabling Node-RED to start on computer boot</h2>
+<p>Follow directions here to use pm2 to have Node-RED start on boot: <a href="https://nodered.org/docs/faq/starting-node-red-on-boot">https://nodered.org/docs/faq/starting-node-red-on-boot</a></p>
+<h2 id="importing-flows">Importing Flows</h2>
+<ol>
+<li>Go to https://github.com/AndrewBreyen/Node-RED-flows/ and pick which flow you want to start importing</li>
+<li>Copy the contents of desired flows’ (use the <img alt="node-red-copy-paste-squares.png" src="../../img/node-red/node-red-copy-paste-squares.png" style="height:30px;width:25px" /> button for ease of use)</li>
+<li>Click the three lines hamburger button in the top right, and selecting ‘Import’</li>
+<li>Paste in value copied to clipboard</li>
+<li>Go to <a href="https://api.slack.com/apps/A03JPNEBPC4/incoming-webhooks">https://api.slack.com/apps/A03JPNEBPC4/incoming-webhooks</a> to retrieve the Webhook URL, copy to clipboard</li>
+<li>Double click on the <img alt="node-red-copy-paste-squares.png" src="../../img/node-red/node-red-slack-node.png" style="height:40px;width:100px" /> node(s)</li>
+<li>Paste in the Webhook URL copied to clipboard</li>
+<li>Double click on the <img alt="node-red-garage-door-node-1.png" src="../../img/node-red/node-red-garage-door-node-1.png" style="height:40px;width:200px" /> and <img alt="node-red-garage-door-node-2.png" src="../../img/node-red/node-red-garage-door-node-2.png" style="height:40px;width:200px" />nodes, ensure that the correct device and Homebridge Pin are selected</li>
+<li>Repeat with the other flows you want to import</li>
+<li>Test it out!</li>
+</ol>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../scrypted/" class="btn btn-neutral float-left" title="scrypted"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../scrypted/" class="btn btn-neutral float-left" title="Scrypted"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../pihole/" class="btn btn-neutral float-right" title="Pihole">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 

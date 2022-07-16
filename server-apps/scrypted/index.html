@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://example.com/server-apps/scrypted/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>scrypted - MacServer Documentation</title>
+    <title>Scrypted - MacServer Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "scrypted";
+        var mkdocs_page_name = "Scrypted";
         var mkdocs_page_input_path = "server-apps/scrypted.md";
         var mkdocs_page_url = "/server-apps/scrypted/";
       </script>
@@ -48,7 +48,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/first-time-setup/">First Time Setup</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/macos-sharing-settings/">macOS Sharing Settings</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../first-time-setup/macos-settings/">macOS Settings</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Server Apps</span></p>
@@ -61,7 +61,17 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../homebridge/">Homebridge</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">scrypted</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Scrypted</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#install-locally">Install locally</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#install-plugins">Install plugins</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configure-plugins">Configure plugins</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#additional-plugins-used-by-scrypted">Additional plugins used by Scrypted</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../node-red/">Node-RED</a>
                   </li>
@@ -72,7 +82,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/reboot/">Reboot</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/live-tv-data-not-up-to-date/">Live TV Guide Data Issues</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/live-tv-data-issues/">Live TV Guide Data Issues</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/no-response-homekit/">Smart Devices showing as “No Response”/Orange Exclamation mark</a>
                   </li>
@@ -91,7 +101,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Server Apps &raquo;</li><li>scrypted</li>
+          <li>Server Apps &raquo;</li><li>Scrypted</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -101,18 +111,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>Scrypted
-Scrypted is used to serve Video Camera Content to Apple Home.
-Install locally: https://github.com/koush/scrypted/wiki/Installation:-Mac
-Install plugins: HomeKit, RTSP Camera Plugin, Rebroadcast Plugin
-Configure plugins:
-RTSP cameras
-Add 2 cameras (Front Porch, Backyard), username: wyzecam, Password: wyzecam, Snapshot URL: [blank], RTSP Stream URL: rtsp://wyzecam:wyzecam@[IP ADDR OF CAMERA]/live
-Homekit
-View console of plugin to see QR code, add accessory via iOS Home app. 
-Add the bridge to room ‘ZAccessories’, continue setup within Home app, place accessories into correct rooms</p>
-<p>Additional apps used by Scrypted:
-OpenCV: https://opencv.org/
+                <h1 id="scrypted">Scrypted</h1>
+<p>Scrypted is used to serve Video Camera Content to Apple Home.</p>
+<h2 id="install-locally">Install locally</h2>
+<p><a href="https://github.com/koush/scrypted/wiki/Installation:-Mac">https://github.com/koush/scrypted/wiki/Installation:-Mac</a></p>
+<h2 id="install-plugins">Install plugins</h2>
+<ul>
+<li>HomeKit</li>
+<li>RTSP Camera Plugin</li>
+<li>Rebroadcast Plugin</li>
+</ul>
+<h2 id="configure-plugins">Configure plugins</h2>
+<p>RTSP cameras</p>
+<ul>
+<li>Add 2 cameras (Front Porch, Backyard), username: wyzecam, Password: wyzecam, Snapshot URL: [blank], RTSP Stream URL: rtsp://wyzecam:wyzecam@[IP ADDR OF CAMERA]/live</li>
+</ul>
+<p>Homekit</p>
+<ul>
+<li>View console of plugin to see QR code, add accessory via iOS Home app. </li>
+<li>Add the bridge to room ‘ZAccessories’, continue setup within Home app, place accessories into correct rooms</li>
+</ul>
+<h2 id="additional-plugins-used-by-scrypted">Additional plugins used by Scrypted</h2>
+<p>OpenCV: <a href="https://opencv.org/">https://opencv.org/</a><br />
 Used to detect motion and send homekit notifications</p>
               
             </div>
