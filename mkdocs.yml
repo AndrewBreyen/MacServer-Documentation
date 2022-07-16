@@ -2,5 +2,19 @@ site_name: MacServer Documentation
 site_url: https://example.com/
 nav:
     - Home: index.md
-    - About: about.md
+    - First Time Setup:
+      - 'First Time Setup': 'first-time-setup/first-time-setup.md'
+      - 'macOS Sharing Settings': 'first-time-setup/macos-sharing-settings.md'
+    - Server Apps:
+      - 'macOS Server': 'server-apps/macos-server.md'
+      - 'TeamViewer': 'server-apps/teamviewer.md'
+      - 'Jellyfin': 'server-apps/jellyfin.md'
+      - 'Homebridge': 'server-apps/homebridge.md'
+      - 'scrypted': 'server-apps/scrypted.md'
+      - 'Node-RED': 'server-apps/node-red.md'
+      - 'Pihole': 'server-apps/pihole.md'
+    - Troubleshooting:
+      - 'Reboot': 'troubleshooting/reboot.md'
+      - 'Live TV Guide Data Issues': 'troubleshooting/live-tv-data-not-up-to-date.md'
+      - 'Smart Devices showing as “No Response”/Orange Exclamation mark': 'troubleshooting/no-response-homekit.md'
 theme: readthedocs
