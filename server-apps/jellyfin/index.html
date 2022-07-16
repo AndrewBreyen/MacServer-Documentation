@@ -754,45 +754,45 @@ Create a Docker container for the <a href="https://github.com/shuaiscott/zap2xml
 <li>In Docker Desktop: Settings -&gt; Resources -&gt; File Sharing add the <code>/Users/Shared/xmltvdata</code> folder created in step 1</li>
 <li>Run terminal command: replace <code>your_zap2it_email@email.com</code> and <code>your_zap2it_password</code> with your <a href="https://tvlistings.zap2it.com/">https://tvlistings.zap2it.com/</a> account details. </li>
 </ol>
-<pre><code>docker run &quot;-d --name zap2xml -v /xmltvdata:/data -e USERNAME=your_zap2it_email@email.com -e PASSWORD=your_zap2it_password -e OPT_ARGS=&quot;-I -D -Z 55303&quot; -e XMLTV_FILENAME=xmltv.xml shuaiscott/zap2xml&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker run <span class="s2">&quot;-d --name zap2xml -v /xmltvdata:/data -e USERNAME=your_zap2it_email@email.com -e PASSWORD=your_zap2it_password -e OPT_ARGS=&quot;</span>-I -D -Z <span class="m">55303</span><span class="s2">&quot; -e XMLTV_FILENAME=xmltv.xml shuaiscott/zap2xml&quot;</span>
+</code></pre></div>
 <p>By default, new guide data will be fetched by this Docker container every 12 hours. Additional command line arguments can be added/changed. See details on GitHub - shuaiscott/zap2xml README.</p>
 <ol>
 <li>Open Docker Desktop and view logs, let it run. When complete, a status message will print like this:</li>
 </ol>
-<pre><code>Downloaded 1090062 bytes in 291 http requests using 2 sockets.
+<div class="highlight"><pre><span></span><code>Downloaded 1090062 bytes in 291 http requests using 2 sockets.
 Writing XML file: /data/xmltv.xml
 Completed in 167s (Parse: 164s) 81 stations, 7895 programs, 17063 scheduled.
 Last run time: Fri Mar 11 04:12:49 UTC 2022
 Will run in 43200 seconds
-</code></pre>
+</code></pre></div>
 <ol>
 <li>In macOS Finder, verify that a xmltv.xml file was created at location <code>/Users/Shared/xmltvdata</code>. File should start with something like:</li>
 </ol>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE tv SYSTEM &quot;xmltv.dtd&quot;&gt;
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE tv SYSTEM &quot;xmltv.dtd&quot;&gt;</span>
 
-&lt;tv source-info-url=&quot;http://tvlistings.zap2it.com/&quot; source-info-name=&quot;zap2it.com&quot; generator-info-name=&quot;zap2xml&quot; generator-info-url=&quot;zap2xml@gmail.com&quot;&gt;
-    &lt;channel id=&quot;I2.1.21634.zap2it.com&quot;&gt;
-        &lt;display-name&gt;2.1 KTCADT&lt;/display-name&gt;
-        &lt;display-name&gt;2.1&lt;/display-name&gt;
-        &lt;display-name&gt;KTCADT&lt;/display-name&gt;
-        &lt;icon src=&quot;https://zap2it.tmsimg.com/h3/NowShowing/21634/s32356_h3_aa.png&quot; /&gt;
-</code></pre>
+<span class="nt">&lt;tv</span> <span class="na">source-info-url=</span><span class="s">&quot;http://tvlistings.zap2it.com/&quot;</span> <span class="na">source-info-name=</span><span class="s">&quot;zap2it.com&quot;</span> <span class="na">generator-info-name=</span><span class="s">&quot;zap2xml&quot;</span> <span class="na">generator-info-url=</span><span class="s">&quot;zap2xml@gmail.com&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;channel</span> <span class="na">id=</span><span class="s">&quot;I2.1.21634.zap2it.com&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;display-name&gt;</span>2.1 KTCADT<span class="nt">&lt;/display-name&gt;</span>
+        <span class="nt">&lt;display-name&gt;</span>2.1<span class="nt">&lt;/display-name&gt;</span>
+        <span class="nt">&lt;display-name&gt;</span>KTCADT<span class="nt">&lt;/display-name&gt;</span>
+        <span class="nt">&lt;icon</span> <span class="na">src=</span><span class="s">&quot;https://zap2it.tmsimg.com/h3/NowShowing/21634/s32356_h3_aa.png&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
 <p>Scroll down past the <code>&lt;channel&gt;&lt;/channel&gt;</code> sections, and verify that there are <code>&lt;/programme&gt;&lt;/programme&gt;</code> tags, with contents similar to</p>
-<pre><code>&lt;programme start=&quot;20220311023000 +0000&quot; stop=&quot;20220311040000 +0000&quot; channel=&quot;I2.1.21634.zap2it.com&quot;&gt;
-        &lt;title lang=&quot;en&quot;&gt;Endeavour: The Evolution&lt;/title&gt;
-        &lt;desc lang=&quot;en&quot;&gt;A look at how …..&lt;/desc&gt;
-        &lt;category lang=&quot;en&quot;&gt;Documentary&lt;/category&gt;
-        &lt;category lang=&quot;en&quot;&gt;Special&lt;/category&gt;
-        &lt;length units=&quot;minutes&quot;&gt;90&lt;/length&gt;
-        &lt;icon src=&quot;https://zap2it.tmsimg.com/assets/p21373423_b_v13_aa.jpg&quot; /&gt;
-        &lt;url&gt;https://tvlistings.zap2it.com//overview.html?programSeriesId=SH04161006&amp;amp;tmsId=SH041610060000&lt;/url&gt;
-        &lt;episode-num system=&quot;dd_progid&quot;&gt;SH04161006.0000&lt;/episode-num&gt;
-        &lt;previously-shown /&gt;
-        &lt;subtitles type=&quot;teletext&quot; /&gt;
-&lt;/programme&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;programme</span> <span class="na">start=</span><span class="s">&quot;20220311023000 +0000&quot;</span> <span class="na">stop=</span><span class="s">&quot;20220311040000 +0000&quot;</span> <span class="na">channel=</span><span class="s">&quot;I2.1.21634.zap2it.com&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>Endeavour: The Evolution<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;desc</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>A look at how …..<span class="nt">&lt;/desc&gt;</span>
+        <span class="nt">&lt;category</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>Documentary<span class="nt">&lt;/category&gt;</span>
+        <span class="nt">&lt;category</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>Special<span class="nt">&lt;/category&gt;</span>
+        <span class="nt">&lt;length</span> <span class="na">units=</span><span class="s">&quot;minutes&quot;</span><span class="nt">&gt;</span>90<span class="nt">&lt;/length&gt;</span>
+        <span class="nt">&lt;icon</span> <span class="na">src=</span><span class="s">&quot;https://zap2it.tmsimg.com/assets/p21373423_b_v13_aa.jpg&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;url&gt;</span>https://tvlistings.zap2it.com//overview.html?programSeriesId=SH04161006<span class="ni">&amp;amp;</span>tmsId=SH041610060000<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;episode-num</span> <span class="na">system=</span><span class="s">&quot;dd_progid&quot;</span><span class="nt">&gt;</span>SH04161006.0000<span class="nt">&lt;/episode-num&gt;</span>
+        <span class="nt">&lt;previously-shown</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;subtitles</span> <span class="na">type=</span><span class="s">&quot;teletext&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/programme&gt;</span>
+</code></pre></div>
 <p>Once the file looks correct, it can be added into Jellyfin. See details on <a href="https://jellyfin.org/docs/general/server/live-tv/setup-guide.html#adding-guide-data">Setup Guide | Documentation - Jellyfin Project</a></p>
 
               

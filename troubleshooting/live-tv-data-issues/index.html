@@ -638,9 +638,9 @@ Open Docker Desktop, restart the container</p>
 <p>If the container will not run, delete and recreate the Container per <a href="/server-apps/jellyfin/#live-tv-configuration">Live TV Configuration</a> setup instructions</p>
 <p>If container is setup, running, and healthy:
 Open the file <code>/Users/Shared/xmltvdata/xmltv.xml</code> with a text editor and see if the file has up to date data.</p>
-<p>Find the start of the <code>&lt;programme&gt;&lt;/programme&gt;</code> block (around line 500), and see that it has data similar to</p>
-<pre><code>&lt;programme start=&quot;YYYYMMDD090000 +0000&quot; stop=&quot;YYYYMMDD100000 +0000&quot; channel=&quot;I2.1.21634.zap2it.com&quot;&gt; 
-</code></pre>
+<p>Find the start of the <code>&lt;programme&gt;&lt;/programme&gt;</code> block (around line 500), and see that it has data similar to
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;programme</span> <span class="na">start=</span><span class="s">&quot;YYYYMMDD090000 +0000&quot;</span> <span class="na">stop=</span><span class="s">&quot;YYYYMMDD100000 +0000&quot;</span> <span class="na">channel=</span><span class="s">&quot;I2.1.21634.zap2it.com&quot;</span><span class="nt">&gt;</span> 
+</code></pre></div></p>
 <p>If the file does have up to date data but Jellyfin does not have updated data:
 Open Jellyfin Admin Dashboard (web console) -&gt; Live TV and ensure file is listed under <code>TV Guide Data Providers</code>
 <img alt="jellyfin-tv-guide-data-providers.png" src="../../img/jellyfin/jellyfin-tv-guide-data-providers.png" style="height:100px;width:500px" /></p>

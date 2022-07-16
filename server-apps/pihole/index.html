@@ -903,19 +903,19 @@
 <li><code>sudo nano /etc/netplan/00-installer-config.yaml</code></li>
 <li>Copy these contents into the file that is generated, change IP address as needed                                      </li>
 </ul>
-<pre><code># This is the network config written by 'subiquity'
-network:
-  version: 2
-  ethernets:
-    enp0s3:
-      addresses:
-        - **IP ADDRESS SET ON MODEM**/24
-      gateway4: 10.0.1.1
-      nameservers:
-        addresses:
-          - 10.0.1.53
-          - 8.8.4.4
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># This is the network config written by &#39;subiquity&#39;</span><span class="w"></span>
+<span class="nt">network</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ethernets</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">enp0s3</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">addresses</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="nv">*IP</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADDRESS SET ON MODEM**/24</span><span class="w"></span>
+<span class="w">      </span><span class="nt">gateway4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.1.1</span><span class="w"></span>
+<span class="w">      </span><span class="nt">nameservers</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">addresses</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.1.53</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.4.4</span><span class="w"></span>
+</code></pre></div>
 <ul>
 <li><code>sudo netplan generate</code></li>
 <li><code>sudo netplan apply</code></li>
@@ -932,11 +932,11 @@ network:
 <li><code>sudo systemctl edit getty@tty1.service</code></li>
 </ul>
 <p>Edit the file that is generated with these contents, change username to username of VM user (<code>pihole</code> in this case):</p>
-<pre><code>[Service]
-ExecStart=
-ExecStart=-/sbin/agetty --noissue --autologin pihole %I $TERM
-Type=idle
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">Service</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ExecStart=</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ExecStart=-/sbin/agetty --noissue --autologin pihole %I $TERM</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">Type=idle</span><span class="w"></span>
+</code></pre></div>
 <ul>
 <li>Save with CTRL + X</li>
 <li>Reboot machine and see if it auto-logs in as Pihole user</li>
@@ -947,17 +947,18 @@ Type=idle
 <a href="https://www.whatroute.net/software/vboxlaunchagent.sh.zip">https://www.whatroute.net/software/vboxlaunchagent.sh.zip</a></li>
 </ul>
 <p>Directions from this website:</p>
-<blockquote>
+<div class="admonition quote">
+<p class="admonition-title"> </p>
 <p>LaunchAgents are configured with an Apple plist XML file installed in the users Library/LaunchAgents folder. When the user logs in to their account on the Mac, launchd will inspect these plist files and invoke the required program with specified arguments.</p>
 <p>It can get a bit tricky to create a plist manually. They have very fussy and very unforgiving syntax requirements. This shell script will create the plist and install it in the LaunchAgents directory.</p>
 <p>You can download the script from vboxlaunchagent.sh. Unzip the file and copy the script to a suitable directory on your machine.</p>
-</blockquote>
+</div>
 <p>Run the script using this syntax:</p>
 <p>Find the name of the VM: In a terminal on macOS, run: <code>VBoxManage list vms</code>
-Should result in output similar to:  </p>
-<pre><code>macmini@macserver ~ % VBoxManage list vms
+Should result in output similar to:<br />
+<div class="highlight"><pre><span></span><code>macmini@macserver ~ % VBoxManage list vms
 &quot;Pihole&quot; {c7ac734f-3fc7-4645-997b-3c78ef32d8f4}
-</code></pre>
+</code></pre></div></p>
 <p>In this example, Pihole is the name of the VM.</p>
 <p>In a terminal, run <code>sh vboxlaunchagent.sh --headless --verbose "VMName"</code>, replacing ‘VMName’ with the name of the VM from the previous step</p>
 <p>Reboot the Mac and ensure the VM auto-starts on login</p>
@@ -968,14 +969,14 @@ Should result in output similar to:  </p>
 <h3 id="via-ssh">Via SSH:</h3>
 <ol>
 <li>Open a Terminal and enter command: <code>ssh pihole@pi.hole</code><br />
-If you get a message similar to:  </li>
-</ol>
-<pre><code>The authenticity of host 'pi.hole (192.168.0.4)' can't be established.
+If you get a message similar to:<br />
+<div class="highlight"><pre><span></span><code>The authenticity of host &#39;pi.hole (192.168.0.4)&#39; can&#39;t be established.
 ED25519 key fingerprint is SHA256:jWxxjslC9ObhMty4d0UNERghKP6UWmetfEj80CKW6QY.
 This host key is known by the following other names/addresses:
     ~/.ssh/known_hosts:8: 192.168.0.4
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
-</code></pre>
+</code></pre></div></li>
+</ol>
 <p>this is likely because you have not connected to the PiHole VM using SSH previously. Verify the IP address is 192.168.0.4 and if it’s correct, type ‘yes’ at the prompt. </p>
 <ol>
 <li>
@@ -987,21 +988,23 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 <li>If prompted <code>[sudo] password for pihole:</code>  enter the PiHole user password  </li>
 <li>Wait for it to update. On success, you should see   <code>[✓] Everything is up to date!</code></li>
 </ol>
-<p>It’s also a good idea to update the underlying Ubuntu instance periodically, especially if there is a notice then you logged into the Pihole VM similar to: </p>
-<pre><code>91 updates can be applied immediately.
+<p>It’s also a good idea to update the underlying Ubuntu instance periodically, especially if there is a notice then you logged into the Pihole VM similar to: 
+<div class="highlight"><pre><span></span><code>91 updates can be applied immediately.
 9 of these updates are standard security updates.
-</code></pre>
+</code></pre></div></p>
 <p>To do this:</p>
 <ol>
 <li>Run <code>sudo apt upgrade</code></li>
-<li>You may be prompted:</li>
-</ol>
-<pre><code>After this operation, 430 MB of additional disk space will be used.`
+<li>
+<p>You may be prompted:
+<div class="highlight"><pre><span></span><code>After this operation, 430 MB of additional disk space will be used.`
 Do you want to continue? [Y/n]
-</code></pre>
-<p>Enter ‘y’</p>
-<ol>
-<li>Wait for it to update. This may take a while, depending on the number of updates.</li>
+</code></pre></div>
+Enter ‘y’</p>
+</li>
+<li>
+<p>Wait for it to update. This may take a while, depending on the number of updates.</p>
+</li>
 </ol>
 <h3 id="via-apple-remote-desktop">Via Apple Remote Desktop</h3>
 <ol>
@@ -1018,21 +1021,23 @@ Do you want to continue? [Y/n]
 <li>If prompted <code>[sudo] password for pihole:</code>  enter the PiHole user password</li>
 <li>Wait for it to update. On success, you should see   <code>[✓] Everything is up to date!</code></li>
 </ol>
-<p>It’s also a good idea to update the underlying Ubuntu instance periodically, especially if there is a notice then you logged into the Pihole VM similar to: </p>
-<pre><code>91 updates can be applied immediately.
+<p>It’s also a good idea to update the underlying Ubuntu instance periodically, especially if there is a notice then you logged into the Pihole VM similar to: 
+<div class="highlight"><pre><span></span><code>91 updates can be applied immediately.
 9 of these updates are standard security updates.
-</code></pre>
+</code></pre></div></p>
 <p>To do this:</p>
 <ol>
 <li>Run <code>sudo apt upgrade</code></li>
-<li>You may be prompted:</li>
-</ol>
-<pre><code>After this operation, 430 MB of additional disk space will be used.`
+<li>
+<p>You may be prompted:
+<div class="highlight"><pre><span></span><code>After this operation, 430 MB of additional disk space will be used.`
 Do you want to continue? [Y/n]
-</code></pre>
-<p>Enter ‘y’</p>
-<ol>
-<li>Wait for it to update. This may take a while, depending on the number of updates.</li>
+</code></pre></div>
+Enter ‘y’</p>
+</li>
+<li>
+<p>Wait for it to update. This may take a while, depending on the number of updates.</p>
+</li>
 </ol>
 
               
