@@ -13,13 +13,17 @@ To reboot the machine, there are a couple different ways:
 3. Choose Manage -> Restart
 4. Select ‘Users lose unsaved changes’
 5. Click Restart
-6. After the Mac has restarted, ‘Current Status’ should change to ‘Available’
+6. After the Mac has restarted, ‘Current Status’ should change to ‘Available’.
+7. Verify that the Mac has all services back up and running -- they should all start automatically after a reboot
 
 ### SSH
 Use Terminal on a Mac, or “Termius” iOS app
 
 1. Connect to MacServer over ssh:
-    1. In a terminal: `ssh macmini@macserver.local`
+    1. In a terminal: 
+        ```sh
+        ssh macmini@macserver.local
+        ```
 
         You may recieve a message similar to
         ```
@@ -35,8 +39,8 @@ Use Terminal on a Mac, or “Termius” iOS app
 
         After you have sone this once, you likely will not have ot do it again, unless the fingerprint key changes. 
 
-    2. At prompt: `(macmini@macserver.local) Password:` enter MacMini user password (no characters will be shown when typed)
-    3. Connection success if prompt changes to `macserver:~ macmini$`
+    1. At prompt: `(macmini@macserver.local) Password:` enter MacMini user password (no characters will be shown when typed)
+    2. Connection success if prompt changes to `macserver:~ macmini$`
    
 2. Enter
    ``` sh

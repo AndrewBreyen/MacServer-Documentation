@@ -23,12 +23,11 @@ System Preferences -> Users and Groups -> macmini -> Login Items
 - [CHECK] Enable Power Nap
 
 ### Full Disk Access:
-- Ensure /bin/bash has full disk access in System Preferences -> Security and Privacy -> Privacy 
+- Ensure `/bin/bash` has full disk access in System Preferences -> Security and Privacy -> Privacy 
 
 ### System Preferences -> Sharing
-#### File Sharing
 Ensure 'Computer Name' is set to `MacServer`
-
+#### File Sharing
 Add folders: 
 
 - /Users/Shared/macOS Server Shares/AllShare
@@ -40,7 +39,9 @@ Add volumes:
 - /Volumes/Time Machine Backups
 
 ##### Enable Time Machine Backups:
-Right Click `Time Machine Backups` -> Advanced Options -> [CHECK] Share as a Time Machine backup destination
+Right Click `Time Machine Backups` -> Advanced Options -> [CHECK] Share as a Time Machine backup destination  
+![jellyfin-tv-guide-data-providers.png](../img/setup/time-machine-sharing-advanced-options.png){ width="200" }
+![jellyfin-tv-guide-data-providers.png](../img/setup/time-machine-sharing-advanced-options-menu.png){ width="300" }
 
 ##### Permissions:
 For all folders and volumes:
@@ -50,10 +51,11 @@ For all folders and volumes:
   
 #### Remote Login
 - [CHECK] Allow full disk access for remote users
-- Allow access for: `All users`
+- Allow access for: Only these users -> `AllLocalUsers`
 
 #### Remote Management
-- Allow access for: `All users`
+- Allow access for: `Only these users` -> click '+' and add all users.
+- When prompted for permissions, enable everything.
 - Computer Settings:
     - [CHECK] Always show Remote Management status in menu bar
     - [CHECK] Anyone may request permission to control screen

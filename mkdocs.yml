@@ -2,9 +2,10 @@ site_name: MacServer Documentation
 site_url: https://example.com/
 nav:
     - Home: index.md
-    - First Time Setup:
-      - 'First Time Setup': 'first-time-setup/first-time-setup.md'
-      - 'macOS Settings': 'first-time-setup/macos-settings.md'
+    - Setup:
+      - 'First Time Setup': 'setup/first-time-setup.md'
+      - 'macOS Settings': 'setup/macos-settings.md'
+      - 'Jumpcloud': 'setup/jumpcloud.md'
     - Server Apps:
       - 'macOS Server': 'server-apps/macos-server.md'
       - 'TeamViewer': 'server-apps/teamviewer.md'
