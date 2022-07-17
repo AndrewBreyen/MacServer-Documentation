@@ -1,5 +1,6 @@
 # Node-RED
-Node-RED is used to control automations that require more settings/control than HomeKit or HomeBridge can provide natively. 
+!!! info
+    Node-RED is used to control automations that require more settings/control than HomeKit or HomeBridge can provide natively. 
 
 !!! quote " "
         Node-RED is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways.  

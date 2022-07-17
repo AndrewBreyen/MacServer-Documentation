@@ -1,5 +1,6 @@
 # Scrypted
-Scrypted is used to serve Video Camera Content to Apple Home.
+!!! info
+    Scrypted is used to serve Video Camera Content to Apple Home.
 
 ## Install locally
 [https://github.com/koush/scrypted/wiki/Installation:-Mac](https://github.com/koush/scrypted/wiki/Installation:-Mac)

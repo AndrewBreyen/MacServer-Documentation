@@ -1,6 +1,7 @@
 # Homebridge
 
-Homebridge is used for Home Controls of Plugs, Garage Door.
+!!! info
+    Homebridge is used for Home Controls of Plugs, Garage Door.
 
 ## Install locally
 [https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-macOS](https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-macOS)
