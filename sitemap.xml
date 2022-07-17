@@ -6,16 +6,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/first-time-setup/first-time-setup/</loc>
-         <lastmod>2022-07-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://example.com/first-time-setup/macos-settings/</loc>
-         <lastmod>2022-07-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://example.com/server-apps/homebridge/</loc>
          <lastmod>2022-07-17</lastmod>
          <changefreq>daily</changefreq>
@@ -47,6 +37,21 @@
     </url>
     <url>
          <loc>https://example.com/server-apps/teamviewer/</loc>
+         <lastmod>2022-07-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/setup/first-time-setup/</loc>
+         <lastmod>2022-07-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/setup/jumpcloud/</loc>
+         <lastmod>2022-07-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/setup/macos-settings/</loc>
          <lastmod>2022-07-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
