@@ -570,9 +570,47 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Live TV Guide Data Issues
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Live TV Guide Data Issues
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-remote-desktop-to-connect-to-the-computer" class="md-nav__link">
+    Use Remote Desktop to connect to the computer:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-container-is-setup-running-and-healthy" class="md-nav__link">
+    If container is setup, running, and healthy:
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -619,6 +657,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-remote-desktop-to-connect-to-the-computer" class="md-nav__link">
+    Use Remote Desktop to connect to the computer:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-container-is-setup-running-and-healthy" class="md-nav__link">
+    If container is setup, running, and healthy:
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -632,21 +692,63 @@
 
 
 <h1 id="live-tv-guide-data-not-up-to-date">Live TV Guide Data not up to date</h1>
-<p>Use Remote Desktop to connect to the computer:</p>
-<p>Ensure that the Docker Container is healthy and running
-Open Docker Desktop, restart the container</p>
-<p>If the container will not run, delete and recreate the Container per <a href="/server-apps/jellyfin/#live-tv-configuration">Live TV Configuration</a> setup instructions</p>
-<p>If container is setup, running, and healthy:
-Open the file <code>/Users/Shared/xmltvdata/xmltv.xml</code> with a text editor and see if the file has up to date data.</p>
-<p>Find the start of the <code>&lt;programme&gt;&lt;/programme&gt;</code> block (around line 500), and see that it has data similar to
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;programme</span> <span class="na">start=</span><span class="s">&quot;YYYYMMDD090000 +0000&quot;</span> <span class="na">stop=</span><span class="s">&quot;YYYYMMDD100000 +0000&quot;</span> <span class="na">channel=</span><span class="s">&quot;I2.1.21634.zap2it.com&quot;</span><span class="nt">&gt;</span> 
+<h2 id="use-remote-desktop-to-connect-to-the-computer">Use Remote Desktop to connect to the computer:</h2>
+<ol>
+<li>Open Apple Remote Desktop (ARD)</li>
+<li>Select ‘MacServer’ in the list</li>
+<li>
+<p>Choose Interact -&gt; Control</p>
+</li>
+<li>
+<p>Ensure that the Docker Container is healthy and running</p>
+</li>
+<li>
+<p>Open Docker Desktop Dashboard by cliching the whale/container ship icon in the taskbar and choosing 'Dashboard'</p>
+<p><img alt="docker-desktop-dashboard.png" src="../../img/troubleshooting/docker/docker-desktop-dashboard.png" width="200" /></p>
+<ol>
+<li>Click on 'zap2xml'</li>
+<li>
+<p>Ensure there are logs either being streamed:</p>
+<p><img alt="docker-desktop-dashboard.png" src="../../img/troubleshooting/docker/zap2xml-logs-parsing.png" width="150" /></p>
+<p>or you see the completed message:
+<div class="highlight"><pre><span></span><code>Downloaded 1090062 bytes in 291 http requests using 2 sockets.
+Writing XML file: /data/xmltv.xml
+Completed in 167s (Parse: 164s) 81 stations, 7895 programs, 17063 scheduled.
+Last run time: Fri Mar 11 04:12:49 UTC 2022
+Will run in 43200 seconds
 </code></pre></div></p>
+</li>
+<li>
+<p>Restart the container<br />
+<img alt="docker-desktop-restart.png" src="../../img/troubleshooting/docker/docker-desktop-restart.png" width="75" /> </p>
+</li>
+<li>If the container will not run, delete and recreate the Container per <a href="/server-apps/jellyfin/#live-tv-configuration">Live TV Configuration</a> setup instructions</li>
+</ol>
+</li>
+</ol>
+<h2 id="if-container-is-setup-running-and-healthy">If container is setup, running, and healthy:</h2>
+<ol>
+<li>
+<p>Open the file <code>/Users/Shared/xmltvdata/xmltv.xml</code> with a text editor (preferrably Atom or Visual Studio Code) and see if the file has up to date data.</p>
+<ol>
+<li>Find the start of the <code>&lt;programme&gt;&lt;/programme&gt;</code> block (around line 500), and see that it has data similar to
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;programme</span> <span class="na">start=</span><span class="s">&quot;YYYYMMDD090000 +0000&quot;</span> <span class="na">stop=</span><span class="s">&quot;YYYYMMDD100000 +0000&quot;</span> <span class="na">channel=</span><span class="s">&quot;I2.1.21634.zap2it.com&quot;</span><span class="nt">&gt;</span> 
+</code></pre></div>
+Note the <code>YYYMMDD</code> in <code>start=</code> and <code>stop=</code>, these should be todays date (or very close to it)</li>
+</ol>
+</li>
+<li>
 <p>If the file does have up to date data but Jellyfin does not have updated data:
-Open Jellyfin Admin Dashboard (web console) -&gt; Live TV and ensure file is listed under <code>TV Guide Data Providers</code>
-<img alt="jellyfin-tv-guide-data-providers.png" src="../../img/jellyfin/jellyfin-tv-guide-data-providers.png" style="height:100px;width:500px" /></p>
+Open Jellyfin Admin Dashboard (web console) -&gt; Live TV and ensure file is listed under <code>TV Guide Data Providers</code><br />
+<img alt="jellyfin-tv-guide-data-providers.png" src="../../img/troubleshooting/jellyfin/jellyfin-tv-guide-data-providers.png" width="500" /></p>
+</li>
+<li>
 <p>If the file is listed:
-Ensure that the Scheduled Task Live TV / Refresh Guide has run recently, and is scheduled to run at least every 12 hours (11am/11pm)
-<img alt="jellyfin-scheduled-task-refresh-guide.png" src="../../img/jellyfin/jellyfin-scheduled-task-refresh-guide.png" style="height:100px;width:500px" /></p>
+Ensure that the Scheduled Task Live TV / Refresh Guide has run recently, and is scheduled to run every 12 hours<br />
+<img alt="jellyfin-scheduled-task-refresh-guide.png" src="../../img/troubleshooting/jellyfin/jellyfin-scheduled-task-refresh-guide.png" width="500" />
+<img alt="jellyfin-scheduled-task-refresh-guide-triggers.png" src="../../img/troubleshooting/jellyfin/jellyfin-scheduled-task-refresh-guide-triggers.png" width="500" /></p>
+</li>
+</ol>
 
               
             </article>

@@ -581,8 +581,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#easiest-apple-remote-desktop-ard" class="md-nav__link">
-    Easiest - Apple Remote Desktop (ARD)
+  <a href="#apple-remote-desktop-ard" class="md-nav__link">
+    Apple Remote Desktop (ARD)
   </a>
   
 </li>
@@ -664,8 +664,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#easiest-apple-remote-desktop-ard" class="md-nav__link">
-    Easiest - Apple Remote Desktop (ARD)
+  <a href="#apple-remote-desktop-ard" class="md-nav__link">
+    Apple Remote Desktop (ARD)
   </a>
   
 </li>
@@ -692,9 +692,13 @@
 
 
 <h1 id="reboot">Reboot</h1>
-<p>Most issues can be solved by rebooting the Mac. If configured correctly, the mac should auto-login and all services should auto-start upon boot. </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Most issues can be solved by rebooting the Mac.</p>
+<p>If configured correctly, the mac should auto-login and all services should auto-start upon boot. </p>
+</div>
 <p>To reboot the machine, there are a couple different ways:</p>
-<h3 id="easiest-apple-remote-desktop-ard">Easiest - Apple Remote Desktop (ARD)</h3>
+<h3 id="apple-remote-desktop-ard">Apple Remote Desktop (ARD)</h3>
 <ol>
 <li>Open ARD</li>
 <li>Select ‘MacServer’ in the list</li>
@@ -706,14 +710,34 @@
 <h3 id="ssh">SSH</h3>
 <p>Use Terminal on a Mac, or “Termius” iOS app</p>
 <ol>
-<li>Connect to MacServer over ssh:<ul>
-<li>In a terminal: <code>ssh macmini@macserver.local</code></li>
-<li>At prompt: <code>(macmini@macserver.local) Password:</code> enter MacMini user password (no characters will be shown when typed)</li>
-<li>Connection success if prompt changes to <code>macserver:~ macmini$</code></li>
-</ul>
+<li>
+<p>Connect to MacServer over ssh:</p>
+<ol>
+<li>
+<p>In a terminal: <code>ssh macmini@macserver.local</code></p>
+<p>You may recieve a message similar to
+<div class="highlight"><pre><span></span><code>The authenticity of host &#39;macserver.local (192.168.0.2)&#39; can&#39;t be established.
+ED25519 key fingerprint is SHA256:f5c24jmfOO7dvFsdfsdf33SDFyzV1paytRg.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? 
+</code></pre></div></p>
+<p>This is likely because you have not connected to MacServer using SSH previously, and your computer cannot verify the authenticity of the server computer.</p>
+<p>Verify the IP address is what you expect (in this example, <code>192.168.0.2</code>) and if it’s correct, type <code>yes</code> at the prompt. </p>
+<p>After you have sone this once, you likely will not have ot do it again, unless the fingerprint key changes. </p>
 </li>
-<li>Enter <code>sudo shutdown -r now</code> at prompt</li>
-<li>Enter macmini user password</li>
+<li>
+<p>At prompt: <code>(macmini@macserver.local) Password:</code> enter MacMini user password (no characters will be shown when typed)</p>
+</li>
+<li>Connection success if prompt changes to <code>macserver:~ macmini$</code></li>
+</ol>
+</li>
+<li>
+<p>Enter
+   <div class="highlight"><pre><span></span><code>sudo shutdown -r now
+</code></pre></div>
+   at the prompt</p>
+</li>
+<li>Enter <code>macmini</code> user password</li>
 <li>Final shutdown message will be shown:<br />
 <div class="highlight"><pre><span></span><code>Shutdown NOW!
 

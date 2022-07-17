@@ -469,6 +469,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configure-libraries" class="md-nav__link">
     Configure Libraries
   </a>
@@ -684,6 +691,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configure-libraries" class="md-nav__link">
     Configure Libraries
   </a>
@@ -732,8 +746,12 @@
 
 
 <h1 id="jellyfin">Jellyfin</h1>
-<p>Jellyfin is used to serve media content, manage and record live TV content, and more. 
-Install Jellyfin locally: https://repo.jellyfin.org/releases/server/macos/stable/</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Jellyfin is used to serve media content, manage and record live TV content, and more. </p>
+</div>
+<h2 id="installation">Installation</h2>
+<p>Download and install the latest version of the installer from <a href="https://repo.jellyfin.org/releases/server/macos/stable/">https://repo.jellyfin.org/releases/server/macos/stable/</a></p>
 <h2 id="configure-libraries">Configure Libraries</h2>
 <p>WIP</p>
 <h2 id="live-tv-configuration">Live TV Configuration</h2>
@@ -752,23 +770,23 @@ Create a Docker container for the <a href="https://github.com/shuaiscott/zap2xml
 <li>Create a folder on the Mac: <code>/Users/Shared/xmltvdata</code></li>
 <li>Open Docker Desktop app</li>
 <li>In Docker Desktop: Settings -&gt; Resources -&gt; File Sharing add the <code>/Users/Shared/xmltvdata</code> folder created in step 1</li>
-<li>Run terminal command: replace <code>your_zap2it_email@email.com</code> and <code>your_zap2it_password</code> with your <a href="https://tvlistings.zap2it.com/">https://tvlistings.zap2it.com/</a> account details. </li>
-</ol>
+<li>
+<p>Run terminal command: replace <code>your_zap2it_email@email.com</code> and <code>your_zap2it_password</code> with your <a href="https://tvlistings.zap2it.com/">https://tvlistings.zap2it.com/</a> account details. </p>
 <div class="highlight"><pre><span></span><code>docker run <span class="s2">&quot;-d --name zap2xml -v /xmltvdata:/data -e USERNAME=your_zap2it_email@email.com -e PASSWORD=your_zap2it_password -e OPT_ARGS=&quot;</span>-I -D -Z <span class="m">55303</span><span class="s2">&quot; -e XMLTV_FILENAME=xmltv.xml shuaiscott/zap2xml&quot;</span>
 </code></pre></div>
 <p>By default, new guide data will be fetched by this Docker container every 12 hours. Additional command line arguments can be added/changed. See details on GitHub - shuaiscott/zap2xml README.</p>
-<ol>
-<li>Open Docker Desktop and view logs, let it run. When complete, a status message will print like this:</li>
-</ol>
+</li>
+<li>
+<p>Open Docker Desktop and view logs, let it run. When complete, a status message will print like this:</p>
 <div class="highlight"><pre><span></span><code>Downloaded 1090062 bytes in 291 http requests using 2 sockets.
 Writing XML file: /data/xmltv.xml
 Completed in 167s (Parse: 164s) 81 stations, 7895 programs, 17063 scheduled.
 Last run time: Fri Mar 11 04:12:49 UTC 2022
 Will run in 43200 seconds
 </code></pre></div>
-<ol>
-<li>In macOS Finder, verify that a xmltv.xml file was created at location <code>/Users/Shared/xmltvdata</code>. File should start with something like:</li>
-</ol>
+</li>
+<li>
+<p>In macOS Finder, verify that a xmltv.xml file was created at location <code>/Users/Shared/xmltvdata</code>. File should start with something like:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="cp">&lt;!DOCTYPE tv SYSTEM &quot;xmltv.dtd&quot;&gt;</span>
 
@@ -793,7 +811,11 @@ Will run in 43200 seconds
         <span class="nt">&lt;subtitles</span> <span class="na">type=</span><span class="s">&quot;teletext&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/programme&gt;</span>
 </code></pre></div>
+</li>
+<li>
 <p>Once the file looks correct, it can be added into Jellyfin. See details on <a href="https://jellyfin.org/docs/general/server/live-tv/setup-guide.html#adding-guide-data">Setup Guide | Documentation - Jellyfin Project</a></p>
+</li>
+</ol>
 
               
             </article>
