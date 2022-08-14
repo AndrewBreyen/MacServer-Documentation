@@ -1,5 +1,5 @@
 site_name: MacServer Documentation
-site_url: https://example.com/
+site_url: https://andrewbreyen.github.io/MacServer-Documentation/
 nav:
     - Home: index.md
     - Setup:
@@ -14,10 +14,14 @@ nav:
       - 'Scrypted': 'server-apps/scrypted.md'
       - 'Node-RED': 'server-apps/node-red.md'
       - 'Pihole': 'server-apps/pihole.md'
+      - 'Tdarr': 'server-apps/tdarr.md'
+    - Hardware:
+      - 'Hardware': 'hardware/hardware.md'
     - Troubleshooting:
       - 'Reboot': 'troubleshooting/reboot.md'
       - 'Live TV Guide Data Issues': 'troubleshooting/live-tv-data-issues.md'
       - 'Smart Devices showing as “No Response”/Orange Exclamation mark': 'troubleshooting/no-response-homekit.md'
+      - 'Network Change: Smart Home Devices': 'troubleshooting/network-change-smart-home.md'
 theme:
   name: material
   logo: img/macmini-icon.png
