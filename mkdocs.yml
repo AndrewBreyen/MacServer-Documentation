@@ -17,6 +17,7 @@ nav:
       - 'Tdarr': 'server-apps/tdarr.md'
     - Hardware:
       - 'Hardware': 'hardware/hardware.md'
+      - 'Zigbee-Conbee': 'hardware/zigbee-conbee.md'
     - Troubleshooting:
       - 'Reboot': 'troubleshooting/reboot.md'
       - 'Live TV Guide Data Issues': 'troubleshooting/live-tv-data-issues.md'
