@@ -5,42 +5,205 @@
 ## Setup
 
 
-## Download and Install
+### Download ISO/Install VirtualBox
 Download and install the latest version of VirtualBox from [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
+
+Download ISO of LTS edition from [https://ubuntu.com/download/server](https://ubuntu.com/download/server)
 
 ### Create a Virtualbox VM
 Open Virtualbox and click 'New':
-![virtualbox-new.png](../img/virtualbox/virtualbox-new.png){ width="40"}
+![virtualbox-new.png](../img/pihole/virtualbox-new.png){ width="40"}
 
-Enter these settings: 
+Enter these settings:
+
+(these are purposefully low-powered settings, it’s designed for a Raspberry Pi, so a powerful VM is not needed)
+
+**Name and Operating System:**
 
 - Name: `PiHole`
 - Machine Folder: `/Users/macmini/VirtualBox VMs`
 - Type: `Linux`
 - Version: `Ubuntu (64-bit)`
 
-(these are purposefully low-powered settings, it’s designed for a Raspberry Pi, so a powerful VM is not needed)
+**Memory Size:**
 
-- Memory: `1 GB`
-- Storage: `10 GB`
-- Network: `Bridged`
+-  `1 GB`
+
+**Hard Disk:**
+
+- Create a virtual hard disk now
+- VDI (VirtualBox Disk Image)
+- Dynamically Allocated
+- Location: `/Users/macmini/VirtualBox VMs/PiHole/PiHole.vdi`
+- Size: `10 GB`
+
+
+### Change VM Settings
+
+Once the VM has been created, click 'Settings', and make changes:
+
+**Network Tab:**
+
+- Enable Network Adapter
+- Attatched to: `Bridged`
+- Name: `en0: Ethernet`
+- Open Advanced Tab, leave all settings to default, but note the MAC address to use to set a static IP
+
+**System Tab -> Processor:**
+
 - CPU Execution cap: `50%`
 
-### Add ISO as a boot medium 
-Download ISO of LTS edition from [https://ubuntu.com/download/server](https://ubuntu.com/download/server)
+**Storage Tab -> Controller: IDE**
 
-- Settings of VM -> Storage
-- Controller: IDE -> Empty
-- Click the circle CD icon and pick ‘choose a disk file…’
+- Click on 'Empty' under `Controller: IDE`, then click the circle CD icon, and pick ‘choose a disk file…’ <br>
+  ![virtualbox-idecontroller.png](../img/pihole/virtualbox-idecontroller.png){ width="400"}
 - Pick the downloaded ISO
 - Click OK
-- Start VM in headless mode (click arrow next to start -> headless mode)
 
-### Install Ubuntu Server with default settings, pihole user, password pihole
-- When asked for the network settings, take note of the MAC address and add a IP reservation to modem settings
-- After applying assigned IP, reset the VM and restart setup. This will force the VM to get a static IP. If this doesn't work, continue with setup, and do “configure a static IP for VM'' setup below
+### Set IP Address Reservation
+- Open the eero app
+- Go to Settings -> Network Settings -> Reservations and Port Forwarding
+- Pick 'Add a reservation'
+- Scroll to the bottom of the list, and choose 'Enter manually'
+- Enter an IP Address to use. For convienence, use a low-number IP address (192.168.4.4)
+!!! note 
+    The IP address spreified must not be already in use, and must be within the subnet range.
+    
+    Keep the first three groups of numbers the same, and only change the last group. (eg 192.168.4.##)
+- Enter the MAC Address noted previously from the network tab, using format `XX:XX:XX:XX:XX:XX`
+- Click 'Save'
 
-### Configure a Static IP for the VM
+### Start Up
+- Start VM in headless mode (click arrow next to start -> headless mode) <br>
+  ![virtualbox-start-headless.png](../img/pihole/virtualbox-start-headless.png){ width="75"}
+- Click 'Show'
+
+### Install Ubuntu Server
+- On first boot, press ++return++ when 'Try or Install Ubuntu Server' is selected, or wait 30 seconds.
+- Once booted, continue through setup, applying settings:
+    - English
+    - US Keyboard
+    - Choose type of install: Ubuntu Server
+    - Network Connections: Check if the IP address listed matches the one set in the eero app. If it does, continue. If it does not, ensure that the MAC address in eero settings matches the MAC address on screen. Reboot the VM (Machine -> Reset) and try again.
+    - Configure proxy: leave blank
+    - Configure Ubuntu archive mirror: leave default
+    - Guided storage configuration: Leave default - 'Use an entire disk'
+    - Storage configuration: leave default
+    - Confirm destructive action: continue (NOTE -- ONLY THE VIRTUAL HARD DISK will be modified/erased.)
+    - Profile setup: name, servers name, username: set all to 'pihole'. Set a password here.
+    - SSH Setup: Install OpenSSH Server
+    - Featured Server Snaps: leave all unchecked, continue
+- Wait for install to complete. Once 'Install complete!' is shown, choose 'Reboot Now'
+
+An error message will likely show: 
+````
+Please remove the installation medium, then press ENTER:
+Unmounting/cdrom.
+[FAILED] Failed unmounting /cdrom.
+````
+
+To resolve:
+
+- Close the window, choose 'Power off machine' and then 'Ok'
+- This likely was all that is needed, but to double check, go back into Settings -> Storage -> IDE controller. It should be 'Empty' If not, click the CD icon, choose 'Remove Disk from Virtual Drive'
+- Start the VM again in headless mode, and choose Show
+
+Once you see 
+````
+Ubuntu 22.04.1 LTS pihole tty1
+pihole login: (may be way more text here)
+````
+press enter a few times if there is lots of extra text (or don't, it doesn't matter), and login by typing username/password specified. Text or dots will not be shown while typing password.
+````
+pihole login: pihole
+Password:
+````
+Once you see a prompt
+````
+pihole@pihole:~$
+````
+Ubuntu is up and running!
+
+??? note "Optional: SSH Access (may be easier to perform the following steps)"
+    
+    Once Ubuntu Server is up and running, it may be easier to do the following steps utilizing SSH.
+
+    This will allow for things like copy and paste to work, which will be handy, but not strictly required. 
+
+    To SSH to the VM:
+
+    -  Open a Terminal -- either on MacServer, or on a different laptop
+    -  Enter `ssh pihole@ipaddress, replacing 'ipaddress' with the static IP set in the eero app
+    -  Enter the user password, and once you see `pihole@pihole:~$`, you're SSHed in! This is the same as if you were using the VM through VirtualBox.
+
+    See the [Updating PiHole via SSH](#via-ssh) section for more details on SSH.
+
+
+
+### Set the VM to auto-login
+[https://askubuntu.com/a/819154](https://askubuntu.com/a/819154)
+
+1. RUN in terminal of PiHole VM:
+
+    ``` sh
+    sudo systemctl edit getty@tty1.service
+    ```
+
+2. Edit the file that is generated with these contents, change username to username of VM user (`pihole` in this case):
+
+    ``` yaml
+    [Service]
+    ExecStart=
+    ExecStart=-/sbin/agetty --noissue --autologin pihole %I $TERM
+    Type=idle
+    ```
+
+3. Save with ++ctrl+x++, ++y++, ++enter++
+4. Reboot machine (command: `reboot`) and see if it auto-logs in as Pihole user.
+
+### Set the VM to auto-launch in headless mode on Mac login
+
+Download the script vboxlaunchagent.sh from 
+[https://www.whatroute.net/software/vboxlaunchagent.sh.zip](https://www.whatroute.net/software/vboxlaunchagent.sh.zip)
+
+Directions from this website:
+!!! quote " "
+    LaunchAgents are configured with an Apple plist XML file installed in the users Library/LaunchAgents folder. When the user logs in to their account on the Mac, launchd will inspect these plist files and invoke the required program with specified arguments.
+
+    It can get a bit tricky to create a plist manually. They have very fussy and very unforgiving syntax requirements. This shell script will create the plist and install it in the LaunchAgents directory.
+
+    You can download the script from vboxlaunchagent.sh. Unzip the file and copy the script to a suitable directory on your machine.
+
+
+Run the script using this syntax:
+
+1. Find the name of the VM: In a terminal on MacServer directly (not the VM), run:
+   ```sh
+   VBoxManage list vms
+   ```
+    
+    Should result in output similar to:  
+    ```sh 
+    macmini@macserver ~ % VBoxManage list vms
+    "Pihole" {c7ac734f-3fc7-4645-997b-3c78ef32d8f4}
+    ```
+
+    In this example, Pihole is the name of the VM.
+
+2. In a terminal, run
+   ```sh
+   sh path/to/vboxlaunchagent.sh --headless --verbose "VMName"
+   ```
+   replacing `VMName` with the name of the VM from the previous step, and `/path/to/vboxlaunchagent.sh` with the full path (likely will be `~/Downloads/vboxlaunchagent.sh` if you just clicked the link above)
+
+3. Reboot the Mac and ensure the VM auto-starts on login
+
+<!---
+*****
+***** THIS SECTION NO LONGER NEEDED, IP ADDRESS IS SET VIA EERO, INSTEAD OF VIA SUBIQUITY
+*****
+
+### Verify IP address
 1. Set static IP on Modem via MAC address
 (MAC address listed under `$[ip addr]`)
 
@@ -76,15 +239,60 @@ sudo netplan apply
 ``` sh
 reboot
 ```
+--->
 
 ### Install PiHole
-1. RUN in terminal of PiHole VM:
+- RUN in terminal of PiHole VM:
 ``` sh
 curl -sSL https://install.pi-hole.net | bash
 ```
 More details on installation can be found at [https://github.com/pi-hole/pi-hole/#curl--ssl-httpsinstallpi-holenet--bash](https://github.com/pi-hole/pi-hole/#curl--ssl-httpsinstallpi-holenet--bash)
+- When you get to the blue "GUI" screen:
+    - Majorly accept default settings. Read through and change as you wish.
+    - When prompted for 'Upstream DNS Provider;, select which one you want. They all pretty much do the same thing. Recommendation: OpenDNS
+    - Install the suggested block lists (usually 'StevenBlack's Unified Hosts List' is the default)
+    - Install the Admin Web Interface, lighttpd and required PHP modules
+    - Enable Query logging if you wish
+- Once installation is complete, note the 'Admin Webpage Login Password' -- The password cannot be retrieved later on, but it is possible to set a new password (or explicitly disable the password by setting an empty password)
+
+### Configure PiHole
+- Remove or change admin web page password: RUN in terminal of PiHole VM:
+``` sh
+sudo pihole -a -p
+```
+- Open the Web UI (http://your.static.ip.address/admin)
+- Cofigure as you wish
 
 ### Set DHCP Server
+1. Open the eero app
+2. Go to Settings -> Network Settings -> DNS
+3. Set to 'Custom'
+4. Set 'IPv4 Primary' to the static IP address of PiHole
+5. Set 'IPv4 Secondary' to a backup DNS provider to use.
+   
+??? info "Available Providers"
+    Usually it's a good idea to use the same DNS provider that you selected during PiHole setup. However, this is not required.
+
+    Some available providers:
+
+    - OpenDNS: 208.67.222.222
+    - Google: 8.8.8.8
+    - CloudFlare: 1.1.1.1
+
+!!! warning   
+    You can choose to not supply a secondary provider to force PiHole to be used exclusively.
+
+    However, if a secondary DNS provider is not set, if PiHole is down or unavailable to reqpond to queries, DNS queries will not be able to be resolved, resulting in no internet access. 
+
+<br><br>
+![parrot.gif](../img/emotes/parrot.gif)
+Once the DNS server is set, Congrats! Pihole is now in use for all devices on the network.
+You can test PiHole by visiting a website that previously had ads, they should be blocked now :)
+
+<!---
+*****
+***** These directions were for when modem was handling DHCP, this has been shifted to the eeros
+*****
 1. Open modem web UI [192.168.0.1](192.168.0.1/)
 2. Advanced Setup -> DHCP Settings -> 5. Set the DNS servers allocated with DHCP requests
 3. Change radio button to `Custom Servers`
@@ -93,66 +301,7 @@ More details on installation can be found at [https://github.com/pi-hole/pi-hole
     ![vmodem-custom-dns-servers.png](../img/modem-web-ui/modem-custom-dns-servers.png){ width="500"}
 
 5. Click `Apply`
-
-### Set the VM to auto-login
-[https://askubuntu.com/a/819154](https://askubuntu.com/a/819154)
-
-1. RUN in terminal of PiHole VM:
-
-    ``` sh
-    sudo systemctl edit getty@tty1.service
-    ```
-
-2. Edit the file that is generated with these contents, change username to username of VM user (`pihole` in this case):
-
-    ``` yaml
-    [Service]
-    ExecStart=
-    ExecStart=-/sbin/agetty --noissue --autologin pihole %I $TERM
-    Type=idle
-    ```
-
-3. Save with ++ctrl+x++
-4. Reboot machine and see if it auto-logs in as Pihole user
-
-### Set the VM to auto-launch in headless mode on Mac login
-
-Download the script vboxlaunchagent.sh from 
-[https://www.whatroute.net/software/vboxlaunchagent.sh.zip](https://www.whatroute.net/software/vboxlaunchagent.sh.zip)
-
-Directions from this website:
-!!! quote " "
-    LaunchAgents are configured with an Apple plist XML file installed in the users Library/LaunchAgents folder. When the user logs in to their account on the Mac, launchd will inspect these plist files and invoke the required program with specified arguments.
-
-    It can get a bit tricky to create a plist manually. They have very fussy and very unforgiving syntax requirements. This shell script will create the plist and install it in the LaunchAgents directory.
-
-    You can download the script from vboxlaunchagent.sh. Unzip the file and copy the script to a suitable directory on your machine.
-
-
-Run the script using this syntax:
-
-1. Find the name of the VM: In a terminal on macOS, run:
-   ```sh
-   VBoxManage list vms
-   ```
-    
-    Should result in output similar to:  
-    ```sh 
-    macmini@macserver ~ % VBoxManage list vms
-    "Pihole" {c7ac734f-3fc7-4645-997b-3c78ef32d8f4}
-    ```
-
-    In this example, Pihole is the name of the VM.
-
-2. In a terminal, run
-   ```sh
-   sh vboxlaunchagent.sh --headless --verbose "VMName"
-   ```
-   replacing ‘VMName’ with the name of the VM from the previous step
-
-3. Reboot the Mac and ensure the VM auto-starts on login
-
-
+--->
 
 
 ## Troubleshooting Sites not Loading
@@ -248,8 +397,8 @@ Enter ++y++
 4. A new window will open with the MacServer display. 
 5. From the Dock, Applications Folder or Spotlight, open `VirtualBox`
 6. Ensure `Pihole` is selected in the sidebar  
-    ![virtualbox-pihole-running.png](../img/virtualbox/virtualbox-pihole-running.png){ width="200" }
-7. Click `Show` ![virtualbox-pihole-running.png](../img/virtualbox/virtualbox-show.png){ width="40" }
+    ![virtualbox-pihole-running.png](../img/pihole/virtualbox-pihole-running.png){ width="200" }
+7. Click `Show` ![virtualbox-pihole-running.png](../img/pihole/virtualbox-show.png){ width="40" }
 8. A new window will open with the PiHole VM. 
 9.  In that new window, ensure you have a `pihole@pihole:~$` prompt. If you do not, press ++enter++ a few times to get to a new line. 
 10. Run command
