@@ -2,8 +2,7 @@
 !!! info
     Pihole is used as a network wide Ad blocker using DNS.
 
-## Setup
-
+## Set Up From Scratch
 
 ### Download ISO/Install VirtualBox
 Download and install the latest version of VirtualBox from [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)

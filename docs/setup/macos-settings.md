@@ -14,6 +14,10 @@ Automatically start apps on MacMini user login
 
 ## Energy Saver
 - Turn Display Off after: never
+
+:material-information-outline:{ title="Important information" }: testing setting this to 3 minutes
+
+
 - [CHECK] Prevent your Mac from automatically sleeping when the display is off
 - [CHECK] Put hard disks to sleep when possible
 - [CHECK] Wake for network access

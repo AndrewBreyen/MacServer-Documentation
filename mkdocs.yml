@@ -6,6 +6,7 @@ nav:
       - 'First Time Setup': 'setup/first-time-setup.md'
       - 'macOS Settings': 'setup/macos-settings.md'
       - 'Jumpcloud': 'setup/jumpcloud.md'
+      - 'Installs': 'setup/installs.md'
     - Server Apps:
       - 'macOS Server': 'server-apps/macos-server.md'
       - 'TeamViewer': 'server-apps/teamviewer.md'
@@ -32,6 +33,8 @@ theme:
     - navigation.tabs.sticky
     - navigation.indexes
     - navigation.top
+    - toc.follow
+    - toc.integrate
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -58,7 +61,31 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.keys
   - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
+  - abbr
+  - pymdownx.snippets
 plugins:
   - glightbox
+  - print-site:
+      add_to_navigation: false
+      print_page_title: 'Print Site'
+      add_print_site_banner: false
+      # Table of contents
+      add_table_of_contents: true
+      toc_title: 'Table of Contents'
+      toc_depth: 6
+      # Content-related
+      add_full_urls: false
+      enumerate_headings: true
+      enumerate_figures: true
+      add_cover_page: true
+      cover_page_template: ""
+      path_to_pdf: ""
+      include_css: true
+      enabled: true
+      exclude:
+copyright: "Attributions: [attributions.md](/attributions.md)"

@@ -11,9 +11,7 @@ Keep unnecesary features turned off (screen time, Apple Pay, Store Files in iClo
 ## Users
 When first setting up the Mac, create a generic “MacMini” (or whatever type of Mac) admin user. Take note of the password chosen.
 
-This user will be logged in and serving apps/content. Other users will be created later, but just create this user for now. 
-
-- Username: macmini 
+This user will be logged in and serving apps/content. 
 
 ## Network
 The Mac needs to have a Static IP address for many purposes. 
@@ -37,3 +35,13 @@ The Mac needs to have a Static IP address for many purposes.
     1. Reboot the mac again -- it may need to re-handshake with the network
     2. Forget the network and re-join
     3. Reboot the eero network from the eero app
+
+## Once to the desktop...
+1. Create Shared Folders
+    - `/Users/Shared/Scans`
+    - `/Users/Shared/AllShare`
+2. Create other users:
+    - andrew
+    - matt
+    - dan
+    - nancy
