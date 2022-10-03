@@ -40,8 +40,12 @@ The Mac needs to have a Static IP address for many purposes.
 1. Create Shared Folders
     - `/Users/Shared/Scans`
     - `/Users/Shared/AllShare`
+    - `/Users/Shared/xmltvdata` (used for TV Guide Data Docker Container)
+    - `/Users/Shared/nodered_data` (used for Node-RED Docker Container)
 2. Create other users:
     - andrew
     - matt
     - dan
     - nancy
+3. If installed, add Jellyfin to System Prefrences -> Users and Groups -> macmini -> Login Items and [CHECK] Hide
+4. Turn off Wifi from the menu bar

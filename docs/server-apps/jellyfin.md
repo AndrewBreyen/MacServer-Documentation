@@ -7,6 +7,8 @@ Download the latest version of `installer/jellyfin_x.x.x.dmg`from [https://repo.
 
 Open installed file, drag to Applications folder
 
+If not added already, add Jellyfin to Users & Groups -> macmini -> Login Items
+
 Click the 
   ![jellyfin-menubar.png](../img/jellyfin/jellyfin-menubar.png){ width="50"} icon in the menu bar and choose 'Open Menu Bar' <br> ![jellyfin-menubar-openui.png](../img/jellyfin/jellyfin-menubar-openui.png){ width="200"}
 
@@ -42,20 +44,29 @@ Follow the "Manual Setup" directions located at:
 
 To find the IP address of the HDHomeRun, go to the web UI at [http://hdhomerun.local/system.html](http://hdhomerun.local/system.html)
 
+Once setup, change recording paths in Dashboard -> DVR. Change these to folders on the external hard drive. If you wish to separate Movies and Shows, set a recording path. If you wish to group them all together, just specify a default recording path.
+
 ### Add Guide Data
-1. Create a folder on the Mac: `/Users/Shared/xmltvdata`
-2. Install [Docker Desktop](https://www.docker.com/products/docker-desktop) 
+1. Create an account at [https://tvlistings.zap2it.com/](https://tvlistings.zap2it.com/) 
+    
+	!!! warning
+        Ensure that the password you use here is not used for ANYTHING else.
+		
+	    This password will be stored as a command line parameter in the Docker container. 
+
+2. Create a folder on the Mac: `/Users/Shared/xmltvdata`
+3. Install [Docker Desktop](https://www.docker.com/products/docker-desktop) 
 
 	- Settings -> General -> Start Docker Desktop when you log in
 	- Settings -> Resources -> File Sharing: Remove existing mounts and add /Users/Shared/xmltvdata
 
-3. Create a Docker container for the [Zap2XML Docker Container](https://github.com/shuaiscott/zap2xml)
+4. Create a Docker container for the [Zap2XML Docker Container](https://github.com/shuaiscott/zap2xml)
 
 	- Open Docker Desktop app
 	- Run terminal command: replace `your_zap2it_email@email.com` and `your_zap2it_password` with your [https://tvlistings.zap2it.com/](https://tvlistings.zap2it.com/) account details. 
 
 	````sh
-	docker run -d --name zap2xml -v /Users/Shared/xmltvdata:/data -e USERNAME=your_zap2it_email@email.com -e PASSWORD=your_zap2it_password -e OPT_ARGS="-I -D -Z 55303" -e XMLTV_FILENAME=xmltv.xml shuaiscott/zap2xml
+	docker run --restart=always -d --name zap2xml -v /Users/Shared/xmltvdata:/data -e USERNAME=your_zap2it_email@email.com -e PASSWORD=your_zap2it_password -e OPT_ARGS="-I -D -Z 55303" -e XMLTV_FILENAME=xmltv.xml shuaiscott/zap2xml
 	````
 
 	By default, new guide data will be fetched by this Docker container every 12 hours. Additional command line arguments can be added/changed. See details on GitHub - shuaiscott/zap2xml README.
@@ -65,7 +76,7 @@ To find the IP address of the HDHomeRun, go to the web UI at [http://hdhomerun.l
 
 
 
-4. Open the container
+5. Open the container
 
     - Cick on on `zap2xml` from the 'Containers' view
     - Click `Logs`
@@ -80,7 +91,7 @@ To find the IP address of the HDHomeRun, go to the web UI at [http://hdhomerun.l
 	````
 
 
-5. Verify File
+6. Verify File
     
 	In macOS Finder, verify that a xmltv.xml file was created at location `/Users/Shared/xmltvdata`. File should start with something like:
    
@@ -114,7 +125,7 @@ To find the IP address of the HDHomeRun, go to the web UI at [http://hdhomerun.l
 	```
 
 
-6. Once the file looks correct, it can be added into Jellyfin. 
+7. Once the file looks correct, it can be added into Jellyfin. 
 
 Add the created file to Jellyfin from Administration Dashboard -> Live TV -> TV Guide Data Providers -> XMLTV
 
@@ -134,6 +145,7 @@ Install using [Brew](https://brew.sh):
 - Pip
 - Pip3
 - ffmpeg
+if using Slack notifications: slack_sdk
 
 #### Create Scripts
 
@@ -164,6 +176,8 @@ Install using [Brew](https://brew.sh):
     In `record_post_process.py`:
 	
 	- Change logging directory to `/Users/Shared/Scripts/logs`
+	- Add Slack token
+	- If desired, change deleting non-transcoded file to keep original file and move
 
 
 4. Make shell script executable -- run in a terminal: 
@@ -177,7 +191,7 @@ chmod +x /Users/Shared/Scripts/run_post_processor.sh
 
 2. Set "Post-processing application" to your shell script which calls your actual post processor (details of this 'actual' post processor script below). In this example, that would be `/Users/Shared/Scripts/run_post_processor.sh`
 
-3. Set "Post-processor command line arguments" to `{path}`
+3. Set "Post-processor command line arguments" to `"{path}"`
 
 #### Test Python Script
 1. Record a show from the Jellyfin Web UI (this recording can be just a few seconds long)

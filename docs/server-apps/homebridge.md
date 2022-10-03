@@ -4,7 +4,16 @@
     Homebridge is used for Home Controls of Plugs, Garage Door.
 
 ## Install locally
-[https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-macOS](https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-macOS)
+
+Follow instrictions on the README of the [Homebridge Repo](https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-macOS)
+
+Once installed, and hb-service has been ran:
+
+In the Web UI:
+
+1. Click "Get Started"
+2. Create an admin user and specify password
+3. Click "Open Dashboard"
 
 ## Install plugins
 Homebridge Tuya Platform [https://github.com/tuya/tuya-homebridge](https://github.com/tuya/tuya-homebridge)
@@ -12,9 +21,9 @@ Homebridge Tuya Platform [https://github.com/tuya/tuya-homebridge](https://githu
 ## Configure Homebridge Tuya Platform plugin
 - Name: TuyaPlatform
 - Username: andrew.breyen@gmail.com
-- Password: [encrypted-value]
-- Access ID: [encrypted-value]
-- Access Key: [encrypted-value]
+- Password: [REDACTED] -- password of Tuya account
+- Access ID: [REDACTED]
+- Access Key: [REDACTED]
 - Language Code: en
 - Project Type: PaaS
 - PaaS Platform: Smart Life

@@ -5,6 +5,7 @@
 ## Install locally
 [https://github.com/koush/scrypted/wiki/Installation:-Mac](https://github.com/koush/scrypted/wiki/Installation:-Mac)
 
+
 ## Install plugins
 - HomeKit
 - RTSP Camera Plugin

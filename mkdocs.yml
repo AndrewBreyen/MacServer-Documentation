@@ -6,9 +6,11 @@ nav:
       - 'First Time Setup': 'setup/first-time-setup.md'
       - 'macOS Settings': 'setup/macos-settings.md'
       - 'Jumpcloud': 'setup/jumpcloud.md'
+      - 'Apple Remote Desktop': 'setup/apple-remote-desktop.md'
       - 'Installs': 'setup/installs.md'
     - Server Apps:
       - 'macOS Server': 'server-apps/macos-server.md'
+      - 'Docker': 'server-apps/docker.md'
       - 'TeamViewer': 'server-apps/teamviewer.md'
       - 'Jellyfin': 'server-apps/jellyfin.md'
       - 'Homebridge': 'server-apps/homebridge.md'
@@ -16,6 +18,7 @@ nav:
       - 'Node-RED': 'server-apps/node-red.md'
       - 'Pihole': 'server-apps/pihole.md'
       - 'Tdarr': 'server-apps/tdarr.md'
+      - 'Time Machine Editor': 'server-apps/timemachine-editor.md'
     - Hardware:
       - 'Hardware': 'hardware/hardware.md'
       - 'Zigbee-Conbee': 'hardware/zigbee-conbee.md'
@@ -88,4 +91,4 @@ plugins:
       include_css: true
       enabled: true
       exclude:
-copyright: "Attributions: [attributions.md](/attributions.md)"
+copyright: "<a href=/MacServer-Documentation/attributions>Attributions</a>"
