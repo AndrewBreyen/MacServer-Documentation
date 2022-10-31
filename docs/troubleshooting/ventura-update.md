@@ -16,7 +16,17 @@ Result Code: NS_ERROR_FAILURE (0x80004005)
 Component: MachineWrap
 ````
 
-Solution: 
+Solution 1: 
+VirtualBox 7 was recently released (Oct 10, updated Oct 20), which is MUCH better than version 6
+
+Download latest version from [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
+
+Use the uninstaller first, then install version 7. 
+
+The PiHole VM may need to be re-added. Attempt to re-add. If issues persist, try solution 2. 
+
+
+Solution 2: 
 
 1. Open Terminal
 2. Enter commands:
