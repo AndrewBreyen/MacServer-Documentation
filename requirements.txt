@@ -1,0 +1,6 @@
+mkdocs==1.4.2
+mkdocs-embed-external-markdown==2.3.0
+mkdocs-glightbox==0.3.1
+mkdocs-material==8.5.11
+mkdocs-material-extensions==1.1.1
+mkdocs-print-site-plugin==2.3.4
