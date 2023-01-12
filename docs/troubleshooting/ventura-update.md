@@ -52,3 +52,30 @@ macOS Ventura seems to use a different scheme for Privacy, and some apps may not
 If required, remove permissions that are requested. 
 
 If issues persist, uninstall and reinstall the app. 
+
+## Scheduled Reboot
+
+!!! quote " "
+    In macOS Ventura, the way you schedule your Mac to shut down or reboot has changed.
+
+    In previous versions of macOS, setting an automated schedule like this was easy. You simply had to navigate to the Energy Saver/Battery panel in System Preferences and set a custom schedule using the interface options. For ‌macOS Ventura‌, however, in replacing System Preferences with System Settings, Apple decided to remove these options from the graphical interface completely.
+
+How to schedule a reboot on Sunday at 4 AM:
+
+1. Open Terminal
+2. Run command:
+```
+sudo pmset repeat restart U 04:00:00
+```
+3. Enter password if requested
+4. Verify schedule by running command:
+```
+pmset -g sched
+```
+
+To clear the current Power Management schedule, run command:
+```
+sudo pmset repeat cancel
+```
+
+Reference: [How to Schedule Shut Down, Restart, and Boot/Wake in macOS Ventura: MacRumors](https://www.macrumors.com/how-to/schedule-shut-down-boot-up-macos-ventura/)

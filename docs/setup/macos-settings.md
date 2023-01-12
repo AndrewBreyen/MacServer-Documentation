@@ -24,6 +24,14 @@ Automatically start apps on MacMini user login
 - [CHECK] Start up automatically after a power failure
 - [CHECK] Enable Power Nap
 
+Schedule:
+
+- Set to restart on Sundays at 4 AM
+
+
+!!! note "Change in macOS Ventura"
+    macOS has changed the way power schedule is set in macOS Ventura. See updated documentation [here](../troubleshooting/ventura-update.md#scheduled-reboot)
+
 ## Security and Privacy
 ### Privacy -> Full Disk Access
 - Ensure `/bin/bash` is added to this list
