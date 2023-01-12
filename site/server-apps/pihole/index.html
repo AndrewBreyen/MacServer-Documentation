@@ -7,10 +7,10 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://andrewbreyen.github.io/MacServer-Documentation/server-apps/pihole/" rel="canonical"/>
 <link href="../../img/macmini-icon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
 <title>Pihole - MacServer Documentation</title>
-<link href="../../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
-<link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -23,7 +23,18 @@
 <link href="../../css/print-site.css" rel="stylesheet"/>
 <link href="../../css/print-site-material.css" rel="stylesheet"/>
 <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>html.glightbox-open { overflow: initial; height: 100%; }</style><script src="../../assets/javascripts/glightbox.min.js"></script></head>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="grey" data-md-color-scheme="default" dir="ltr">
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
@@ -231,41 +242,6 @@
 <nav aria-label="Set Up From Scratch" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#download-isoinstall-virtualbox">
-    Download ISO/Install VirtualBox
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-a-virtualbox-vm">
-    Create a Virtualbox VM
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#change-vm-settings">
-    Change VM Settings
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#set-ip-address-reservation">
-    Set IP Address Reservation
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#start-up">
-    Start Up
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#install-ubuntu-server">
-    Install Ubuntu Server
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#set-the-vm-to-auto-login">
-    Set the VM to auto-login
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#install-pihole">
     Install PiHole
   </a>
@@ -295,7 +271,7 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#start-up_1">
+<a class="md-nav__link" href="#start-up">
     Start Up
   </a>
 </li>
@@ -504,189 +480,8 @@
 <p class="admonition-title">Note</p>
 <p>Use these directions if setting up from scratch</p>
 </div>
-<h3 id="download-isoinstall-virtualbox">Download ISO/Install VirtualBox</h3>
-<p>Download and install the latest version of VirtualBox from <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></p>
-<p>Download ISO of LTS edition from <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a></p>
-<h3 id="create-a-virtualbox-vm">Create a Virtualbox VM</h3>
-<p>Open Virtualbox and click 'New':
-<a class="glightbox" href="../../img/pihole/virtualbox-new.png"><img alt="virtualbox-new.png" src="../../img/pihole/virtualbox-new.png" width="40"/></a></p>
-<p>Enter these settings:</p>
-<p>(these are purposefully low-powered settings, it’s designed for a Raspberry Pi, so a powerful VM is not needed)</p>
-<p><strong>Name and Operating System:</strong></p>
-<ul>
-<li>Name: <code>PiHole</code></li>
-<li>Machine Folder: <code>/Users/macmini/VirtualBox VMs</code></li>
-<li>Type: <code>Linux</code></li>
-<li>Version: <code>Ubuntu (64-bit)</code></li>
-</ul>
-<p><strong>Memory Size:</strong></p>
-<ul>
-<li><code>1 GB</code></li>
-</ul>
-<p><strong>Hard Disk:</strong></p>
-<ul>
-<li>Create a virtual hard disk now</li>
-<li>VDI (VirtualBox Disk Image)</li>
-<li>Dynamically Allocated</li>
-<li>Location: <code>/Users/macmini/VirtualBox VMs/PiHole/PiHole.vdi</code></li>
-<li>Size: <code>10 GB</code></li>
-</ul>
-<h3 id="change-vm-settings">Change VM Settings</h3>
-<p>Once the VM has been created, click 'Settings', and make changes:</p>
-<p><strong>Network Tab:</strong></p>
-<ul>
-<li>Enable Network Adapter</li>
-<li>Attatched to: <code>Bridged</code></li>
-<li>Name: <code>en0: Ethernet</code></li>
-<li>Open Advanced Tab, leave all settings to default, but note the MAC address to use to set a static IP</li>
-</ul>
-<p><strong>System Tab -&gt; Processor:</strong></p>
-<ul>
-<li>CPU Execution cap: <code>50%</code></li>
-</ul>
-<p><strong>Storage Tab -&gt; Controller: IDE</strong></p>
-<ul>
-<li>Click on 'Empty' under <code>Controller: IDE</code>, then click the circle CD icon, and pick ‘choose a disk file…’ <br/>
-<a class="glightbox" href="../../img/pihole/virtualbox-idecontroller.png"><img alt="virtualbox-idecontroller.png" src="../../img/pihole/virtualbox-idecontroller.png" width="400"/></a></li>
-<li>Pick the downloaded ISO</li>
-<li>Click OK</li>
-</ul>
-<h3 id="set-ip-address-reservation">Set IP Address Reservation</h3>
-<ul>
-<li>Open the eero app</li>
-<li>Go to Settings -&gt; Network Settings -&gt; Reservations and Port Forwarding</li>
-<li>Pick 'Add a reservation'</li>
-<li>Scroll to the bottom of the list, and choose 'Enter manually'</li>
-<li>Enter an IP Address to use. For convienence, use a low-number IP address (192.168.4.4)</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The IP address spreified must not be already in use, and must be within the subnet range.</p>
-<p>Keep the first three groups of numbers the same, and only change the last group. (eg 192.168.4.##)</p>
-</div>
-<ul>
-<li>Enter the MAC Address noted previously from the network tab, using format <code>XX:XX:XX:XX:XX:XX</code></li>
-<li>Click 'Save'</li>
-</ul>
-<h3 id="start-up">Start Up</h3>
-<ul>
-<li>Start VM in headless mode (click arrow next to start -&gt; headless mode) <br/>
-<a class="glightbox" href="../../img/pihole/virtualbox-start-headless.png"><img alt="virtualbox-start-headless.png" src="../../img/pihole/virtualbox-start-headless.png" width="75"/></a></li>
-<li>Click 'Show'</li>
-</ul>
-<h3 id="install-ubuntu-server">Install Ubuntu Server</h3>
-<ul>
-<li>On first boot, press <span class="keys"><kbd class="key-enter">Enter</kbd></span> when 'Try or Install Ubuntu Server' is selected, or wait 30 seconds.</li>
-<li>Once booted, continue through setup, applying settings:<ul>
-<li>English</li>
-<li>US Keyboard</li>
-<li>Choose type of install: Ubuntu Server</li>
-<li>Network Connections: Check if the IP address listed matches the one set in the eero app. If it does, continue. If it does not, ensure that the MAC address in eero settings matches the MAC address on screen. Reboot the VM (Machine -&gt; Reset) and try again.</li>
-<li>Configure proxy: leave blank</li>
-<li>Configure Ubuntu archive mirror: leave default</li>
-<li>Guided storage configuration: Leave default - 'Use an entire disk'</li>
-<li>Storage configuration: leave default</li>
-<li>Confirm destructive action: continue (NOTE -- ONLY THE VIRTUAL HARD DISK will be modified/erased.)</li>
-<li>Profile setup: name, servers name, username: set all to 'pihole'. Set a password here.</li>
-<li>SSH Setup: Install OpenSSH Server</li>
-<li>Featured Server Snaps: leave all unchecked, continue</li>
-</ul>
-</li>
-<li>Wait for install to complete. Once 'Install complete!' is shown, choose 'Reboot Now'</li>
-</ul>
-<p>An error message will likely show: 
-<div class="highlight"><pre><span></span><code>Please remove the installation medium, then press ENTER:
-Unmounting/cdrom.
-[FAILED] Failed unmounting /cdrom.
-</code></pre></div></p>
-<p>To resolve:</p>
-<ul>
-<li>Close the window, choose 'Power off machine' and then 'Ok'</li>
-<li>This likely was all that is needed, but to double check, go back into Settings -&gt; Storage -&gt; IDE controller. It should be 'Empty' If not, click the CD icon, choose 'Remove Disk from Virtual Drive'</li>
-<li>Start the VM again in headless mode, and choose Show</li>
-</ul>
-<p>Once you see 
-<div class="highlight"><pre><span></span><code>Ubuntu 22.04.1 LTS pihole tty1
-pihole login: (may be way more text here)
-</code></pre></div>
-press enter a few times if there is lots of extra text (or don't, it doesn't matter), and login by typing username/password specified. Text or dots will not be shown while typing password.
-<div class="highlight"><pre><span></span><code>pihole login: pihole
-Password:
-</code></pre></div>
-Once you see a prompt
-<div class="highlight"><pre><span></span><code>pihole@pihole:~$
-</code></pre></div>
-Ubuntu is up and running!</p>
-<details class="note">
-<summary>Optional: SSH Access (may be easier to perform the following steps)</summary>
-<p>Once Ubuntu Server is up and running, it may be easier to do the following steps utilizing SSH.</p>
-<p>This will allow for things like copy and paste to work, which will be handy, but not strictly required. </p>
-<p>To SSH to the VM:</p>
-<ul>
-<li>Open a Terminal -- either on MacServer, or on a different laptop</li>
-<li>Enter `ssh pihole@ipaddress, replacing 'ipaddress' with the static IP set in the eero app</li>
-<li>Enter the user password, and once you see <code>pihole@pihole:~$</code>, you're SSHed in! This is the same as if you were using the VM through VirtualBox.</li>
-</ul>
-<p>See the <a href="#via-ssh">Updating PiHole via SSH</a> section for more details on SSH.</p>
-</details>
-<h3 id="set-the-vm-to-auto-login">Set the VM to auto-login</h3>
-<p><a href="https://askubuntu.com/a/819154">https://askubuntu.com/a/819154</a></p>
-<ol>
-<li>
-<p>RUN in terminal of PiHole VM:</p>
-<div class="highlight"><pre><span></span><code>sudo systemctl edit getty@tty1.service
-</code></pre></div>
-</li>
-<li>
-<p>Edit the file that is generated with these contents, change username to username of VM user (<code>pihole</code> in this case):</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">Service</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">ExecStart=</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">ExecStart=-/sbin/agetty --noissue --autologin pihole %I $TERM</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">Type=idle</span><span class="w"></span>
-</code></pre></div>
-</li>
-<li>
-<p>Save with <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-x">X</kbd></span>, <span class="keys"><kbd class="key-y">Y</kbd></span>, <span class="keys"><kbd class="key-enter">Enter</kbd></span></p>
-</li>
-<li>Reboot machine (command: <code>reboot</code>) and see if it auto-logs in as Pihole user.</li>
-</ol>
-<!---
-*****
-***** THIS SECTION NO LONGER NEEDED, IP ADDRESS IS SET VIA EERO, INSTEAD OF VIA SUBIQUITY
-*****
-
-### Verify IP address
-1. Set static IP on Modem via MAC address
-(MAC address listed under `$[ip addr]`)
-
-2. RUN in terminal of PiHole VM:
-<div class="highlight"><pre><span></span><code>sudo nano /etc/netplan/00-installer-config.yaml
-</code></pre></div>
-
-3.  Copy these contents into the file that is generated, change IP address as needed                                      
-
-    <div class="highlight"><pre><span></span><code><span class="c1"># This is the network config written by &#39;subiquity&#39;</span><span class="w"></span>
-<span class="nt">network</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
-<span class="w">  </span><span class="nt">ethernets</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">enp0s3</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">addresses</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="nv">*IP</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADDRESS SET ON MODEM**/24</span><span class="w"></span>
-<span class="w">      </span><span class="nt">gateway4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.1.1</span><span class="w"></span>
-<span class="w">      </span><span class="nt">nameservers</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">addresses</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.1.53</span><span class="w"></span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.4.4</span><span class="w"></span>
-</code></pre></div>
-
-4. RUN in terminal of PiHole VM:
-<div class="highlight"><pre><span></span><code>sudo netplan generate
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo netplan apply
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>reboot
-</code></pre></div>
---->
+<p>Create a VM using VirtualBox. </p>
+<p>See <a href="Create VM">create-vm.md</a> for details. </p>
 <h3 id="install-pihole">Install PiHole</h3>
 <ul>
 <li>RUN in terminal of PiHole VM:
@@ -733,7 +528,7 @@ More details on installation can be found at <a href="https://github.com/pi-hole
 </li>
 <li>
 <p>Open Virtualbox and click 'Import'
-<a class="glightbox" href="../../img/pihole/virtualbox-import.png"><img alt="virtualbox-import.png" src="../../img/pihole/virtualbox-import.png" width="40"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/pihole/virtualbox-import.png"><img alt="virtualbox-import.png" src="../../img/pihole/virtualbox-import.png" width="40"/></a></p>
 </li>
 <li>Click the folder icon next to the 'File' box and pick the .OVA file</li>
 <li>Click 'Continue'</li>
@@ -744,10 +539,10 @@ More details on installation can be found at <a href="https://github.com/pi-hole
 <li>Once the Applicance is imported, verify that the settings match the ones <a href="#change-vm-settings">outlined above</a></li>
 <li>Ensure the correct IP address is reserved in the eero app. Details <a href="#set-ip-address-reservation">outlined above</a></li>
 </ol>
-<h3 id="start-up_1">Start Up</h3>
+<h3 id="start-up">Start Up</h3>
 <ol>
 <li>Start VM in headless mode (click arrow next to start -&gt; headless mode) <br/>
-<a class="glightbox" href="../../img/pihole/virtualbox-start-headless.png"><img alt="virtualbox-start-headless.png" src="../../img/pihole/virtualbox-start-headless.png" width="75"/></a></li>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/pihole/virtualbox-start-headless.png"><img alt="virtualbox-start-headless.png" src="../../img/pihole/virtualbox-start-headless.png" width="75"/></a></li>
 <li>Click 'Show'</li>
 </ol>
 <h3 id="verify-connectivity">Verify Connectivity</h3>
@@ -846,7 +641,7 @@ Created Launch Agent . . : /Users/macmini/Library/LaunchAgents/org.virtualbox.la
 <p>However, if a secondary DNS provider is not set, if PiHole is down or unavailable to reqpond to queries, DNS queries will not be able to be resolved, resulting in no internet access. </p>
 </div>
 <p><br/><br/>
-<a class="glightbox" href="../../img/emotes/parrot.gif"><img alt="parrot.gif" src="../../img/emotes/parrot.gif"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/emotes/parrot.gif"><img alt="parrot.gif" src="../../img/emotes/parrot.gif"/></a>
 Once the DNS server is set, Congrats! Pihole is now in use for all devices on the network.
 You can test PiHole by visiting a website that previously had ads, they should be blocked now :)</p>
 <h2 id="troubleshooting-sites-not-loading">Troubleshooting Sites not Loading</h2>
@@ -935,8 +730,8 @@ Enter <span class="keys"><kbd class="key-y">Y</kbd></span></p>
 <li>A new window will open with the MacServer display. </li>
 <li>From the Dock, Applications Folder or Spotlight, open <code>VirtualBox</code></li>
 <li>Ensure <code>Pihole</code> is selected in the sidebar<br/>
-<a class="glightbox" href="../../img/pihole/virtualbox-pihole-running.png"><img alt="virtualbox-pihole-running.png" src="../../img/pihole/virtualbox-pihole-running.png" width="200"/></a></li>
-<li>Click <code>Show</code> <a class="glightbox" href="../../img/pihole/virtualbox-show.png"><img alt="virtualbox-pihole-running.png" src="../../img/pihole/virtualbox-show.png" width="40"/></a></li>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/pihole/virtualbox-pihole-running.png"><img alt="virtualbox-pihole-running.png" src="../../img/pihole/virtualbox-pihole-running.png" width="200"/></a></li>
+<li>Click <code>Show</code> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/pihole/virtualbox-show.png"><img alt="virtualbox-pihole-running.png" src="../../img/pihole/virtualbox-show.png" width="40"/></a></li>
 <li>A new window will open with the PiHole VM. </li>
 <li>In that new window, ensure you have a <code>pihole@pihole:~$</code> prompt. If you do not, press <span class="keys"><kbd class="key-enter">Enter</kbd></span> a few times to get to a new line. </li>
 <li>Run command
@@ -1023,8 +818,8 @@ Enter <span class="keys"><kbd class="key-y">Y</kbd></span></p>
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "toc.follow", "toc.integrate"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "toc.follow", "toc.integrate"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
 <script src="../../js/print-site.js"></script>
-<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
