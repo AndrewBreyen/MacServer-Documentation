@@ -151,6 +151,11 @@
       </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/first-time-setup-ventura/">
+        Ventura First Time Setup
+      </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../setup/macos-settings/">
         macOS Settings
       </a>
@@ -216,8 +221,18 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#installation">
-    Installation
+<a class="md-nav__link" href="#download">
+    Download
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-to-login-items">
+    Add to Login Items
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#open-web-ui">
+    Open Web UI
   </a>
 </li>
 <li class="md-nav__item">
@@ -391,12 +406,16 @@
 <p class="admonition-title">Info</p>
 <p>Jellyfin is used to serve media content, manage and record live TV content, and more. </p>
 </div>
-<h2 id="installation">Installation</h2>
+<h2 id="download">Download</h2>
 <p>Download the latest version of <code>installer/jellyfin_x.x.x.dmg</code>from <a href="https://repo.jellyfin.org/releases/server/macos/versions/stable/installer/">https://repo.jellyfin.org/releases/server/macos/versions/stable/installer/</a></p>
-<p>Open installed file, drag to Applications folder</p>
-<p>If not added already, add Jellyfin to Users &amp; Groups -&gt; macmini -&gt; Login Items</p>
+<p>Open downloaded file, drag Jellyfin to Applications folder</p>
+<h2 id="add-to-login-items">Add to Login Items</h2>
+<p>Add Jellyfin to Login Items</p>
+<p>macOS System Settings -&gt; General -&gt; Login Items</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems.png"><img alt="jellyfin-systemsettings-loginitems.png" src="../../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems.png" width="250"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems-jellyfin.png"><img alt="jellyfin-systemsettings-loginitems-jellyfin.png" src="../../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems-jellyfin.png" width="250"/></a></p>
+<h2 id="open-web-ui">Open Web UI</h2>
 <p>Click the 
-  <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/jellyfin/jellyfin-menubar.png"><img alt="jellyfin-menubar.png" src="../../img/jellyfin/jellyfin-menubar.png" width="50"/></a> icon in the menu bar and choose 'Open Menu Bar' <br/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/jellyfin/jellyfin-menubar-openui.png"><img alt="jellyfin-menubar-openui.png" src="../../img/jellyfin/jellyfin-menubar-openui.png" width="200"/></a></p>
+  <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/jellyfin/jellyfin-menubar.png"><img alt="jellyfin-menubar.png" src="../../img/jellyfin/jellyfin-menubar.png" width="50"/></a> icon in the menu bar and choose 'Launch Web UI' <br/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/jellyfin/jellyfin-menubar-openui.png"><img alt="jellyfin-menubar-openui.png" src="../../img/jellyfin/jellyfin-menubar-openui.png" width="200"/></a></p>
 <p>Setup Jellyfin</p>
 <ul>
 <li>Default settings</li>
@@ -416,6 +435,8 @@
 <li>Repeat for other libraries</li>
 </ol>
 <h2 id="live-tv-configuration">Live TV Configuration</h2>
+<details class="note">
+<summary>(click to expand)</summary>
 <h3 id="static-ip-address">Static IP address:</h3>
 <ol>
 <li>
@@ -517,6 +538,7 @@ Will run in 43200 seconds
 </ol>
 <p>Add the created file to Jellyfin from Administration Dashboard -&gt; Live TV -&gt; TV Guide Data Providers -&gt; XMLTV</p>
 <p>See details on <a href="https://jellyfin.org/docs/general/server/live-tv/setup-guide.html#adding-guide-data">Adding Guide Data - Setup Guide | Documentation - Jellyfin Project</a></p>
+</details>
 <h3 id="post-processing">Post Processing</h3>
 <p>Jellyfin supports Post Processing of recorded Live TV shows. This can be used to transcode the recording to a specific format that does not require transcoding on the fly when playing back, extract subtitles, remove commercials, and more.</p>
 <p>More details on post processing is available on <a href="https://jellyfin.org/docs/general/server/live-tv/post-process.html">Live TV Post Processing | Documentation - Jellyfin Project</a></p>

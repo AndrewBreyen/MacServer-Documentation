@@ -8,7 +8,7 @@
 <link href="https://andrewbreyen.github.io/MacServer-Documentation/server-apps/create-vm/" rel="canonical"/>
 <link href="../../img/macmini-icon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
-<title>Create VPNs - MacServer Documentation</title>
+<title>Create VM - MacServer Documentation</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -41,7 +41,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#create-vpns">
+<a class="md-skip" href="#create-vm">
           Skip to content
         </a>
 </div>
@@ -65,7 +65,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Create VPNs
+              Create VM
             
           </span>
 </div>
@@ -148,6 +148,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../setup/first-time-setup/">
         First Time Setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/first-time-setup-ventura/">
+        Ventura First Time Setup
       </a>
 </li>
 <li class="md-nav__item">
@@ -310,7 +315,7 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="create-vpns">Create VPNs</h1>
+<h1 id="create-vm">Create VM</h1>
 <h2 id="download-isoinstall-virtualbox">Download ISO/Install VirtualBox</h2>
 <p>Download and install the latest version of VirtualBox from <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></p>
 <p>Download ISO of LTS edition from <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a></p>
@@ -319,23 +324,29 @@
 <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/pihole/virtualbox-new.png"><img alt="virtualbox-new.png" src="../../img/pihole/virtualbox-new.png" width="40"/></a></p>
 <p>Enter these settings:</p>
 <p>(these are purposefully low-powered settings, it’s designed for a Raspberry Pi, so a powerful VM is not needed)</p>
-<p><strong>Name and Operating System:</strong></p>
+<p><strong>Virtual machine Name and Operating System</strong></p>
 <ul>
-<li>Name: <code>PiHole</code></li>
+<li>Name: <code>VMName</code> (probably <code>pihole</code>)</li>
 <li>Machine Folder: <code>/Users/macmini/VirtualBox VMs</code></li>
 <li>Type: <code>Linux</code></li>
-<li>Version: <code>Ubuntu (64-bit)</code></li>
+<li>
+<p>Version: <code>Ubuntu (64-bit)</code></p>
+</li>
+<li>
+<p>Check 'Skip unattended installation' </p>
+</li>
 </ul>
-<p><strong>Memory Size:</strong></p>
+<p><strong>Hardware:</strong></p>
 <ul>
-<li><code>1 GB</code></li>
+<li>Base Memory: <code>1.5 GB (1536 MB)</code> </li>
+<li>Processors: <code>1</code></li>
 </ul>
-<p><strong>Hard Disk:</strong></p>
+<p><strong>Virtual Hard Disk:</strong></p>
 <ul>
 <li>Create a virtual hard disk now</li>
 <li>VDI (VirtualBox Disk Image)</li>
 <li>Dynamically Allocated</li>
-<li>Location: <code>/Users/macmini/VirtualBox VMs/PiHole/PiHole.vdi</code></li>
+<li>Location: <code>/Users/macmini/VirtualBox VMs/VMName/VMName.vdi</code></li>
 <li>Size: <code>10 GB</code></li>
 </ul>
 <h2 id="change-vm-settings">Change VM Settings</h2>
@@ -346,10 +357,6 @@
 <li>Attatched to: <code>Bridged</code></li>
 <li>Name: <code>en0: Ethernet</code></li>
 <li>Open Advanced Tab, leave all settings to default, but note the MAC address to use to set a static IP</li>
-</ul>
-<p><strong>System Tab -&gt; Processor:</strong></p>
-<ul>
-<li>CPU Execution cap: <code>50%</code></li>
 </ul>
 <p><strong>Storage Tab -&gt; Controller: IDE</strong></p>
 <ul>
@@ -380,12 +387,14 @@
 <li>Start VM in headless mode (click arrow next to start -&gt; headless mode) <br/>
 <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/pihole/virtualbox-start-headless.png"><img alt="virtualbox-start-headless.png" src="../../img/pihole/virtualbox-start-headless.png" width="75"/></a></li>
 <li>Click 'Show'</li>
+<li>Accept/Allow all macOS prompts (accessibility, screen recording, etc)</li>
 </ul>
 <h2 id="install-ubuntu-server">Install Ubuntu Server</h2>
 <ul>
 <li>On first boot, press <span class="keys"><kbd class="key-enter">Enter</kbd></span> when 'Try or Install Ubuntu Server' is selected, or wait 30 seconds.</li>
 <li>Once booted, continue through setup, applying settings:<ul>
 <li>English</li>
+<li>If prompted to update to latest version, update to latest version</li>
 <li>US Keyboard</li>
 <li>Choose type of install: Ubuntu Server</li>
 <li>Network Connections: Check if the IP address listed matches the one set in the eero app. If it does, continue. If it does not, ensure that the MAC address in eero settings matches the MAC address on screen. Reboot the VM (Machine -&gt; Reset) and try again.</li>
@@ -414,14 +423,14 @@ Unmounting/cdrom.
 </ul>
 <p>Once you see 
 <div class="highlight"><pre><span></span><code>Ubuntu 22.04.1 LTS pihole tty1
-pihole login: (may be way more text here)
+VMName login: (may be way more text here)
 </code></pre></div>
 press enter a few times if there is lots of extra text (or don't, it doesn't matter), and login by typing username/password specified. Text or dots will not be shown while typing password.
-<div class="highlight"><pre><span></span><code>pihole login: pihole
+<div class="highlight"><pre><span></span><code>VMName login: VMUsername
 Password:
 </code></pre></div>
 Once you see a prompt
-<div class="highlight"><pre><span></span><code>pihole@pihole:~$
+<div class="highlight"><pre><span></span><code>VMUsername@VMName:~$
 </code></pre></div>
 Ubuntu is up and running!</p>
 <details class="note">
@@ -431,8 +440,8 @@ Ubuntu is up and running!</p>
 <p>To SSH to the VM:</p>
 <ul>
 <li>Open a Terminal -- either on MacServer, or on a different laptop</li>
-<li>Enter `ssh pihole@ipaddress, replacing 'ipaddress' with the static IP set in the eero app</li>
-<li>Enter the user password, and once you see <code>pihole@pihole:~$</code>, you're SSHed in! This is the same as if you were using the VM through VirtualBox.</li>
+<li>Enter `ssh VMUsername@VMIPAddress, replacing 'VMIPAddress' with the static IP set in the eero app</li>
+<li>Enter the user password, and once you see <code>VMUsername@VMIPAddress:~$</code>, you're SSHed in! This is the same as if you were using the VM through VirtualBox.</li>
 </ul>
 <p>See the <a href="#via-ssh">Updating PiHole via SSH</a> section for more details on SSH.</p>
 </details>
@@ -445,10 +454,10 @@ Ubuntu is up and running!</p>
 </code></pre></div>
 </li>
 <li>
-<p>Edit the file that is generated with these contents, change username to username of VM user (<code>pihole</code> in this case):</p>
+<p>Edit the file that is generated with these contents, change username to username of VM user (<code>VMUsername</code> in this case):</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">Service</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">ExecStart=</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">ExecStart=-/sbin/agetty --noissue --autologin pihole %I $TERM</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">ExecStart=-/sbin/agetty --noissue --autologin VMUsername %I $TERM</span><span class="w"></span>
 <span class="l l-Scalar l-Scalar-Plain">Type=idle</span><span class="w"></span>
 </code></pre></div>
 </li>
@@ -457,43 +466,6 @@ Ubuntu is up and running!</p>
 </li>
 <li>Reboot machine (command: <code>reboot</code>) and see if it auto-logs in as Pihole user.</li>
 </ol>
-<!---
-*****
-***** THIS SECTION NO LONGER NEEDED, IP ADDRESS IS SET VIA EERO, INSTEAD OF VIA SUBIQUITY
-*****
-
-## Verify IP address
-1. Set static IP on Modem via MAC address
-(MAC address listed under `$[ip addr]`)
-
-2. RUN in terminal of PiHole VM:
-<div class="highlight"><pre><span></span><code>sudo nano /etc/netplan/00-installer-config.yaml
-</code></pre></div>
-
-3.  Copy these contents into the file that is generated, change IP address as needed                                      
-
-    <div class="highlight"><pre><span></span><code><span class="c1"># This is the network config written by &#39;subiquity&#39;</span><span class="w"></span>
-<span class="nt">network</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
-<span class="w">  </span><span class="nt">ethernets</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">enp0s3</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">addresses</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="nv">*IP</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADDRESS SET ON MODEM**/24</span><span class="w"></span>
-<span class="w">      </span><span class="nt">gateway4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.1.1</span><span class="w"></span>
-<span class="w">      </span><span class="nt">nameservers</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">addresses</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.1.53</span><span class="w"></span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.4.4</span><span class="w"></span>
-</code></pre></div>
-
-4. RUN in terminal of PiHole VM:
-<div class="highlight"><pre><span></span><code>sudo netplan generate
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo netplan apply
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>reboot
-</code></pre></div>
---->
 </article>
 </div>
 </div>

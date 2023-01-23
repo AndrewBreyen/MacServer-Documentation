@@ -322,6 +322,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2">
@@ -344,6 +346,20 @@
     <li class="md-nav__item">
       <a href="../setup/first-time-setup/" class="md-nav__link">
         First Time Setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/first-time-setup-ventura/" class="md-nav__link">
+        Ventura First Time Setup
       </a>
     </li>
   
@@ -910,6 +926,16 @@
 </li>
 <li>If installed, add Jellyfin to System Prefrences -&gt; Users and Groups -&gt; macmini -&gt; Login Items and [CHECK] Hide</li>
 <li>Turn off Wifi from the menu bar</li>
+</ol></section><section class="print-page" id="setup-first-time-setup-ventura"><h1 id="setup-first-time-setup-ventura-ventura-first-time-setup">Ventura First Time Setup</h1>
+<ol>
+<li>setup mac with macmini user</li>
+<li>set static IP</li>
+<li>Add file shares</li>
+<li>Install chrome</li>
+<li>Set up Time Machine and <a href="#server-apps-timemachine-editor">Time Machine Editor</a></li>
+<li>install JellyFin using <a href="#server-apps-jellyfin">Jellyfin Docs</a></li>
+<li>Install PiHole using <a href="#server-apps-pihole">PiHole Docs</a></li>
+<li>Install Homebridge using <a href="#server-apps-homebridge">Homebridge Docs</a></li>
 </ol></section><section class="print-page" id="setup-macos-settings"><h1 id="setup-macos-settings-macos-settings">macOS Settings</h1>
 <p>Make these changes in macOS System Preferences</p>
 <h2 id="setup-macos-settings-users-and-groups">Users and Groups</h2>
@@ -1084,12 +1110,16 @@ Enable unattended access:</p>
 <p class="admonition-title">Info</p>
 <p>Jellyfin is used to serve media content, manage and record live TV content, and more. </p>
 </div>
-<h2 id="server-apps-jellyfin-installation">Installation</h2>
+<h2 id="server-apps-jellyfin-download">Download</h2>
 <p>Download the latest version of <code>installer/jellyfin_x.x.x.dmg</code>from <a href="https://repo.jellyfin.org/releases/server/macos/versions/stable/installer/">https://repo.jellyfin.org/releases/server/macos/versions/stable/installer/</a></p>
-<p>Open installed file, drag to Applications folder</p>
-<p>If not added already, add Jellyfin to Users &amp; Groups -&gt; macmini -&gt; Login Items</p>
+<p>Open downloaded file, drag Jellyfin to Applications folder</p>
+<h2 id="server-apps-jellyfin-add-to-login-items">Add to Login Items</h2>
+<p>Add Jellyfin to Login Items</p>
+<p>macOS System Settings -&gt; General -&gt; Login Items</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems.png"><img alt="jellyfin-systemsettings-loginitems.png" src="../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems.png" width="250"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems-jellyfin.png"><img alt="jellyfin-systemsettings-loginitems-jellyfin.png" src="../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems-jellyfin.png" width="250"/></a></p>
+<h2 id="server-apps-jellyfin-open-web-ui">Open Web UI</h2>
 <p>Click the 
-  <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../img/jellyfin/jellyfin-menubar.png"><img alt="jellyfin-menubar.png" src="../img/jellyfin/jellyfin-menubar.png" width="50"/></a> icon in the menu bar and choose 'Open Menu Bar' <br/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../img/jellyfin/jellyfin-menubar-openui.png"><img alt="jellyfin-menubar-openui.png" src="../img/jellyfin/jellyfin-menubar-openui.png" width="200"/></a></p>
+  <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../img/jellyfin/jellyfin-menubar.png"><img alt="jellyfin-menubar.png" src="../img/jellyfin/jellyfin-menubar.png" width="50"/></a> icon in the menu bar and choose 'Launch Web UI' <br/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../img/jellyfin/jellyfin-menubar-openui.png"><img alt="jellyfin-menubar-openui.png" src="../img/jellyfin/jellyfin-menubar-openui.png" width="200"/></a></p>
 <p>Setup Jellyfin</p>
 <ul>
 <li>Default settings</li>
@@ -1109,6 +1139,8 @@ Enable unattended access:</p>
 <li>Repeat for other libraries</li>
 </ol>
 <h2 id="server-apps-jellyfin-live-tv-configuration">Live TV Configuration</h2>
+<details class="note">
+<summary>(click to expand)</summary>
 <h3 id="server-apps-jellyfin-static-ip-address">Static IP address:</h3>
 <ol>
 <li>
@@ -1210,6 +1242,7 @@ Will run in 43200 seconds
 </ol>
 <p>Add the created file to Jellyfin from Administration Dashboard -&gt; Live TV -&gt; TV Guide Data Providers -&gt; XMLTV</p>
 <p>See details on <a href="https://jellyfin.org/docs/general/server/live-tv/setup-guide.html#adding-guide-data">Adding Guide Data - Setup Guide | Documentation - Jellyfin Project</a></p>
+</details>
 <h3 id="server-apps-jellyfin-post-processing">Post Processing</h3>
 <p>Jellyfin supports Post Processing of recorded Live TV shows. This can be used to transcode the recording to a specific format that does not require transcoding on the fly when playing back, extract subtitles, remove commercials, and more.</p>
 <p>More details on post processing is available on <a href="https://jellyfin.org/docs/general/server/live-tv/post-process.html">Live TV Post Processing | Documentation - Jellyfin Project</a></p>
@@ -1455,7 +1488,7 @@ Used to detect motion and send homekit notifications</p></section><section class
 <p>Use these directions if setting up from scratch</p>
 </div>
 <p>Create a VM using VirtualBox. </p>
-<p>See <a href="#server-apps-pihole-create vm">create-vm.md</a> for details. </p>
+<p>See <a href="#server-apps-create-vm">Create VM</a> for details. </p>
 <h3 id="server-apps-pihole-install-pihole">Install PiHole</h3>
 <ul>
 <li>RUN in terminal of PiHole VM:
