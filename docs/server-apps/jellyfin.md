@@ -2,15 +2,21 @@
 !!! info
     Jellyfin is used to serve media content, manage and record live TV content, and more. 
 
-## Installation
+## Download
 Download the latest version of `installer/jellyfin_x.x.x.dmg`from [https://repo.jellyfin.org/releases/server/macos/versions/stable/installer/](https://repo.jellyfin.org/releases/server/macos/versions/stable/installer/)
 
-Open installed file, drag to Applications folder
+Open downloaded file, drag Jellyfin to Applications folder
 
-If not added already, add Jellyfin to Users & Groups -> macmini -> Login Items
+## Add to Login Items
+Add Jellyfin to Login Items
 
+macOS System Settings -> General -> Login Items
+
+![jellyfin-systemsettings-loginitems.png](../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems.png){ width="250"}  ![jellyfin-systemsettings-loginitems-jellyfin.png](../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems-jellyfin.png){ width="250"}
+
+## Open Web UI
 Click the 
-  ![jellyfin-menubar.png](../img/jellyfin/jellyfin-menubar.png){ width="50"} icon in the menu bar and choose 'Open Menu Bar' <br> ![jellyfin-menubar-openui.png](../img/jellyfin/jellyfin-menubar-openui.png){ width="200"}
+  ![jellyfin-menubar.png](../img/jellyfin/jellyfin-menubar.png){ width="50"} icon in the menu bar and choose 'Launch Web UI' <br> ![jellyfin-menubar-openui.png](../img/jellyfin/jellyfin-menubar-openui.png){ width="200"}
 
 Setup Jellyfin
 
@@ -27,110 +33,113 @@ Setup Jellyfin
 5. Repeat for other libraries
 
 ## Live TV Configuration
-### Static IP address:
 
-1. Find HDHomeRun MAC address at [http://hdhomerun.local/system.html](http://hdhomerun.local/system.html).
+??? note "(click to expand)"
 
-    !!! info
-        If this URL is not working, first locate the IP address of HDHomeRun on modem Web UI at [http://192.168.0.1/modemstatus_landevicelist.html](http://192.168.0.1/modemstatus_landevicelist.html) and use the IP Address instead of `hdhomerun.local`
-
-2. In [modem settings](http://192.168.0.1/index.html) -> Advanced Setup -> DHCP Reservation:  
-Enter (or choose) the MAC address and set a static IP (whatever IP was already set on the HDHR system menu web page)
-
-
-### Setup Live TV
-Follow the "Manual Setup" directions located at: 
-[https://jellyfin.org/docs/general/server/live-tv/setup-guide.html](https://jellyfin.org/docs/general/server/live-tv/setup-guide.html)
-
-To find the IP address of the HDHomeRun, go to the web UI at [http://hdhomerun.local/system.html](http://hdhomerun.local/system.html)
-
-Once setup, change recording paths in Dashboard -> DVR. Change these to folders on the external hard drive. If you wish to separate Movies and Shows, set a recording path. If you wish to group them all together, just specify a default recording path.
-
-### Add Guide Data
-1. Create an account at [https://tvlistings.zap2it.com/](https://tvlistings.zap2it.com/) 
+    ### Static IP address:
     
-	!!! warning
-        Ensure that the password you use here is not used for ANYTHING else.
-		
-	    This password will be stored as a command line parameter in the Docker container. 
-
-2. Create a folder on the Mac: `/Users/Shared/xmltvdata`
-3. Install [Docker Desktop](https://www.docker.com/products/docker-desktop) 
-
-	- Settings -> General -> Start Docker Desktop when you log in
-	- Settings -> Resources -> File Sharing: Remove existing mounts and add /Users/Shared/xmltvdata
-
-4. Create a Docker container for the [Zap2XML Docker Container](https://github.com/shuaiscott/zap2xml)
-
-	- Open Docker Desktop app
-	- Run terminal command: replace `your_zap2it_email@email.com` and `your_zap2it_password` with your [https://tvlistings.zap2it.com/](https://tvlistings.zap2it.com/) account details. 
-
-	````sh
-	docker run --restart=always -d --name zap2xml -v /Users/Shared/xmltvdata:/data -e USERNAME=your_zap2it_email@email.com -e PASSWORD=your_zap2it_password -e OPT_ARGS="-I -D -Z 55303" -e XMLTV_FILENAME=xmltv.xml shuaiscott/zap2xml
-	````
-
-	By default, new guide data will be fetched by this Docker container every 12 hours. Additional command line arguments can be added/changed. See details on GitHub - shuaiscott/zap2xml README.
-
-	!!! info
-	    If troubleshooting is required, and the container needs to be added again, ensure the container and images are deleted before recreating using `docker run` command
-
-
-
-5. Open the container
-
-    - Cick on on `zap2xml` from the 'Containers' view
-    - Click `Logs`
-	- Let the Container run. When complete, a status message will print like this:
-
-	````
-	Downloaded 1090062 bytes in 291 http requests using 2 sockets.
-	Writing XML file: /data/xmltv.xml
-	Completed in 167s (Parse: 164s) 81 stations, 7895 programs, 17063 scheduled.
-	Last run time: Fri Mar 11 04:12:49 UTC 2022
-	Will run in 43200 seconds
-	````
-
-
-6. Verify File
+    1. Find HDHomeRun MAC address at [http://hdhomerun.local/system.html](http://hdhomerun.local/system.html).
     
-	In macOS Finder, verify that a xmltv.xml file was created at location `/Users/Shared/xmltvdata`. File should start with something like:
-   
-	```xml
-	<?xml version="1.0" encoding="UTF-8"?>
-	<!DOCTYPE tv SYSTEM "xmltv.dtd">
-
-	<tv source-info-url="http://tvlistings.zap2it.com/" source-info-name="zap2it.com" generator-info-name="zap2xml" generator-info-url="zap2xml@gmail.com">
-		<channel id="I2.1.21634.zap2it.com">
-			<display-name>2.1 KTCADT</display-name>
-			<display-name>2.1</display-name>
-			<display-name>KTCADT</display-name>
-			<icon src="https://zap2it.tmsimg.com/h3/NowShowing/21634/s32356_h3_aa.png" />
-	```
-
-	Scroll down past the `<channel></channel>` sections, and verify that there are `</programme></programme>` tags, with contents similar to
-
-	```xml
-	<programme start="20220311023000 +0000" stop="20220311040000 +0000" channel="I2.1.21634.zap2it.com">
-			<title lang="en">Endeavour: The Evolution</title>
-			<desc lang="en">A look at how …..</desc>
-			<category lang="en">Documentary</category>
-			<category lang="en">Special</category>
-			<length units="minutes">90</length>
-			<icon src="https://zap2it.tmsimg.com/assets/p21373423_b_v13_aa.jpg" />
-			<url>https://tvlistings.zap2it.com//overview.html?programSeriesId=SH04161006&amp;tmsId=SH041610060000</url>
-			<episode-num system="dd_progid">SH04161006.0000</episode-num>
-			<previously-shown />
-			<subtitles type="teletext" />
-	</programme>
-	```
-
-
-7. Once the file looks correct, it can be added into Jellyfin. 
-
-Add the created file to Jellyfin from Administration Dashboard -> Live TV -> TV Guide Data Providers -> XMLTV
-
-See details on [Adding Guide Data - Setup Guide | Documentation - Jellyfin Project](https://jellyfin.org/docs/general/server/live-tv/setup-guide.html#adding-guide-data)
-
+        !!! info
+            If this URL is not working, first locate the IP address of HDHomeRun on modem Web UI at [http://192.168.0.1/modemstatus_landevicelist.html](http://192.168.0.1/modemstatus_landevicelist.html) and use the IP Address instead of `hdhomerun.local`
+    
+    2. In [modem settings](http://192.168.0.1/index.html) -> Advanced Setup -> DHCP Reservation:  
+    Enter (or choose) the MAC address and set a static IP (whatever IP was already set on the HDHR system menu web page)
+    
+    
+    ### Setup Live TV
+    Follow the "Manual Setup" directions located at: 
+    [https://jellyfin.org/docs/general/server/live-tv/setup-guide.html](https://jellyfin.org/docs/general/server/live-tv/setup-guide.html)
+    
+    To find the IP address of the HDHomeRun, go to the web UI at [http://hdhomerun.local/system.html](http://hdhomerun.local/system.html)
+    
+    Once setup, change recording paths in Dashboard -> DVR. Change these to folders on the external hard drive. If you wish to separate Movies and Shows, set a recording path. If you wish to group them all together, just specify a default recording path.
+    
+    ### Add Guide Data
+    1. Create an account at [https://tvlistings.zap2it.com/](https://tvlistings.zap2it.com/) 
+        
+    	!!! warning
+            Ensure that the password you use here is not used for ANYTHING else.
+    		
+    	    This password will be stored as a command line parameter in the Docker container. 
+    
+    2. Create a folder on the Mac: `/Users/Shared/xmltvdata`
+    3. Install [Docker Desktop](https://www.docker.com/products/docker-desktop) 
+    
+    	- Settings -> General -> Start Docker Desktop when you log in
+    	- Settings -> Resources -> File Sharing: Remove existing mounts and add /Users/Shared/xmltvdata
+    
+    4. Create a Docker container for the [Zap2XML Docker Container](https://github.com/shuaiscott/zap2xml)
+    
+    	- Open Docker Desktop app
+    	- Run terminal command: replace `your_zap2it_email@email.com` and `your_zap2it_password` with your [https://tvlistings.zap2it.com/](https://tvlistings.zap2it.com/) account details. 
+    
+    	````sh
+    	docker run --restart=always -d --name zap2xml -v /Users/Shared/xmltvdata:/data -e USERNAME=your_zap2it_email@email.com -e PASSWORD=your_zap2it_password -e OPT_ARGS="-I -D -Z 55303" -e XMLTV_FILENAME=xmltv.xml shuaiscott/zap2xml
+    	````
+    
+    	By default, new guide data will be fetched by this Docker container every 12 hours. Additional command line arguments can be added/changed. See details on GitHub - shuaiscott/zap2xml README.
+    
+    	!!! info
+    	    If troubleshooting is required, and the container needs to be added again, ensure the container and images are deleted before recreating using `docker run` command
+    
+    
+    
+    5. Open the container
+    
+        - Cick on on `zap2xml` from the 'Containers' view
+        - Click `Logs`
+    	- Let the Container run. When complete, a status message will print like this:
+    
+    	````
+    	Downloaded 1090062 bytes in 291 http requests using 2 sockets.
+    	Writing XML file: /data/xmltv.xml
+    	Completed in 167s (Parse: 164s) 81 stations, 7895 programs, 17063 scheduled.
+    	Last run time: Fri Mar 11 04:12:49 UTC 2022
+    	Will run in 43200 seconds
+    	````
+    
+    
+    6. Verify File
+        
+    	In macOS Finder, verify that a xmltv.xml file was created at location `/Users/Shared/xmltvdata`. File should start with something like:
+       
+    	```xml
+    	<?xml version="1.0" encoding="UTF-8"?>
+    	<!DOCTYPE tv SYSTEM "xmltv.dtd">
+    
+    	<tv source-info-url="http://tvlistings.zap2it.com/" source-info-name="zap2it.com" generator-info-name="zap2xml" generator-info-url="zap2xml@gmail.com">
+    		<channel id="I2.1.21634.zap2it.com">
+    			<display-name>2.1 KTCADT</display-name>
+    			<display-name>2.1</display-name>
+    			<display-name>KTCADT</display-name>
+    			<icon src="https://zap2it.tmsimg.com/h3/NowShowing/21634/s32356_h3_aa.png" />
+    	```
+    
+    	Scroll down past the `<channel></channel>` sections, and verify that there are `</programme></programme>` tags, with contents similar to
+    
+    	```xml
+    	<programme start="20220311023000 +0000" stop="20220311040000 +0000" channel="I2.1.21634.zap2it.com">
+    			<title lang="en">Endeavour: The Evolution</title>
+    			<desc lang="en">A look at how …..</desc>
+    			<category lang="en">Documentary</category>
+    			<category lang="en">Special</category>
+    			<length units="minutes">90</length>
+    			<icon src="https://zap2it.tmsimg.com/assets/p21373423_b_v13_aa.jpg" />
+    			<url>https://tvlistings.zap2it.com//overview.html?programSeriesId=SH04161006&amp;tmsId=SH041610060000</url>
+    			<episode-num system="dd_progid">SH04161006.0000</episode-num>
+    			<previously-shown />
+    			<subtitles type="teletext" />
+    	</programme>
+    	```
+    
+    
+    7. Once the file looks correct, it can be added into Jellyfin. 
+    
+    Add the created file to Jellyfin from Administration Dashboard -> Live TV -> TV Guide Data Providers -> XMLTV
+    
+    See details on [Adding Guide Data - Setup Guide | Documentation - Jellyfin Project](https://jellyfin.org/docs/general/server/live-tv/setup-guide.html#adding-guide-data)
+    
 
 ### Post Processing
 Jellyfin supports Post Processing of recorded Live TV shows. This can be used to transcode the recording to a specific format that does not require transcoding on the fly when playing back, extract subtitles, remove commercials, and more.

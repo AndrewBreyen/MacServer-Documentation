@@ -1,4 +1,4 @@
-# Create VPNs
+# Create VM
 
 ## Download ISO/Install VirtualBox
 Download and install the latest version of VirtualBox from [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
@@ -13,23 +13,26 @@ Enter these settings:
 
 (these are purposefully low-powered settings, it’s designed for a Raspberry Pi, so a powerful VM is not needed)
 
-**Name and Operating System:**
+**Virtual machine Name and Operating System**
 
-- Name: `PiHole`
+- Name: `VMName` (probably `pihole`)
 - Machine Folder: `/Users/macmini/VirtualBox VMs`
 - Type: `Linux`
 - Version: `Ubuntu (64-bit)`
 
-**Memory Size:**
+- Check 'Skip unattended installation' 
 
--  `1 GB`
+**Hardware:**
 
-**Hard Disk:**
+- Base Memory: `1.5 GB (1536 MB)` 
+- Processors: `1`
+
+**Virtual Hard Disk:**
 
 - Create a virtual hard disk now
 - VDI (VirtualBox Disk Image)
 - Dynamically Allocated
-- Location: `/Users/macmini/VirtualBox VMs/PiHole/PiHole.vdi`
+- Location: `/Users/macmini/VirtualBox VMs/VMName/VMName.vdi`
 - Size: `10 GB`
 
 
@@ -44,9 +47,6 @@ Once the VM has been created, click 'Settings', and make changes:
 - Name: `en0: Ethernet`
 - Open Advanced Tab, leave all settings to default, but note the MAC address to use to set a static IP
 
-**System Tab -> Processor:**
-
-- CPU Execution cap: `50%`
 
 **Storage Tab -> Controller: IDE**
 
@@ -72,11 +72,13 @@ Once the VM has been created, click 'Settings', and make changes:
 - Start VM in headless mode (click arrow next to start -> headless mode) <br>
   ![virtualbox-start-headless.png](../img/pihole/virtualbox-start-headless.png){ width="75"}
 - Click 'Show'
+- Accept/Allow all macOS prompts (accessibility, screen recording, etc)
 
 ## Install Ubuntu Server
 - On first boot, press ++return++ when 'Try or Install Ubuntu Server' is selected, or wait 30 seconds.
 - Once booted, continue through setup, applying settings:
     - English
+    - If prompted to update to latest version, update to latest version
     - US Keyboard
     - Choose type of install: Ubuntu Server
     - Network Connections: Check if the IP address listed matches the one set in the eero app. If it does, continue. If it does not, ensure that the MAC address in eero settings matches the MAC address on screen. Reboot the VM (Machine -> Reset) and try again.
@@ -106,16 +108,16 @@ To resolve:
 Once you see 
 ````
 Ubuntu 22.04.1 LTS pihole tty1
-pihole login: (may be way more text here)
+VMName login: (may be way more text here)
 ````
 press enter a few times if there is lots of extra text (or don't, it doesn't matter), and login by typing username/password specified. Text or dots will not be shown while typing password.
 ````
-pihole login: pihole
+VMName login: VMUsername
 Password:
 ````
 Once you see a prompt
 ````
-pihole@pihole:~$
+VMUsername@VMName:~$
 ````
 Ubuntu is up and running!
 
@@ -128,8 +130,8 @@ Ubuntu is up and running!
     To SSH to the VM:
 
     -  Open a Terminal -- either on MacServer, or on a different laptop
-    -  Enter `ssh pihole@ipaddress, replacing 'ipaddress' with the static IP set in the eero app
-    -  Enter the user password, and once you see `pihole@pihole:~$`, you're SSHed in! This is the same as if you were using the VM through VirtualBox.
+    -  Enter `ssh VMUsername@VMIPAddress, replacing 'VMIPAddress' with the static IP set in the eero app
+    -  Enter the user password, and once you see `VMUsername@VMIPAddress:~$`, you're SSHed in! This is the same as if you were using the VM through VirtualBox.
 
     See the [Updating PiHole via SSH](#via-ssh) section for more details on SSH.
 
@@ -144,57 +146,14 @@ Ubuntu is up and running!
     sudo systemctl edit getty@tty1.service
     ```
 
-2. Edit the file that is generated with these contents, change username to username of VM user (`pihole` in this case):
+2. Edit the file that is generated with these contents, change username to username of VM user (`VMUsername` in this case):
 
     ``` yaml
     [Service]
     ExecStart=
-    ExecStart=-/sbin/agetty --noissue --autologin pihole %I $TERM
+    ExecStart=-/sbin/agetty --noissue --autologin VMUsername %I $TERM
     Type=idle
     ```
 
 3. Save with ++ctrl+x++, ++y++, ++enter++
 4. Reboot machine (command: `reboot`) and see if it auto-logs in as Pihole user.
-
-<!---
-*****
-***** THIS SECTION NO LONGER NEEDED, IP ADDRESS IS SET VIA EERO, INSTEAD OF VIA SUBIQUITY
-*****
-
-## Verify IP address
-1. Set static IP on Modem via MAC address
-(MAC address listed under `$[ip addr]`)
-
-2. RUN in terminal of PiHole VM:
-``` sh
-sudo nano /etc/netplan/00-installer-config.yaml
-```
-
-3.  Copy these contents into the file that is generated, change IP address as needed                                      
-
-    ``` yaml
-    # This is the network config written by 'subiquity'
-    network:
-      version: 2
-      ethernets:
-        enp0s3:
-          addresses:
-            - **IP ADDRESS SET ON MODEM**/24
-          gateway4: 10.0.1.1
-          nameservers:
-            addresses:
-              - 10.0.1.53
-              - 8.8.4.4
-    ```
-
-4. RUN in terminal of PiHole VM:
-``` sh
-sudo netplan generate
-```
-``` sh
-sudo netplan apply
-```
-``` sh
-reboot
-```
---->
