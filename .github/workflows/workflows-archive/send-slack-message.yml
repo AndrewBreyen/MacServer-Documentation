@@ -1,0 +1,23 @@
+# name: Post to a Slack channel
+
+# on:
+#   push:
+#     branches: [ "main" ]
+
+# jobs:
+#   build:
+#     name: Post to a Slack channel
+#     runs-on: ubuntu-latest
+#     steps:
+
+#       - name: Post to a Slack channel
+#         if: always()
+#         id: slack
+#         uses: slackapi/slack-github-action@v1.23.0
+#         with:
+#           # Slack channel ID where message will be posted. Needed if using bot token
+#           channel-id: 'C04JZM55VC2'
+#           # Message to post into Slack. Needed if using bot token
+#           slack-message: "*MacServer Documentation*\n\nGitHub build result: ${{ job.status }}\n\n\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+#         env:
+#           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

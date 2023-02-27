@@ -1,4 +1,5 @@
 # Network Change: Smart Home Devices
+
 !!! info
     When the network is changed, some devices aren't smart enough to automatically reconnect to the new network. 
 

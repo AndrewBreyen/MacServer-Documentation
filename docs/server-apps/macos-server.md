@@ -1,4 +1,5 @@
-# macOS Server 
+# macOS Server
+
 !!! warning
     As of April 21, 2022, Apple has discontinued macOS Server. Existing macOS Server customers can continue to download and use the app with macOS Monterey.
 
