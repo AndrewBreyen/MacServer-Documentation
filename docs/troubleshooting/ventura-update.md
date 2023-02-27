@@ -5,8 +5,6 @@
 
     This page details issues encountered, and how to solve them 
 
-
-
 ## Scheduled Reboot
 
 !!! quote " "
