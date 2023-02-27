@@ -1,4 +1,5 @@
 # Reboot
+
 !!! info
     Most issues can be solved by rebooting the Mac.
     

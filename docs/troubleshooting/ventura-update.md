@@ -1,4 +1,5 @@
 # macOS Ventura Update: Issues and Solutions
+
 !!! info
     macOS Ventura is Apple's latest macOS Operating System. 
 

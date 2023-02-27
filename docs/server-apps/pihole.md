@@ -1,4 +1,5 @@
 # Pihole
+
 !!! info
     Pihole is used as a network wide Ad blocker using DNS.
 

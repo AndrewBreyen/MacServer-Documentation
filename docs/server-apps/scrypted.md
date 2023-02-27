@@ -1,4 +1,5 @@
 # Scrypted
+
 !!! info
     Scrypted is used to serve Video Camera Content to Apple Home.
 
