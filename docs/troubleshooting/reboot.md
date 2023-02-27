@@ -63,4 +63,4 @@ Connection to macserver.local closed by remote host.
 Connection to macserver.local closed.
 ```  
 5. Connection should be closed automatically, verify that MacServer comes back up.
-
+--
