@@ -2,7 +2,11 @@ name: Deploy mkdocs to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
   build:
@@ -28,7 +32,7 @@ jobs:
           publish_dir: ./site
 
       - name: Post to a Slack channel
-        if: always()
+        if: ${{ github.ref == 'refs/heads/main' }}
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
