@@ -15,6 +15,7 @@ nav:
       - 'TeamViewer': 'server-apps/teamviewer.md'
       - 'Jellyfin': 'server-apps/jellyfin.md'
       - 'Homebridge': 'server-apps/homebridge.md'
+      - 'Home Assistant': 'server-apps/homeassistant.md'
       - 'Scrypted': 'server-apps/scrypted.md'
       - 'Node-RED': 'server-apps/node-red.md'
       - 'Pihole': 'server-apps/pihole.md'
