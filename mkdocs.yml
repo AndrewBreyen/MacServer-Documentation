@@ -21,9 +21,12 @@ nav:
       - 'Pihole': 'server-apps/pihole.md'
       - 'Tdarr': 'server-apps/tdarr.md'
       - 'Time Machine Editor': 'server-apps/timemachine-editor.md'
+      - 'Virtualbox': 'server-apps/virtualbox.md'
     - Hardware:
       - 'Hardware': 'hardware/hardware.md'
       - 'Zigbee-Conbee': 'hardware/zigbee-conbee.md'
+    - Usage:
+      - 'Wyze Home Assistant camera': 'usage/wyze-ha.md'
     - Troubleshooting:
       - 'Reboot': 'troubleshooting/reboot.md'
       - 'Live TV Guide Data Issues': 'troubleshooting/live-tv-data-issues.md'
@@ -75,6 +78,7 @@ markdown_extensions:
       alternate_style: true
 
 plugins:
+  - search
   - glightbox
   - print-site:
       add_to_navigation: false
