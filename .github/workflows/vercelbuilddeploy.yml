@@ -2,11 +2,16 @@ name: Publish Documentation
 
 on:
   push:
+    branches:
+      - 'main'
     paths:
       - docs/**
       - mkdocs.yml
       - pyproject.toml
       - .github/workflows/docs.yml
+  pull_request:
+    branches:
+      - '**'
 
   workflow_dispatch:
 
