@@ -1,4 +1,4 @@
-name: Deploy mkdocs to GitHub Pages
+name: Deploy mkdocs to Vercel
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    name: Deploy docs to GitHub Pages
+    name: Deploy docs to Vercel
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,17 +20,17 @@ jobs:
       - name: Build
         uses: Tiryoh/actions-mkdocs@v0
         with:
-          mkdocs_version: "latest" # option
-          #mkdocs_version: '1.1' # option
-          requirements: "requirements.txt" # option
-          configfile: "mkdocs.yml" # option
+          mkdocs_version: "latest"
+          requirements: "requirements.txt"
+          configfile: "mkdocs.yml"
 
       - name: Deploy Vercel
-        run: npx vercel --yes --cwd site --token ${{ secrets.VERCEL_TOKEN }} ${{ github.ref == 'refs/heads/main' && '--prod' || '' }} ${{ github.ref == 'refs/heads/test' && '--prod' || '' }}
+        run: |
+          if [ ${{ github.ref == 'refs/heads/main' }} = true ]; then npx vercel --yes --cwd site --token ${{ secrets.VERCEL_TOKEN }} --prod; fi;
+          if [ ${{ github.ref == 'refs/heads/test' }} = true ]; then npx vercel --yes --cwd site --token ${{ secrets.VERCEL_TOKEN }}; fi;
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
     #   - name: Post to a Slack channel
     #     if: ${{ github.ref == 'refs/heads/main' }}
     #     id: slack
