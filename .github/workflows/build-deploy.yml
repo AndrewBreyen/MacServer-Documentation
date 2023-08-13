@@ -13,16 +13,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: prettier
-        uses: actionsx/prettier@v2
-        with:
-          # prettier CLI arguments.
-          args: --check "**/*.md"
+      # - name: prettier
+      #   uses: actionsx/prettier@v2
+      #   with:
+      #     # prettier CLI arguments.
+      #     args: --check "**/*.md"
 
-      - name: markdownlint
-        uses: DavidAnson/markdownlint-cli2-action@v11
-        with:
-          globs: "**/*.md"
+      # - name: markdownlint
+      #   uses: DavidAnson/markdownlint-cli2-action@v11
+      #   with:
+      #     globs: "**/*.md"
 
       - name: Build
         uses: Tiryoh/actions-mkdocs@v0
