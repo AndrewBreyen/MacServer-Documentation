@@ -13,10 +13,10 @@
 Virtualbox 
 [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 
-Latest validated version: `VirtualBox-7.0.10a` 
+Version required: `VirtualBox-7.0.11` 
 
 ## Download
-Download the latest VDI from [home-assistant.io/installation/macos](https://www.home-assistant.io/installation/macos)
+Download the latest VDI from [virtualbox.org/wiki/Testbuilds](https://www.virtualbox.org/wiki/Testbuilds)
 
 Latest validated version: `haos_ova-10.4.vdi`
 
