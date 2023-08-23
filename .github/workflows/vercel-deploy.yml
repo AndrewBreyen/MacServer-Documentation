@@ -1,12 +1,13 @@
-name: Build and Deploy using Vercel
+# name: Build and Deploy using Vercel
 
 on:
   push:
     paths:
       - docs/**
       - mkdocs.yml
-      - pyproject.toml
-      - .github/workflows/docs.yml
+      - .github/workflows/vercel-deploy.yml
+    
+  workflow_dispatch:
 
 jobs:
   build:
