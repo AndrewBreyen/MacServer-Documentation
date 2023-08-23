@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://andrewbreyen.github.io/MacServer-Documentation/server-apps/docker/" rel="canonical"/>
+<link href="https://andrewbreyen.github.io/MacServer-Documentation/server-apps/homeassistant/" rel="canonical"/>
 <link href="../../img/macmini-icon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
-<title>Docker - MacServer Documentation</title>
+<title>Home Assistant - MacServer Documentation</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -41,7 +41,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#docker">
+<a class="md-skip" href="#home-assistant">
           Skip to content
         </a>
 </div>
@@ -65,7 +65,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Docker
+              Home Assistant
             
           </span>
 </div>
@@ -230,9 +230,8 @@
         macOS Server
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../docker/">
         Docker
       </a>
 </li>
@@ -251,10 +250,71 @@
         Homebridge
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../homeassistant/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Home Assistant
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Home Assistant
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites">
+    Prerequisites
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#download">
+    Download
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#install">
+    Install
+  </a>
+<nav aria-label="Install" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-vm">
+    Create VM
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#post-vm-creation">
+    Post VM Creation
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usage">
+    Usage
+  </a>
+<nav aria-label="Usage" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#devices-and-services">
+    Devices and Services
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scripts">
+    Scripts
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../scrypted/">
@@ -381,34 +441,145 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">¶</a></h1>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Docker is used to create Containers.</p>
-<p>"A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings." (<a href="https://www.docker.com/resources/what-container/">docker.com</a>)</p>
+<h1 id="home-assistant">Home Assistant<a class="headerlink" href="#home-assistant" title="Permanent link">¶</a></h1>
+<div class="highlight"><pre><span></span><code>Last tested version: 
+
+Virtualbox: Version 7.0.11 r158813 (Qt5.15.2)
+macOS: Ventura 13.5.1
+Home Assistant:
+
+Home Assistant 2023.8.3
+Supervisor 2023.08.1
+Operating System 10.4
+Frontend 20230802.1 - latest
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure you are using Virtualbox Version <code>7.0.11 r158813 (Qt5.15.2)</code>, or this may not work. </p>
 </div>
-<p>Download and install Docker from <a href="https://www.docker.com/">https://www.docker.com/</a></p>
-<p>Once installed, Open Settings and:</p>
-<ol>
-<li>General <ul>
-<li>Check 'Start Docker Desktop when you log in'</li>
-<li>Uncheck 'Open Docker Dashboard at startup'</li>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
+<p>Virtualbox 
+<a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></p>
+<p>Version required: <code>VirtualBox-7.0.11</code> </p>
+<h2 id="download">Download<a class="headerlink" href="#download" title="Permanent link">¶</a></h2>
+<p>Download the latest VDI from <a href="https://www.virtualbox.org/wiki/Testbuilds">virtualbox.org/wiki/Testbuilds</a></p>
+<p>Latest validated version: <code>haos_ova-10.4.vdi</code></p>
+<h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">¶</a></h2>
+<h3 id="create-vm">Create VM<a class="headerlink" href="#create-vm" title="Permanent link">¶</a></h3>
+<p>Create VM as detailed at <a href="https://www.home-assistant.io/installation/macos/#hypervisor-specific-configuration">home-assistant.io/installation/macos/#hypervisor-specific-configuration</a></p>
+<p>Minimum recommended config:
+<div class="highlight"><pre><span></span><code>2 GB Memory
+32 GB Storage
+2vCPU
+</code></pre></div></p>
+<p>Config I use:
+<div class="highlight"><pre><span></span><code>4096 MB (4 GB) Memory
+4vCPU
+</code></pre></div></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/server-apps/homeassistant/vm-config.png"><img alt="vm-config.png" src="../../img/server-apps/homeassistant/vm-config.png" width="400"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/server-apps/homeassistant/vm-hardware.jpeg"><img alt="vm-hardware.jpeg" src="../../img/server-apps/homeassistant/vm-hardware.jpeg" width="400"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/server-apps/homeassistant/vm-harddisk.png"><img alt="vm-harddisk.png" src="../../img/server-apps/homeassistant/vm-harddisk.png" width="400"/></a></p>
+<h3 id="post-vm-creation">Post VM Creation<a class="headerlink" href="#post-vm-creation" title="Permanent link">¶</a></h3>
+<p>After creating the VM, configure it. </p>
+<ul>
+<li>Edit the Settings of the VM and go to <code>System &gt; Motherboard</code>. Select <code>Enable EFI</code>.</li>
+<li>Then go to <code>Network &gt; Adapter 1</code>. Choose <code>Bridged Adapter</code> and choose your network adapter.</li>
 </ul>
-</li>
-<li>Resources -&gt; Advanced<ul>
-<li>CPUs: 2</li>
-<li>Memory: 2.00 GB</li>
-<li>Swap: 1 GB</li>
-<li>Disk image size: 16 GB</li>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">¶</a></h2>
+<h3 id="devices-and-services">Devices and Services<a class="headerlink" href="#devices-and-services" title="Permanent link">¶</a></h3>
+<p>There are four services that are used</p>
+<ul>
+<li>Tuya</li>
+<li>deCONZ</li>
+<li>Roku</li>
+<li>Jellyfin</li>
 </ul>
-</li>
-<li>Resources -&gt; File Sharing<ul>
-<li>Delete any existing file shares, and add:</li>
-<li><code>/Users/Shared/nodered_data</code></li>
-<li><code>/Users/Shared/xmltvdata</code></li>
+<h4 id="tuya-platform-plugin">Tuya Platform plugin<a class="headerlink" href="#tuya-platform-plugin" title="Permanent link">¶</a></h4>
+<ul>
+<li>Name: TuyaPlatform</li>
+<li>Username: andrew.breyen@gmail.com</li>
+<li>Password: [REDACTED]</li>
+<li>Access ID: [REDACTED]</li>
+<li>Access Key: [REDACTED]</li>
+<li>Language Code: en</li>
+<li>Project Type: PaaS</li>
+<li>PaaS Platform: Smart Life</li>
+<li>Country Code: 1</li>
 </ul>
-</li>
-</ol>
+<div class="admonition note">
+<p class="admonition-title">Note on Tuya Password</p>
+<ul>
+<li>Tyua account - for andrew's devices only</li>
+<li>Smart Life account - for nowthen devices only</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note on Access ID/Access Key:</p>
+<p>Find Access ID/Access key at <a href="https://iot.tuya.com/cloud">Tuya Cloud</a></p>
+<table>
+<thead>
+<tr>
+<th>Project Name/ Description</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home Assistant - Andrew</td>
+<td>Andrew Home Assistant</td>
+</tr>
+<tr>
+<td>Homebridge - Andrew</td>
+<td>Andrew Homebridge Access</td>
+</tr>
+<tr>
+<td>Homebridge - Nowthen</td>
+<td>Current Nowthen cloud access</td>
+</tr>
+<tr>
+<td>Home (DELETE NOTUSED)</td>
+<td>Not used for anything</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Find Access ID/Access key</p>
+<h4 id="deconz-plugin">deCONZ Plugin<a class="headerlink" href="#deconz-plugin" title="Permanent link">¶</a></h4>
+<p>The deCONZ plugin allows integration with the deCONZ software, which is used for Zigbee device management.</p>
+<ul>
+<li><strong>Platform Name:</strong> deCONZ</li>
+</ul>
+<h5 id="configuration-details">Configuration Details<a class="headerlink" href="#configuration-details" title="Permanent link">¶</a></h5>
+<ul>
+<li><strong>Host:</strong> [IP Address of your deCONZ instance]</li>
+<li><strong>Port:</strong> [Port Number of your deCONZ instance]</li>
+<li><strong>API Key:</strong> [API Key for deCONZ integration]</li>
+<li><strong>Other Configurations:</strong> [Any additional configurations required]</li>
+</ul>
+<h4 id="roku-plugin">Roku Plugin<a class="headerlink" href="#roku-plugin" title="Permanent link">¶</a></h4>
+<p>The Roku plugin enables interaction with Roku devices, providing control and status updates.</p>
+<ul>
+<li><strong>Platform Name:</strong> Roku</li>
+</ul>
+<h5 id="configuration-details_1">Configuration Details<a class="headerlink" href="#configuration-details_1" title="Permanent link">¶</a></h5>
+<ul>
+<li><strong>Roku IP Address:</strong> [IP Address of your Roku device]</li>
+<li><strong>API Key:</strong> [API Key for Roku integration]</li>
+<li><strong>Other Configurations:</strong> [Any additional configurations required]</li>
+</ul>
+<h4 id="jellyfin-plugin">Jellyfin Plugin<a class="headerlink" href="#jellyfin-plugin" title="Permanent link">¶</a></h4>
+<p>The Jellyfin plugin allows integration with the Jellyfin media server, offering media streaming and management.</p>
+<ul>
+<li><strong>Platform Name:</strong> Jellyfin</li>
+</ul>
+<h5 id="configuration-details_2">Configuration Details<a class="headerlink" href="#configuration-details_2" title="Permanent link">¶</a></h5>
+<ul>
+<li><strong>Jellyfin Server:</strong> [URL or IP Address of your Jellyfin server]</li>
+<li><strong>API Key:</strong> [API Key for Jellyfin integration]</li>
+<li><strong>Other Configurations:</strong> [Any additional configurations required]</li>
+</ul>
+<h3 id="scripts">Scripts<a class="headerlink" href="#scripts" title="Permanent link">¶</a></h3>
+<p><a href="https://github.com/AndrewBreyen/homeassistant-scripts">https://github.com/AndrewBreyen/homeassistant-scripts</a></p>
 </article>
 </div>
 </div>
@@ -419,7 +590,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: macOS Server" class="md-footer__link md-footer__link--prev" href="../macos-server/" rel="prev">
+<a aria-label="Previous: Homebridge" class="md-footer__link md-footer__link--prev" href="../homebridge/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -428,17 +599,17 @@
 <span class="md-footer__direction">
                 Previous
               </span>
-              macOS Server
+              Homebridge
             </div>
 </div>
 </a>
-<a aria-label="Next: TeamViewer" class="md-footer__link md-footer__link--next" href="../teamviewer/" rel="next">
+<a aria-label="Next: Scrypted" class="md-footer__link md-footer__link--next" href="../scrypted/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              TeamViewer
+              Scrypted
             </div>
 </div>
 <div class="md-footer__button md-icon">

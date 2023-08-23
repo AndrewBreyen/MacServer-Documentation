@@ -81,6 +81,36 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
 </label>
 </form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
 </nav>
 <nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
 <div class="md-tabs__inner md-grid">
@@ -103,6 +133,11 @@
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="../../hardware/hardware/">
         Hardware
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../usage/wyze-ha/">
+        Usage
       </a>
 </li>
 <li class="md-tabs__item">
@@ -213,6 +248,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../homebridge/">
         Homebridge
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../homeassistant/">
+        Home Assistant
       </a>
 </li>
 <li class="md-nav__item">
@@ -342,39 +382,11 @@
 <a class="md-nav__link" href="#via-ssh">
     Via SSH
   </a>
-<nav aria-label="Via SSH" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#pihole-updates">
-    Pihole Updates
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ubuntu-updates">
-    Ubuntu Updates
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#via-apple-remote-desktop">
     Via Apple Remote Desktop
   </a>
-<nav aria-label="Via Apple Remote Desktop" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#pihole-updates_1">
-    Pihole Updates
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ubuntu-updates_1">
-    Ubuntu Updates
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 </ul>
 </nav>
@@ -390,6 +402,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../timemachine-editor/">
         Time Machine Editor
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../virtualbox/">
+        Virtualbox
       </a>
 </li>
 </ul>
@@ -423,11 +440,31 @@
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5">
+          Usage
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Usage" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Usage
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../usage/wyze-ha/">
+        Wyze Home Assistant camera
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
           Troubleshooting
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Troubleshooting" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_5">
+<label class="md-nav__title" for="__nav_6">
 <span class="md-nav__icon md-icon"></span>
           Troubleshooting
         </label>
@@ -467,7 +504,7 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="pihole">Pihole</h1>
+<h1 id="pihole">Pihole<a class="headerlink" href="#pihole" title="Permanent link">¶</a></h1>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Pihole is used as a network wide Ad blocker using DNS.</p>
@@ -480,14 +517,14 @@
 <li>If installing from a precreated .OVA Virtual Machine file, go to the <a href="#set-up-from-virtual-machine-file">Set Up From Virtual Machine File</a> section</li>
 </ul>
 </div>
-<h2 id="set-up-from-scratch">Set Up From Scratch</h2>
+<h2 id="set-up-from-scratch">Set Up From Scratch<a class="headerlink" href="#set-up-from-scratch" title="Permanent link">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Use these directions if setting up from scratch</p>
 </div>
 <p>Create a VM using VirtualBox. </p>
-<p>See <a href="../create-vm/">Create VM</a> for details. </p>
-<h3 id="install-pihole">Install PiHole</h3>
+<p>See <a href="create-vm.md">Create VM</a> for details. </p>
+<h3 id="install-pihole">Install PiHole<a class="headerlink" href="#install-pihole" title="Permanent link">¶</a></h3>
 <ul>
 <li>RUN in terminal of PiHole VM:
 <div class="highlight"><pre><span></span><code>curl -sSL https://install.pi-hole.net <span class="p">|</span> bash
@@ -516,15 +553,15 @@ More details on installation can be found at <a href="https://github.com/pi-hole
 
 5. Click `Apply`
 --->
-<h3 id="finalize-setup">Finalize Setup</h3>
+<h3 id="finalize-setup">Finalize Setup<a class="headerlink" href="#finalize-setup" title="Permanent link">¶</a></h3>
 <p>Regardless if setting up PiHole from scratch, or from a Virtual Machine File, some final configuration/verification is required. </p>
 <p>Continue to <a href="#set-the-vm-to-auto-launch-in-headless-mode-on-mac-login">Set the VM to auto-launch in headless mode on Mac login</a></p>
-<h2 id="set-up-from-virtual-machine-file">Set Up From Virtual Machine File</h2>
+<h2 id="set-up-from-virtual-machine-file">Set Up From Virtual Machine File<a class="headerlink" href="#set-up-from-virtual-machine-file" title="Permanent link">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Use these directions if setting up PiHole from a Virtual Machine .OVA file</p>
 </div>
-<h3 id="virtualbox-installation-and-importing-applicance">Virtualbox Installation and Importing Applicance</h3>
+<h3 id="virtualbox-installation-and-importing-applicance">Virtualbox Installation and Importing Applicance<a class="headerlink" href="#virtualbox-installation-and-importing-applicance" title="Permanent link">¶</a></h3>
 <ol>
 <li>Download and install Virtualbox from <a href="https://www.virtualbox.org">https://www.virtualbox.org</a></li>
 <li>
@@ -539,18 +576,18 @@ More details on installation can be found at <a href="https://github.com/pi-hole
 <li>Click 'Continue'</li>
 <li>Appliance Settings: Change 'MAC Address Policy' to Include all network adapter MAC addresses. Leave all other settings the same. Click 'Import'</li>
 </ol>
-<h3 id="verify-settings">Verify Settings</h3>
+<h3 id="verify-settings">Verify Settings<a class="headerlink" href="#verify-settings" title="Permanent link">¶</a></h3>
 <ol>
 <li>Once the Applicance is imported, verify that the settings match the ones <a href="#change-vm-settings">outlined above</a></li>
 <li>Ensure the correct IP address is reserved in the eero app. Details <a href="#set-ip-address-reservation">outlined above</a></li>
 </ol>
-<h3 id="start-up">Start Up</h3>
+<h3 id="start-up">Start Up<a class="headerlink" href="#start-up" title="Permanent link">¶</a></h3>
 <ol>
 <li>Start VM in headless mode (click arrow next to start -&gt; headless mode) <br/>
 <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/pihole/virtualbox-start-headless.png"><img alt="virtualbox-start-headless.png" src="../../img/pihole/virtualbox-start-headless.png" width="75"/></a></li>
 <li>Click 'Show'</li>
 </ol>
-<h3 id="verify-connectivity">Verify Connectivity</h3>
+<h3 id="verify-connectivity">Verify Connectivity<a class="headerlink" href="#verify-connectivity" title="Permanent link">¶</a></h3>
 <ol>
 <li>
 <p>Verify internet connectivity by entering command <code>ping google.com</code>. If you see a response similar to:
@@ -571,10 +608,10 @@ link/ether 08:00:27:1a:f8:19 brd ff:ff:ff:ff:ff:ff
 </code></pre></div></p>
 </li>
 </ol>
-<h3 id="finalize-setup_1">Finalize Setup</h3>
+<h3 id="finalize-setup_1">Finalize Setup<a class="headerlink" href="#finalize-setup_1" title="Permanent link">¶</a></h3>
 <p>Regardless if setting up PiHole from scratch, or from a Virtual Machine File, some final configuration/verification is required. </p>
 <p>Continue to <a href="#set-the-vm-to-auto-launch-in-headless-mode-on-mac-login">Set the VM to auto-launch in headless mode on Mac login</a></p>
-<h2 id="set-the-vm-to-auto-launch-in-headless-mode-on-mac-login">Set the VM to auto-launch in headless mode on Mac login</h2>
+<h2 id="set-the-vm-to-auto-launch-in-headless-mode-on-mac-login">Set the VM to auto-launch in headless mode on Mac login<a class="headerlink" href="#set-the-vm-to-auto-launch-in-headless-mode-on-mac-login" title="Permanent link">¶</a></h2>
 <p>Download the script vboxlaunchagent.sh from 
 <a href="https://www.whatroute.net/software/vboxlaunchagent.sh.zip">https://www.whatroute.net/software/vboxlaunchagent.sh.zip</a></p>
 <p>Move the downloaded file somewhere convenient, like the Desktop. </p>
@@ -614,7 +651,7 @@ Created Launch Agent . . : /Users/macmini/Library/LaunchAgents/org.virtualbox.la
 </li>
 </ol>
 <p>(Script and explanation from <a href="https://www.whatroute.net/installerapp2iso.html">https://www.whatroute.net/installerapp2iso.html</a>)</p>
-<h2 id="configure-pihole">Configure PiHole</h2>
+<h2 id="configure-pihole">Configure PiHole<a class="headerlink" href="#configure-pihole" title="Permanent link">¶</a></h2>
 <ul>
 <li>Remove or change admin web page password: RUN in terminal of PiHole VM:
 <div class="highlight"><pre><span></span><code>sudo pihole -a -p
@@ -622,7 +659,7 @@ Created Launch Agent . . : /Users/macmini/Library/LaunchAgents/org.virtualbox.la
 <li>Open the Web UI (http://your.static.ip.address/admin)</li>
 <li>Configure as you wish</li>
 </ul>
-<h2 id="set-dhcp-server">Set DHCP Server</h2>
+<h2 id="set-dhcp-server">Set DHCP Server<a class="headerlink" href="#set-dhcp-server" title="Permanent link">¶</a></h2>
 <ol>
 <li>Open the eero app</li>
 <li>Go to Settings -&gt; Network Settings -&gt; DNS</li>
@@ -649,9 +686,9 @@ Created Launch Agent . . : /Users/macmini/Library/LaunchAgents/org.virtualbox.la
 <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/emotes/parrot.gif"><img alt="parrot.gif" src="../../img/emotes/parrot.gif"/></a>
 Once the DNS server is set, Congrats! Pihole is now in use for all devices on the network.
 You can test PiHole by visiting a website that previously had ads, they should be blocked now :)</p>
-<h2 id="troubleshooting-sites-not-loading">Troubleshooting Sites not Loading</h2>
+<h2 id="troubleshooting-sites-not-loading">Troubleshooting Sites not Loading<a class="headerlink" href="#troubleshooting-sites-not-loading" title="Permanent link">¶</a></h2>
 <p>Pihole is a tracking and ad-blocker. Because of this, some sites may not load, or be missing content. </p>
-<h3 id="temporarily-disable-pihole">Temporarily Disable Pihole</h3>
+<h3 id="temporarily-disable-pihole">Temporarily Disable Pihole<a class="headerlink" href="#temporarily-disable-pihole" title="Permanent link">¶</a></h3>
 <p>If this is a one-off thing that you need to load, you can temporarily disable Pihole across the whole network. </p>
 <ol>
 <li>Open the <a href="http://192.168.4.4/admin">PiHole Web UI</a></li>
@@ -659,7 +696,7 @@ You can test PiHole by visiting a website that previously had ads, they should b
 <li>Choose an amount of time to disable. 5 minutes is usually sufficent. </li>
 </ol>
 <p>PiHole is now disabled, and will be automatically re-enabled once the time elapses.</p>
-<h3 id="add-a-site-to-the-whitelist">Add a site to the whitelist</h3>
+<h3 id="add-a-site-to-the-whitelist">Add a site to the whitelist<a class="headerlink" href="#add-a-site-to-the-whitelist" title="Permanent link">¶</a></h3>
 <ol>
 <li>Open the <a href="http://192.168.4.4/admin">PiHole Web UI</a></li>
 <li>Click 'Whitelist'</li>
@@ -672,16 +709,16 @@ You can test PiHole by visiting a website that previously had ads, they should b
 </li>
 <li>Click 'Add to Whitelist'</li>
 </ol>
-<h3 id="use-the-audit-log">Use the Audit Log</h3>
+<h3 id="use-the-audit-log">Use the Audit Log<a class="headerlink" href="#use-the-audit-log" title="Permanent link">¶</a></h3>
 <p>Audit Log will show the top allowed and blocked queries with quick access to blacklist or whitelist them</p>
 <ol>
 <li>Open the <a href="http://192.168.0.4/admin">PiHole Web UI</a></li>
 <li>Click 'Tools' -&gt; 'Audit Log'</li>
 </ol>
-<h2 id="updating-pihole-pihole-and-underlying-ubuntu-os">Updating Pihole (Pihole and underlying Ubuntu OS)</h2>
+<h2 id="updating-pihole-pihole-and-underlying-ubuntu-os">Updating Pihole (Pihole and underlying Ubuntu OS)<a class="headerlink" href="#updating-pihole-pihole-and-underlying-ubuntu-os" title="Permanent link">¶</a></h2>
 <p>If you see red text at the bottom of the PiHole web UI ‘Update Available’, it needs an update. This is currently a manual process, work in progress to automate it. There are two options, both do exactly the same thing. The SSH option may be easier. </p>
-<h3 id="via-ssh">Via SSH</h3>
-<h4 id="pihole-updates">Pihole Updates</h4>
+<h3 id="via-ssh">Via SSH<a class="headerlink" href="#via-ssh" title="Permanent link">¶</a></h3>
+<h4 id="pihole-updates">Pihole Updates<a class="headerlink" href="#pihole-updates" title="Permanent link">¶</a></h4>
 <ol>
 <li>
 <p>Open a Terminal and enter command: <code>ssh pihole@pi.hole</code><br/>
@@ -707,7 +744,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 <li>If prompted <code>[sudo] password for pihole:</code>  enter the PiHole user password  </li>
 <li>Wait for it to update. On success, you should see   <code>[✓] Everything is up to date!</code></li>
 </ol>
-<h4 id="ubuntu-updates">Ubuntu Updates</h4>
+<h4 id="ubuntu-updates">Ubuntu Updates<a class="headerlink" href="#ubuntu-updates" title="Permanent link">¶</a></h4>
 <p>It’s also a good idea to update the underlying Ubuntu instance periodically, especially if there is a notice then you logged into the Pihole VM similar to: 
 <div class="highlight"><pre><span></span><code>91 updates can be applied immediately.
 9 of these updates are standard security updates.
@@ -726,8 +763,8 @@ Enter <span class="keys"><kbd class="key-y">Y</kbd></span></p>
 <p>Wait for it to update. This may take a while, depending on the number of updates.</p>
 </li>
 </ol>
-<h3 id="via-apple-remote-desktop">Via Apple Remote Desktop</h3>
-<h4 id="pihole-updates_1">Pihole Updates</h4>
+<h3 id="via-apple-remote-desktop">Via Apple Remote Desktop<a class="headerlink" href="#via-apple-remote-desktop" title="Permanent link">¶</a></h3>
+<h4 id="pihole-updates_1">Pihole Updates<a class="headerlink" href="#pihole-updates_1" title="Permanent link">¶</a></h4>
 <ol>
 <li>Open Apple Remote Desktop</li>
 <li>Select <code>MacServer</code> from All Computers</li>
@@ -745,7 +782,7 @@ Enter <span class="keys"><kbd class="key-y">Y</kbd></span></p>
 <li>If prompted <code>[sudo] password for pihole:</code>  enter the PiHole user password</li>
 <li>Wait for it to update. On success, you should see   <code>[✓] Everything is up to date!</code></li>
 </ol>
-<h4 id="ubuntu-updates_1">Ubuntu Updates</h4>
+<h4 id="ubuntu-updates_1">Ubuntu Updates<a class="headerlink" href="#ubuntu-updates_1" title="Permanent link">¶</a></h4>
 <p>It’s also a good idea to update the underlying Ubuntu instance periodically, especially if there is a notice then you logged into the Pihole VM similar to: 
 <div class="highlight"><pre><span></span><code>91 updates can be applied immediately.
 9 of these updates are standard security updates.

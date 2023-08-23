@@ -81,6 +81,36 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
 </label>
 </form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
 </nav>
 <nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
 <div class="md-tabs__inner md-grid">
@@ -103,6 +133,11 @@
 <li class="md-tabs__item">
 <a class="md-tabs__link" href="../../hardware/hardware/">
         Hardware
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../usage/wyze-ha/">
+        Usage
       </a>
 </li>
 <li class="md-tabs__item">
@@ -216,6 +251,11 @@
       </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../server-apps/homeassistant/">
+        Home Assistant
+      </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../server-apps/scrypted/">
         Scrypted
       </a>
@@ -238,6 +278,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../server-apps/timemachine-editor/">
         Time Machine Editor
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../server-apps/virtualbox/">
+        Virtualbox
       </a>
 </li>
 </ul>
@@ -268,14 +313,34 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5">
+          Usage
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Usage" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Usage
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../usage/wyze-ha/">
+        Wyze Home Assistant camera
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
           Troubleshooting
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Troubleshooting" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_5">
+<label class="md-nav__title" for="__nav_6">
 <span class="md-nav__icon md-icon"></span>
           Troubleshooting
         </label>
@@ -316,6 +381,11 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#scheduled-reboot">
+    Scheduled Reboot
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#virtualbox-aborted-with-exit-code-1">
     Virtualbox Aborted with Exit Code 1
   </a>
@@ -323,11 +393,6 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#full-disk-accessprivacyother-permissions">
     Full Disk Access/Privacy/Other Permissions
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#scheduled-reboot">
-    Scheduled Reboot
   </a>
 </li>
 </ul>
@@ -343,13 +408,39 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="macos-ventura-update-issues-and-solutions">macOS Ventura Update: Issues and Solutions</h1>
+<h1 id="macos-ventura-update-issues-and-solutions">macOS Ventura Update: Issues and Solutions<a class="headerlink" href="#macos-ventura-update-issues-and-solutions" title="Permanent link">¶</a></h1>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>macOS Ventura is Apple's latest macOS Operating System. </p>
-<p>This page details issues encountered, and how to solve them  </p>
+<p>This page details issues encountered, and how to solve them </p>
 </div>
-<h2 id="virtualbox-aborted-with-exit-code-1">Virtualbox Aborted with Exit Code 1</h2>
+<h2 id="scheduled-reboot">Scheduled Reboot<a class="headerlink" href="#scheduled-reboot" title="Permanent link">¶</a></h2>
+<div class="admonition quote">
+<p class="admonition-title"> </p>
+<p>In macOS Ventura, the way you schedule your Mac to shut down or reboot has changed.</p>
+<p>In previous versions of macOS, setting an automated schedule like this was easy. You simply had to navigate to the Energy Saver/Battery panel in System Preferences and set a custom schedule using the interface options. For ‌macOS Ventura‌, however, in replacing System Preferences with System Settings, Apple decided to remove these options from the graphical interface completely.</p>
+</div>
+<p>How to schedule a reboot on Monday at 4 AM:</p>
+<ol>
+<li>Open Terminal</li>
+<li>Run command:
+<div class="highlight"><pre><span></span><code>sudo pmset repeat restart M 04:00:00
+</code></pre></div></li>
+<li>Enter password if requested</li>
+<li>Verify schedule by running command:
+<div class="highlight"><pre><span></span><code>pmset -g sched
+</code></pre></div></li>
+</ol>
+<p>Verify results: 
+<div class="highlight"><pre><span></span><code>macmini@Andrews-MacServer ~ % pmset -g sched
+Repeating power events:
+  restart at 4:00AM Monday
+</code></pre></div></p>
+<p>To clear the current Power Management schedule, run command:
+<div class="highlight"><pre><span></span><code>sudo pmset repeat cancel
+</code></pre></div></p>
+<p>Reference: <a href="https://www.macrumors.com/how-to/schedule-shut-down-boot-up-macos-ventura/">How to Schedule Shut Down, Restart, and Boot/Wake in macOS Ventura: MacRumors</a></p>
+<h2 id="virtualbox-aborted-with-exit-code-1">Virtualbox Aborted with Exit Code 1<a class="headerlink" href="#virtualbox-aborted-with-exit-code-1" title="Permanent link">¶</a></h2>
 <p>Error Text:
 <div class="highlight"><pre><span></span><code>Failed to open a session for the virtual machine PiHole.
 
@@ -380,31 +471,10 @@ reboot
 <li>Reboot</li>
 </ol>
 <p>Reference: <a href="https://apple.stackexchange.com/q/408154">Apple Stack Exchange</a></p>
-<h2 id="full-disk-accessprivacyother-permissions">Full Disk Access/Privacy/Other Permissions</h2>
+<h2 id="full-disk-accessprivacyother-permissions">Full Disk Access/Privacy/Other Permissions<a class="headerlink" href="#full-disk-accessprivacyother-permissions" title="Permanent link">¶</a></h2>
 <p>macOS Ventura seems to use a different scheme for Privacy, and some apps may not be updated for it. </p>
 <p>If required, remove permissions that are requested. </p>
 <p>If issues persist, uninstall and reinstall the app. </p>
-<h2 id="scheduled-reboot">Scheduled Reboot</h2>
-<div class="admonition quote">
-<p class="admonition-title"> </p>
-<p>In macOS Ventura, the way you schedule your Mac to shut down or reboot has changed.</p>
-<p>In previous versions of macOS, setting an automated schedule like this was easy. You simply had to navigate to the Energy Saver/Battery panel in System Preferences and set a custom schedule using the interface options. For ‌macOS Ventura‌, however, in replacing System Preferences with System Settings, Apple decided to remove these options from the graphical interface completely.</p>
-</div>
-<p>How to schedule a reboot on Sunday at 4 AM:</p>
-<ol>
-<li>Open Terminal</li>
-<li>Run command:
-<div class="highlight"><pre><span></span><code>sudo pmset repeat restart U 04:00:00
-</code></pre></div></li>
-<li>Enter password if requested</li>
-<li>Verify schedule by running command:
-<div class="highlight"><pre><span></span><code>pmset -g sched
-</code></pre></div></li>
-</ol>
-<p>To clear the current Power Management schedule, run command:
-<div class="highlight"><pre><span></span><code>sudo pmset repeat cancel
-</code></pre></div></p>
-<p>Reference: <a href="https://www.macrumors.com/how-to/schedule-shut-down-boot-up-macos-ventura/">How to Schedule Shut Down, Restart, and Boot/Wake in macOS Ventura: MacRumors</a></p>
 </article>
 </div>
 </div>
