@@ -83,5 +83,5 @@ markdown_extensions:
 plugins:
   - search
   - glightbox
-  - print-site
+
 copyright: "<a href=/MacServer-Documentation/attributions>Attributions</a>"
