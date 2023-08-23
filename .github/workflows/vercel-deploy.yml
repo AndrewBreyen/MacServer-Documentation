@@ -1,4 +1,4 @@
-# name: Build and Deploy using Vercel
+name: Build and Deploy using Vercel
 
 on:
   push:
