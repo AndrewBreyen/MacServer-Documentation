@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://andrewbreyen.github.io/MacServer-Documentation/server-apps/docker/" rel="canonical"/>
+<link href="https://andrewbreyen.github.io/MacServer-Documentation/usage/wyze-ha/" rel="canonical"/>
 <link href="../../img/macmini-icon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
-<title>Docker - MacServer Documentation</title>
+<title>Wyze Home Assistant camera - MacServer Documentation</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -41,7 +41,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#docker">
+<a class="md-skip" href="#getting-wyze-camera-into-home-assistant">
           Skip to content
         </a>
 </div>
@@ -65,7 +65,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Docker
+              Wyze Home Assistant camera
             
           </span>
 </div>
@@ -126,7 +126,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../macos-server/">
+<a class="md-tabs__link" href="../../server-apps/macos-server/">
         Server Apps
       </a>
 </li>
@@ -136,7 +136,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../usage/wyze-ha/">
+<a class="md-tabs__link md-tabs__link--active" href="./">
         Usage
       </a>
 </li>
@@ -213,8 +213,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_3">
           Server Apps
           <span class="md-nav__icon md-icon"></span>
@@ -226,63 +226,62 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../macos-server/">
+<a class="md-nav__link" href="../../server-apps/macos-server/">
         macOS Server
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../server-apps/docker/">
         Docker
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../teamviewer/">
+<a class="md-nav__link" href="../../server-apps/teamviewer/">
         TeamViewer
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../jellyfin/">
+<a class="md-nav__link" href="../../server-apps/jellyfin/">
         Jellyfin
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../homebridge/">
+<a class="md-nav__link" href="../../server-apps/homebridge/">
         Homebridge
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../homeassistant/">
+<a class="md-nav__link" href="../../server-apps/homeassistant/">
         Home Assistant
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../scrypted/">
+<a class="md-nav__link" href="../../server-apps/scrypted/">
         Scrypted
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../node-red/">
+<a class="md-nav__link" href="../../server-apps/node-red/">
         Node-RED
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../pihole/">
+<a class="md-nav__link" href="../../server-apps/pihole/">
         Pihole
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../tdarr/">
+<a class="md-nav__link" href="../../server-apps/tdarr/">
         Tdarr
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../timemachine-editor/">
+<a class="md-nav__link" href="../../server-apps/timemachine-editor/">
         Time Machine Editor
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../virtualbox/">
+<a class="md-nav__link" href="../../server-apps/virtualbox/">
         Virtualbox
       </a>
 </li>
@@ -314,8 +313,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5">
           Usage
           <span class="md-nav__icon md-icon"></span>
@@ -326,10 +325,38 @@
           Usage
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../usage/wyze-ha/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Wyze Home Assistant camera
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Wyze Home Assistant camera
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites">
+    Prerequisites
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#download">
+    Download
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#install">
+    Install
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -381,34 +408,21 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">¶</a></h1>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Docker is used to create Containers.</p>
-<p>"A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings." (<a href="https://www.docker.com/resources/what-container/">docker.com</a>)</p>
+<h1 id="getting-wyze-camera-into-home-assistant">Getting Wyze Camera into Home Assistant<a class="headerlink" href="#getting-wyze-camera-into-home-assistant" title="Permanent link">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Virtualbox is required to run Home Assistant. The latest version of Virtualbox has a bug when running on macOS 13.3. </p>
+<p>This bug prevents the Home Assistant VM from booting entirely. A fix is hopefully in the next version. </p>
+<p>See forum post here: <a href="https://forums.virtualbox.org/viewtopic.php?f=8&amp;t=109003">https://forums.virtualbox.org/viewtopic.php?f=8&amp;t=109003</a></p>
 </div>
-<p>Download and install Docker from <a href="https://www.docker.com/">https://www.docker.com/</a></p>
-<p>Once installed, Open Settings and:</p>
-<ol>
-<li>General <ul>
-<li>Check 'Start Docker Desktop when you log in'</li>
-<li>Uncheck 'Open Docker Dashboard at startup'</li>
-</ul>
-</li>
-<li>Resources -&gt; Advanced<ul>
-<li>CPUs: 2</li>
-<li>Memory: 2.00 GB</li>
-<li>Swap: 1 GB</li>
-<li>Disk image size: 16 GB</li>
-</ul>
-</li>
-<li>Resources -&gt; File Sharing<ul>
-<li>Delete any existing file shares, and add:</li>
-<li><code>/Users/Shared/nodered_data</code></li>
-<li><code>/Users/Shared/xmltvdata</code></li>
-</ul>
-</li>
-</ol>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
+<p>Virtualbox 
+<a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></p>
+<p>Latest validated version: <code>VirtualBox-7.0.10a</code> </p>
+<h2 id="download">Download<a class="headerlink" href="#download" title="Permanent link">¶</a></h2>
+<p>Download the latest VDI from <a href="https://www.home-assistant.io/installation/macos">home-assistant.io/installation/macos</a></p>
+<p>Latest validated version: <code>haos_ova-10.4.vdi</code></p>
+<h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">¶</a></h2>
 </article>
 </div>
 </div>
@@ -419,7 +433,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: macOS Server" class="md-footer__link md-footer__link--prev" href="../macos-server/" rel="prev">
+<a aria-label="Previous: Zigbee-Conbee" class="md-footer__link md-footer__link--prev" href="../../hardware/zigbee-conbee/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -428,17 +442,17 @@
 <span class="md-footer__direction">
                 Previous
               </span>
-              macOS Server
+              Zigbee-Conbee
             </div>
 </div>
 </a>
-<a aria-label="Next: TeamViewer" class="md-footer__link md-footer__link--next" href="../teamviewer/" rel="next">
+<a aria-label="Next: Reboot" class="md-footer__link md-footer__link--next" href="../../troubleshooting/reboot/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 Next
               </span>
-              TeamViewer
+              Reboot
             </div>
 </div>
 <div class="md-footer__button md-icon">
