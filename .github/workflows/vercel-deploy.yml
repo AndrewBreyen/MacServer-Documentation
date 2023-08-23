@@ -32,18 +32,26 @@ jobs:
 
   deploy:
     name: Deploy Vercel
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test'
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: site
-          path: site
-
-      - name: Deploy Documentation
-        run: npx vercel --yes --cwd site --token ${{ secrets.VERCEL_TOKEN }} ${{ github.ref == 'refs/heads/main' && '--prod' || '' }}
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        - name: Download Artifact
+          uses: actions/download-artifact@v3
+          with:
+            name: site
+            path: site
+        
+        - name: Deploy Documentation - Test
+          if: github.ref == 'refs/heads/test'
+          run: npx vercel --yes --cwd site --token ${{ secrets.VERCEL_TOKEN }} --prod=false
+          env:
+            VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+            VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        
+        - name: Deploy Documentation - Prod
+          if: github.ref == 'refs/heads/main'
+          run: npx vercel --yes --cwd site --token ${{ secrets.VERCEL_TOKEN }} --prod
+          env:
+            VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+            VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
