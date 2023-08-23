@@ -8,8 +8,6 @@ on:
       - pyproject.toml
       - .github/workflows/docs.yml
 
-  workflow_dispatch:
-
 jobs:
   build:
     name: Build (Tiryoh/actions-mkdocs)
