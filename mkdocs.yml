@@ -33,6 +33,9 @@ nav:
       - 'Smart Devices showing as “No Response”/Orange Exclamation mark': 'troubleshooting/no-response-homekit.md'
       - 'Network Change: Smart Home Devices': 'troubleshooting/network-change-smart-home.md'
       - 'Ventura Update: Issues and Solutions': 'troubleshooting/ventura-update.md'
+    - Updates:
+      - 'Ventura': 'updates/ventura-update.md'
+      - 'Sonoma': 'updates/sonoma-update.md'
 theme:
   name: material
   logo: img/macmini-icon.png
