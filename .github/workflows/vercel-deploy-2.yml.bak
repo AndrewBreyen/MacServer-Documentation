@@ -1,0 +1,57 @@
+name: Deploy Application
+on:
+    workflow_dispatch:
+        inputs: # GitHub Actions inputs will allow you to select environments
+            releaseType:
+                description: 'Release Type'
+                required: true
+                default: 'test'
+                type: choice
+                options:
+                    - test
+                    - prod
+                    # - staging
+    pull_request: #This is to automatically deploy on a pull request
+        branches:
+            - main
+        paths:
+            - 'frontend-app/**'
+    push: #This is to automatically deploy on a push to main
+        branches:
+            - main
+        paths:
+            - 'frontend-app/**'
+jobs:
+
+  build:
+    name: Build (Tiryoh/actions-mkdocs)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Build
+        uses: Tiryoh/actions-mkdocs@v0
+        with:
+          mkdocs_version: "latest"
+          requirements: "requirements.txt"
+          configfile: "mkdocs.yml"
+          
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: site
+          name: site
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: amondnet/vercel-action@v20 #deploy
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} #Required
+          github-token: ${{ secrets.GITHUB_TOKEN }} #Optional 
+          vercel-args: ${{ inputs.releaseType == 'prod' && vars.PROD_ARGS || inputs.releaseType == 'staging' && vars.STAGE_ARGS || inputs.releaseType == 'test' && vars.TEST_ARGS || '' }} #Environment Specific Arguments
+          vercel-org-id: ${{ secrets.ORG_ID }}  #Required
+          vercel-project-id: ${{ secrets.PROJECT_ID }} #Required 
+          working-directory: ./frontend-app
+          alias-domains: ${{ inputs.releaseType == 'prod' && vars.PROD_DOMAIN || inputs.releaseType == 'staging' && vars.STAGE_DOMAIN || inputs.releaseType == 'test' && vars.TEST_DOMAIN || '' }} #Environment Specific Alias Domain
