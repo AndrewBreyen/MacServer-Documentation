@@ -37,3 +37,10 @@ Once back up, click `Accessories` and verify that all accessories have been adde
 Scan QR code from Status screen using Home App -> Add Accessories
 
 Add the bridge to room `ZAccessories`, continue setup within Home app, place accessories into correct rooms
+
+## Usage
+Login to the Homebridge console by using any device connected to home network:
+
+- Go to: [http://macserver.local:8581/](http://macserver.local:8581/)
+- Login with username and password of admin account
+
