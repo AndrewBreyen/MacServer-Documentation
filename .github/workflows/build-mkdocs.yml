@@ -1,13 +1,14 @@
-name: Build and Deploy to Github Pages
+name: Build using MkDocs
 
 on:
   push:
-    branches:
+    branches-ignore:
       - "main"
+      - "gh-pages"
 
 jobs:
   builddeploy:
-    name: build-deploy-githubpages
+    name: build-mkdocs
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -22,5 +23,7 @@ jobs:
       - name: Install requirements
         run: python3 -m pip install -r requirements.txt
 
-      - name: Deploy 🚀
-        run: python3 -m mkdocs gh-deploy --force --strict
+      - name: Build
+        run: mkdocs build
+
+      

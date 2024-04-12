@@ -11,8 +11,8 @@ nav:
       - 'Installs': 'setup/installs.md'
     - Server Apps:
       - 'macOS Server': 'server-apps/macos-server.md'
+      - 'AnyDesk': 'server-apps/AnyDesk.md'
       - 'Docker': 'server-apps/docker.md'
-      - 'TeamViewer': 'server-apps/teamviewer.md'
       - 'Jellyfin': 'server-apps/jellyfin.md'
       - 'Homebridge': 'server-apps/homebridge.md'
       - 'Home Assistant': 'server-apps/homeassistant.md'
@@ -22,6 +22,7 @@ nav:
       - 'Tdarr': 'server-apps/tdarr.md'
       - 'Time Machine Editor': 'server-apps/timemachine-editor.md'
       - 'Virtualbox': 'server-apps/virtualbox.md'
+      - 'TeamViewer (Deprecated)': 'server-apps/deprecated/teamviewer.md'
     - Hardware:
       - 'Hardware': 'hardware/hardware.md'
       - 'Zigbee-Conbee': 'hardware/zigbee-conbee.md'
