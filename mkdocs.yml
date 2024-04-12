@@ -27,6 +27,7 @@ nav:
       - 'Zigbee-Conbee': 'hardware/zigbee-conbee.md'
     - Usage:
       - 'Wyze Home Assistant camera': 'usage/wyze-ha.md'
+      - 'Garage Door': 'usage/garagedoor-notifications.md'
     - Troubleshooting:
       - 'Reboot': 'troubleshooting/reboot.md'
       - 'Live TV Guide Data Issues': 'troubleshooting/live-tv-data-issues.md'
