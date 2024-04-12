@@ -18,7 +18,7 @@
 
 Create a VM using VirtualBox. 
 
-See [Create VM](create-vm.md) for details. 
+See [Create VM](virtualbox.md#create-a-virtualbox-vm) for details. 
 
 ### Install PiHole
 - RUN in terminal of PiHole VM:
