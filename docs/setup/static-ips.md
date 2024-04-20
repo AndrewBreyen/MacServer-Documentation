@@ -8,4 +8,7 @@ A static IP is required for these devices:
 | --- | --- |
 | MacServer | 192.168.4.100 |
 | Home Assistant | 192.168.4.101  |
+| Pihole* | 192.168.4.105 |
 | Phoscon | 192.168.4.150 |
+
+(* may need to be set locally on ubuntu server, depending on your router. See [linuxconfig.org article for directions](https://linuxconfig.org/change-ip-address-on-ubuntu-server))
