@@ -48,7 +48,6 @@ theme:
   favicon: img/macmini-icon.png
   features:
     - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.indexes
     - navigation.top
     - toc.follow
