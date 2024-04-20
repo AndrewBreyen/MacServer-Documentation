@@ -3,15 +3,19 @@ site_url: https://andrewbreyen.github.io/MacServer-Documentation/
 nav:
     - Home: index.md
     - Setup:
+      - setup/index.md
       - 'Static IPs': 'setup/static-ips.md'
       - MacOS Setup:
         - 'First Time Setup': 'setup/first-time-setup.md'
         - 'Ventura First Time Setup': 'setup/first-time-setup-ventura.md'
+        - 'MacOS Settings Sharing': 'setup/macos-settings-sharing.md'
         - 'macOS Settings': 'setup/macos-settings.md'
       - 'Jumpcloud': 'setup/jumpcloud.md'
       - 'Apple Remote Desktop': 'setup/apple-remote-desktop.md'
       - 'Installs': 'setup/installs.md'
-    - Server Apps:
+      - 'Additional Tools': 'setup/additional.md'
+    - Server Apps: 
+      - server-apps/index.md
       - 'macOS Server': 'server-apps/macos-server.md'
       - 'AnyDesk': 'server-apps/AnyDesk.md'
       - 'Docker': 'server-apps/docker.md'
@@ -24,6 +28,7 @@ nav:
       - 'Tdarr': 'server-apps/tdarr.md'
       - 'Time Machine Editor': 'server-apps/timemachine-editor.md'
       - 'Virtualbox': 'server-apps/virtualbox.md'
+      - 'Create VPNs (WIP)': 'server-apps/create-vpns.md'
       - 'TeamViewer (Deprecated)': 'server-apps/deprecated/teamviewer.md'
     - Hardware:
       - 'Hardware': 'hardware/hardware.md'

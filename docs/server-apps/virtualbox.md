@@ -44,7 +44,7 @@ Once the VM has been created, click 'Settings', and make changes:
 
 - Enable Network Adapter
 - Attatched to: `Bridged`
-- Name: `en0: Ethernet`
+- Name: `en0: Ethernet` 
 - Open Advanced Tab, leave all settings to default, but note the MAC address to use to set a static IP
 
 
