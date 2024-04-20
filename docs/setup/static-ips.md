@@ -6,9 +6,9 @@ A static IP is required for these devices:
 
 | Device | IP Address |
 | --- | --- |
-| MacServer | 192.168.4.100 |
-| Home Assistant | 192.168.4.101  |
-| Pihole* | 192.168.4.105 |
-| Phoscon | 192.168.4.150 |
+| MacServer | 192.168.1.100 |
+| Home Assistant | 192.168.1.101  |
+| Pihole* | 192.168.1.105 |
+| Phoscon | 192.168.1.150 |
 
 (* may need to be set locally on ubuntu server, depending on your router. See [linuxconfig.org article for directions](https://linuxconfig.org/change-ip-address-on-ubuntu-server))
