@@ -3,9 +3,11 @@ site_url: https://andrewbreyen.github.io/MacServer-Documentation/
 nav:
     - Home: index.md
     - Setup:
-      - 'First Time Setup': 'setup/first-time-setup.md'
-      - 'Ventura First Time Setup': 'setup/first-time-setup-ventura.md'
-      - 'macOS Settings': 'setup/macos-settings.md'
+      - 'Static IPs': 'setup/static-ips.md'
+      - MacOS Setup:
+        - 'First Time Setup': 'setup/first-time-setup.md'
+        - 'Ventura First Time Setup': 'setup/first-time-setup-ventura.md'
+        - 'macOS Settings': 'setup/macos-settings.md'
       - 'Jumpcloud': 'setup/jumpcloud.md'
       - 'Apple Remote Desktop': 'setup/apple-remote-desktop.md'
       - 'Installs': 'setup/installs.md'
