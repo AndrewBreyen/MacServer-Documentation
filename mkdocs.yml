@@ -93,4 +93,9 @@ plugins:
   - search
   - glightbox
 
+extra:
+  analytics:
+    provider: google
+    property: G-DFBDEXN4GP
+
 copyright: "<a href=/MacServer-Documentation/attributions>Attributions</a>"
