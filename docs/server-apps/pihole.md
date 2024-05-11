@@ -107,52 +107,9 @@ Regardless if setting up PiHole from scratch, or from a Virtual Machine File, so
 Continue to [Set the VM to auto-launch in headless mode on Mac login](#set-the-vm-to-auto-launch-in-headless-mode-on-mac-login)
 
 
-## Set the VM to auto-launch in headless mode on Mac login
+## Set the VM to auto-launch in headless mode on Mac login¶
 
-Download the script vboxlaunchagent.sh from 
-[https://www.whatroute.net/software/vboxlaunchagent.sh.zip](https://www.whatroute.net/software/vboxlaunchagent.sh.zip)
-
-Move the downloaded file somewhere convenient, like the Desktop. 
-
-!!! quote "whatroute.net"
-    LaunchAgents are configured with an Apple plist XML file installed in the users Library/LaunchAgents folder. When the user logs in to their account on the Mac, launchd will inspect these plist files and invoke the required program with specified arguments.
-
-    It can get a bit tricky to create a plist manually. They have very fussy and very unforgiving syntax requirements. This shell script will create the plist and install it in the LaunchAgents directory.
-
-    You can download the script from vboxlaunchagent.sh. Unzip the file and copy the script to a suitable directory on your machine.
-
-
-Run the script using this syntax:
-
-1. Find the name of the VM: In a terminal on MacServer directly (not the VM), run:
-   ```sh
-   VBoxManage list vms
-   ```
-    
-    Should result in output similar to:  
-    ```sh 
-    macmini@macserver ~ % VBoxManage list vms
-    "Pihole" {c7ac734f-3fc7-4645-997b-3c78ef32d8f4}
-    ```
-
-    In this example, Pihole is the name of the VM.
-
-2. In a terminal, run
-   ```sh
-   sh path/to/vboxlaunchagent.sh --headless --verbose "VMName"
-   ```
-   replacing `VMName` with the name of the VM from the previous step, and `/path/to/vboxlaunchagent.sh` with the full path (likely will be `~/Downloads/vboxlaunchagent.sh` if you just clicked the link above)
-
-3. Ensure that the output is similar to
-    ````
-    VirtualBox VM found. . . : PiHole
-    Created temporary file . : /tmp/org.virtualbox.launch.PiHole
-    Created Launch Agent . . : /Users/macmini/Library/LaunchAgents/org.virtualbox.launch.PiHole.plist
-    ````
-
-4. Reboot the Mac and ensure the VM auto-starts on login
-
-(Script and explanation from [https://www.whatroute.net/installerapp2iso.html](https://www.whatroute.net/installerapp2iso.html))
+Moved to [Set the VM to auto-launch in headless mode on Mac login](../virtualbox/#set-the-vm-to-auto-launch-in-headless-mode-on-mac-login)
 
 
 ## Configure PiHole
