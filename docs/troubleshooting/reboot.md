@@ -64,3 +64,8 @@ Connection to macserver.local closed.
 ```  
 5. Connection should be closed automatically, verify that MacServer comes back up.
 
+### Manual Restart
+
+While a software restart is preferred, you can also do a force-shutdown/reboot. 
+
+Hold the power button down until the LED on the front of the Mac Mini turns off. Wait a few seconds, and then press the power button again.
