@@ -1,0 +1,730 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://andrewbreyen.github.io/MacServer-Documentation/server-apps/virtualbox/" rel="canonical"/>
+<link href="../../img/macmini-icon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<title>Virtualbox - MacServer Documentation</title>
+<link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-DFBDEXN4GP"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-DFBDEXN4GP",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-DFBDEXN4GP",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+<script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="" data-md-color-primary="grey" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#create-vm">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="MacServer Documentation" class="md-header__button md-logo" data-md-component="logo" href="../.." title="MacServer Documentation">
+<img alt="logo" src="../../img/macmini-icon.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            MacServer Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Virtualbox
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="grey" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="grey" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../setup/">
+        Setup
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../">
+        Server Apps
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../hardware/hardware/">
+        Hardware
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../usage/wyze-ha/">
+        Usage
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../troubleshooting/reboot/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="MacServer Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="MacServer Documentation">
+<img alt="logo" src="../../img/macmini-icon.png"/>
+</a>
+    MacServer Documentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../setup/">Setup</a>
+<label for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Setup" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Setup
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/static-ips/">
+        Static IPs
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+          MacOS Setup
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="MacOS Setup" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          MacOS Setup
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/first-time-setup/">
+        First Time Setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/first-time-setup-ventura/">
+        Ventura First Time Setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/macos-settings-sharing/">
+        MacOS Settings Sharing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/macos-settings/">
+        macOS Settings
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/jumpcloud/">
+        Jumpcloud
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/apple-remote-desktop/">
+        Apple Remote Desktop
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/installs/">
+        Installs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/additional/">
+        Additional Tools
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../">Server Apps</a>
+<label for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Server Apps" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Server Apps
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../macos-server/">
+        macOS Server
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../AnyDesk/">
+        AnyDesk
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../docker/">
+        Docker
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../jellyfin/">
+        Jellyfin
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../homebridge/">
+        Homebridge
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../homeassistant/">
+        Home Assistant
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../scrypted/">
+        Scrypted
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../node-red/">
+        Node-RED
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pihole/">
+        Pihole
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tdarr/">
+        Tdarr
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../timemachine-editor/">
+        Time Machine Editor
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Virtualbox
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Virtualbox
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#download-isoinstall-virtualbox">
+    Download ISO/Install VirtualBox
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-a-virtualbox-vm">
+    Create a Virtualbox VM
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#change-vm-settings">
+    Change VM Settings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#set-ip-address-reservation">
+    Set IP Address Reservation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#start-up">
+    Start Up
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#install-ubuntu-server">
+    Install Ubuntu Server
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#set-the-vm-to-auto-login">
+    Set the VM to auto-login
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#set-the-vm-to-auto-launch-in-headless-mode-on-mac-login">
+    Set the VM to auto-launch in headless mode on Mac login
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../create-vpns/">
+        Create VPNs (WIP)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../deprecated/teamviewer/">
+        TeamViewer (Deprecated)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+          Hardware
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Hardware" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Hardware
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hardware/hardware/">
+        Hardware
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hardware/zigbee-conbee/">
+        Zigbee-Conbee
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+          Usage
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Usage" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Usage
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../usage/wyze-ha/">
+        Wyze Home Assistant camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../usage/garagedoor-notifications/">
+        Garage Door
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
+          Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Troubleshooting" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Troubleshooting
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../troubleshooting/reboot/">
+        Reboot
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../troubleshooting/live-tv-data-issues/">
+        Live TV Guide Data Issues
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../troubleshooting/no-response-homekit/">
+        Smart Devices showing as “No Response”/Orange Exclamation mark
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../troubleshooting/network-change-smart-home/">
+        Network Change: Smart Home Devices
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../troubleshooting/ventura-update/">
+        Ventura Update: Issues and Solutions
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="create-vm">Create VM<a class="headerlink" href="#create-vm" title="Permanent link">¶</a></h1>
+<h2 id="download-isoinstall-virtualbox">Download ISO/Install VirtualBox<a class="headerlink" href="#download-isoinstall-virtualbox" title="Permanent link">¶</a></h2>
+<p>Download and install the latest version of VirtualBox from <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></p>
+<p>Download ISO of LTS edition from <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a></p>
+<h2 id="create-a-virtualbox-vm">Create a Virtualbox VM<a class="headerlink" href="#create-a-virtualbox-vm" title="Permanent link">¶</a></h2>
+<p>Open Virtualbox and click 'New':
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/pihole/virtualbox-new.png"><img alt="virtualbox-new.png" src="../../img/pihole/virtualbox-new.png" width="40"/></a></p>
+<p>Enter these settings:</p>
+<p>(these are purposefully low-powered settings, it’s designed for a Raspberry Pi, so a powerful VM is not needed)</p>
+<p><strong>Virtual machine Name and Operating System</strong></p>
+<ul>
+<li>Name: <code>VMName</code> (probably <code>pihole</code>)</li>
+<li>Machine Folder: <code>/Users/macmini/VirtualBox VMs</code></li>
+<li>Type: <code>Linux</code></li>
+<li>
+<p>Version: <code>Ubuntu (64-bit)</code></p>
+</li>
+<li>
+<p>Check 'Skip unattended installation' </p>
+</li>
+</ul>
+<p><strong>Hardware:</strong></p>
+<ul>
+<li>Base Memory: <code>1.5 GB (1536 MB)</code> </li>
+<li>Processors: <code>1</code></li>
+</ul>
+<p><strong>Virtual Hard Disk:</strong></p>
+<ul>
+<li>Create a virtual hard disk now</li>
+<li>VDI (VirtualBox Disk Image)</li>
+<li>Dynamically Allocated</li>
+<li>Location: <code>/Users/macmini/VirtualBox VMs/VMName/VMName.vdi</code></li>
+<li>Size: <code>10 GB</code></li>
+</ul>
+<h2 id="change-vm-settings">Change VM Settings<a class="headerlink" href="#change-vm-settings" title="Permanent link">¶</a></h2>
+<p>Once the VM has been created, click 'Settings', and make changes:</p>
+<p><strong>Network Tab:</strong></p>
+<ul>
+<li>Enable Network Adapter</li>
+<li>Attatched to: <code>Bridged</code></li>
+<li>Name: <code>en0: Ethernet</code> </li>
+<li>Open Advanced Tab, leave all settings to default, but note the MAC address to use to set a static IP</li>
+</ul>
+<p><strong>Storage Tab -&gt; Controller: IDE</strong></p>
+<ul>
+<li>Click on 'Empty' under <code>Controller: IDE</code>, then click the circle CD icon, and pick ‘choose a disk file…’ <br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/pihole/virtualbox-idecontroller.png"><img alt="virtualbox-idecontroller.png" src="../../img/pihole/virtualbox-idecontroller.png" width="400"/></a></li>
+<li>Pick the downloaded ISO</li>
+<li>Click OK</li>
+</ul>
+<h2 id="set-ip-address-reservation">Set IP Address Reservation<a class="headerlink" href="#set-ip-address-reservation" title="Permanent link">¶</a></h2>
+<ul>
+<li>Open the eero app</li>
+<li>Go to Settings -&gt; Network Settings -&gt; Reservations and Port Forwarding</li>
+<li>Pick 'Add a reservation'</li>
+<li>Scroll to the bottom of the list, and choose 'Enter manually'</li>
+<li>Enter an IP Address to use. For convienence, use a low-number IP address (192.168.4.4)</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The IP address spreified must not be already in use, and must be within the subnet range.</p>
+<p>Keep the first three groups of numbers the same, and only change the last group. (eg 192.168.4.##)</p>
+</div>
+<ul>
+<li>Enter the MAC Address noted previously from the network tab, using format <code>XX:XX:XX:XX:XX:XX</code></li>
+<li>Click 'Save'</li>
+</ul>
+<h2 id="start-up">Start Up<a class="headerlink" href="#start-up" title="Permanent link">¶</a></h2>
+<ul>
+<li>Start VM in headless mode (click arrow next to start -&gt; headless mode) <br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/pihole/virtualbox-start-headless.png"><img alt="virtualbox-start-headless.png" src="../../img/pihole/virtualbox-start-headless.png" width="75"/></a></li>
+<li>Click 'Show'</li>
+<li>Accept/Allow all macOS prompts (accessibility, screen recording, etc)</li>
+</ul>
+<h2 id="install-ubuntu-server">Install Ubuntu Server<a class="headerlink" href="#install-ubuntu-server" title="Permanent link">¶</a></h2>
+<ul>
+<li>On first boot, press <span class="keys"><kbd class="key-enter">Enter</kbd></span> when 'Try or Install Ubuntu Server' is selected, or wait 30 seconds.</li>
+<li>Once booted, continue through setup, applying settings:<ul>
+<li>English</li>
+<li>If prompted to update to latest version, update to latest version</li>
+<li>US Keyboard</li>
+<li>Choose type of install: Ubuntu Server</li>
+<li>Network Connections: Check if the IP address listed matches the one set in the eero app. If it does, continue. If it does not, ensure that the MAC address in eero settings matches the MAC address on screen. Reboot the VM (Machine -&gt; Reset) and try again.</li>
+<li>Configure proxy: leave blank</li>
+<li>Configure Ubuntu archive mirror: leave default</li>
+<li>Guided storage configuration: Leave default - 'Use an entire disk'</li>
+<li>Storage configuration: leave default</li>
+<li>Confirm destructive action: continue (NOTE -- ONLY THE VIRTUAL HARD DISK will be modified/erased.)</li>
+<li>Profile setup: name, servers name, username: set all to 'pihole'. Set a password here.</li>
+<li>SSH Setup: Install OpenSSH Server</li>
+<li>Featured Server Snaps: leave all unchecked, continue</li>
+</ul>
+</li>
+<li>Wait for install to complete. Once 'Install complete!' is shown, choose 'Reboot Now'</li>
+</ul>
+<p>An error message will likely show: 
+<div class="highlight"><pre><span></span><code>Please remove the installation medium, then press ENTER:
+Unmounting/cdrom.
+[FAILED] Failed unmounting /cdrom.
+</code></pre></div></p>
+<p>To resolve:</p>
+<ul>
+<li>Close the window, choose 'Power off machine' and then 'Ok'</li>
+<li>This likely was all that is needed, but to double check, go back into Settings -&gt; Storage -&gt; IDE controller. It should be 'Empty' If not, click the CD icon, choose 'Remove Disk from Virtual Drive'</li>
+<li>Start the VM again in headless mode, and choose Show</li>
+</ul>
+<p>Once you see 
+<div class="highlight"><pre><span></span><code>Ubuntu 22.04.1 LTS pihole tty1
+VMName login: (may be way more text here)
+</code></pre></div>
+press enter a few times if there is lots of extra text (or don't, it doesn't matter), and login by typing username/password specified. Text or dots will not be shown while typing password.
+<div class="highlight"><pre><span></span><code>VMName login: VMUsername
+Password:
+</code></pre></div>
+Once you see a prompt
+<div class="highlight"><pre><span></span><code>VMUsername@VMName:~$
+</code></pre></div>
+Ubuntu is up and running!</p>
+<details class="note">
+<summary>Optional: SSH Access (may be easier to perform the following steps)</summary>
+<p>Once Ubuntu Server is up and running, it may be easier to do the following steps utilizing SSH.</p>
+<p>This will allow for things like copy and paste to work, which will be handy, but not strictly required. </p>
+<p>To SSH to the VM:</p>
+<ul>
+<li>Open a Terminal -- either on MacServer, or on a different laptop</li>
+<li>Enter `ssh VMUsername@VMIPAddress, replacing 'VMIPAddress' with the static IP set in the eero app</li>
+<li>Enter the user password, and once you see <code>VMUsername@VMIPAddress:~$</code>, you're SSHed in! This is the same as if you were using the VM through VirtualBox.</li>
+</ul>
+<p>See the <a href="#via-ssh">Updating PiHole via SSH</a> section for more details on SSH.</p>
+</details>
+<h2 id="set-the-vm-to-auto-login">Set the VM to auto-login<a class="headerlink" href="#set-the-vm-to-auto-login" title="Permanent link">¶</a></h2>
+<p><a href="https://askubuntu.com/a/819154">https://askubuntu.com/a/819154</a></p>
+<ol>
+<li>
+<p>RUN in terminal of PiHole VM:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>edit<span class="w"> </span>getty@tty1.service
+</code></pre></div>
+</li>
+<li>
+<p>Edit the file that is generated with these contents, change username to username of VM user (<code>VMUsername</code> in this case):</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">Service</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">ExecStart=</span>
+<span class="l l-Scalar l-Scalar-Plain">ExecStart=-/sbin/agetty --noissue --autologin VMUsername %I $TERM</span>
+<span class="l l-Scalar l-Scalar-Plain">Type=idle</span>
+</code></pre></div>
+</li>
+<li>
+<p>Save with <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-x">X</kbd></span>, <span class="keys"><kbd class="key-y">Y</kbd></span>, <span class="keys"><kbd class="key-enter">Enter</kbd></span></p>
+</li>
+<li>Reboot machine (command: <code>reboot</code>) and see if it auto-logs in as Pihole user.</li>
+</ol>
+<h2 id="set-the-vm-to-auto-launch-in-headless-mode-on-mac-login">Set the VM to auto-launch in headless mode on Mac login<a class="headerlink" href="#set-the-vm-to-auto-launch-in-headless-mode-on-mac-login" title="Permanent link">¶</a></h2>
+<p>Download the script vboxlaunchagent.sh from 
+<a href="https://www.whatroute.net/software/vboxlaunchagent.sh.zip">https://www.whatroute.net/software/vboxlaunchagent.sh.zip</a></p>
+<p>Move the downloaded file somewhere convenient, like the Desktop. </p>
+<div class="admonition quote">
+<p class="admonition-title">whatroute.net</p>
+<p>LaunchAgents are configured with an Apple plist XML file installed in the users Library/LaunchAgents folder. When the user logs in to their account on the Mac, launchd will inspect these plist files and invoke the required program with specified arguments.</p>
+<p>It can get a bit tricky to create a plist manually. They have very fussy and very unforgiving syntax requirements. This shell script will create the plist and install it in the LaunchAgents directory.</p>
+<p>You can download the script from vboxlaunchagent.sh. Unzip the file and copy the script to a suitable directory on your machine.</p>
+</div>
+<p>Run the script using this syntax:</p>
+<ol>
+<li>
+<p>Find the name of the VM: In a terminal on MacServer directly (not the VM), run:
+   <div class="highlight"><pre><span></span><code>VBoxManage<span class="w"> </span>list<span class="w"> </span>vms
+</code></pre></div></p>
+<p>Should result in output similar to:<br/>
+<div class="highlight"><pre><span></span><code>macmini@macserver<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>VBoxManage<span class="w"> </span>list<span class="w"> </span>vms
+<span class="s2">"Pihole"</span><span class="w"> </span><span class="o">{</span>c7ac734f-3fc7-4645-997b-3c78ef32d8f4<span class="o">}</span>
+</code></pre></div></p>
+<p>In this example, Pihole is the name of the VM.</p>
+</li>
+<li>
+<p>In a terminal, run
+   <div class="highlight"><pre><span></span><code>sh<span class="w"> </span>path/to/vboxlaunchagent.sh<span class="w"> </span>--headless<span class="w"> </span>--verbose<span class="w"> </span><span class="s2">"VMName"</span>
+</code></pre></div>
+   replacing <code>VMName</code> with the name of the VM from the previous step, and <code>/path/to/vboxlaunchagent.sh</code> with the full path (likely will be <code>~/Downloads/vboxlaunchagent.sh</code> if you just clicked the link above)</p>
+</li>
+<li>
+<p>Ensure that the output is similar to
+    <div class="highlight"><pre><span></span><code>VirtualBox VM found. . . : PiHole
+Created temporary file . : /tmp/org.virtualbox.launch.PiHole
+Created Launch Agent . . : /Users/macmini/Library/LaunchAgents/org.virtualbox.launch.PiHole.plist
+</code></pre></div></p>
+</li>
+<li>
+<p>Reboot the Mac and ensure the VM auto-starts on login</p>
+</li>
+</ol>
+<p>(Script and explanation from <a href="https://www.whatroute.net/installerapp2iso.html">https://www.whatroute.net/installerapp2iso.html</a>)</p>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Time Machine Editor" class="md-footer__link md-footer__link--prev" href="../timemachine-editor/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Time Machine Editor
+            </div>
+</div>
+</a>
+<a aria-label="Next: Create VPNs (WIP)" class="md-footer__link md-footer__link--next" href="../create-vpns/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Create VPNs (WIP)
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+<a href="/MacServer-Documentation/attributions">Attributions</a>
+</div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "toc.follow", "toc.integrate"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

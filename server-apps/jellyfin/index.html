@@ -1,0 +1,763 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://andrewbreyen.github.io/MacServer-Documentation/server-apps/jellyfin/" rel="canonical"/>
+<link href="../../img/macmini-icon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
+<title>Jellyfin - MacServer Documentation</title>
+<link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-DFBDEXN4GP"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-DFBDEXN4GP",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-DFBDEXN4GP",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+<script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="" data-md-color-primary="grey" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#jellyfin">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="MacServer Documentation" class="md-header__button md-logo" data-md-component="logo" href="../.." title="MacServer Documentation">
+<img alt="logo" src="../../img/macmini-icon.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            MacServer Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Jellyfin
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="grey" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="grey" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../setup/">
+        Setup
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../">
+        Server Apps
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../hardware/hardware/">
+        Hardware
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../usage/wyze-ha/">
+        Usage
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../troubleshooting/reboot/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="MacServer Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="MacServer Documentation">
+<img alt="logo" src="../../img/macmini-icon.png"/>
+</a>
+    MacServer Documentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../setup/">Setup</a>
+<label for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Setup" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Setup
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/static-ips/">
+        Static IPs
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+          MacOS Setup
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="MacOS Setup" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          MacOS Setup
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/first-time-setup/">
+        First Time Setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/first-time-setup-ventura/">
+        Ventura First Time Setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/macos-settings-sharing/">
+        MacOS Settings Sharing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/macos-settings/">
+        macOS Settings
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/jumpcloud/">
+        Jumpcloud
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/apple-remote-desktop/">
+        Apple Remote Desktop
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/installs/">
+        Installs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/additional/">
+        Additional Tools
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../">Server Apps</a>
+<label for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Server Apps" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Server Apps
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../macos-server/">
+        macOS Server
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../AnyDesk/">
+        AnyDesk
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../docker/">
+        Docker
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Jellyfin
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Jellyfin
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#download">
+    Download
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-to-login-items">
+    Add to Login Items
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#open-web-ui">
+    Open Web UI
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configure-libraries">
+    Configure Libraries
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#live-tv-configuration">
+    Live TV Configuration
+  </a>
+<nav aria-label="Live TV Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#static-ip-address">
+    Static IP address:
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-live-tv">
+    Setup Live TV
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-guide-data">
+    Add Guide Data
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#post-processing">
+    Post Processing
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../homebridge/">
+        Homebridge
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../homeassistant/">
+        Home Assistant
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../scrypted/">
+        Scrypted
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../node-red/">
+        Node-RED
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pihole/">
+        Pihole
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tdarr/">
+        Tdarr
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../timemachine-editor/">
+        Time Machine Editor
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../virtualbox/">
+        Virtualbox
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../create-vpns/">
+        Create VPNs (WIP)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../deprecated/teamviewer/">
+        TeamViewer (Deprecated)
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+          Hardware
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Hardware" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Hardware
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hardware/hardware/">
+        Hardware
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hardware/zigbee-conbee/">
+        Zigbee-Conbee
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+          Usage
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Usage" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Usage
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../usage/wyze-ha/">
+        Wyze Home Assistant camera
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../usage/garagedoor-notifications/">
+        Garage Door
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
+          Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Troubleshooting" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Troubleshooting
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../troubleshooting/reboot/">
+        Reboot
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../troubleshooting/live-tv-data-issues/">
+        Live TV Guide Data Issues
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../troubleshooting/no-response-homekit/">
+        Smart Devices showing as “No Response”/Orange Exclamation mark
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../troubleshooting/network-change-smart-home/">
+        Network Change: Smart Home Devices
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../troubleshooting/ventura-update/">
+        Ventura Update: Issues and Solutions
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="jellyfin">Jellyfin<a class="headerlink" href="#jellyfin" title="Permanent link">¶</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Jellyfin is used to serve media content, manage and record live TV content, and more. </p>
+</div>
+<h2 id="download">Download<a class="headerlink" href="#download" title="Permanent link">¶</a></h2>
+<p>Download the latest version of <code>installer/jellyfin_x.x.x.dmg</code>from <a href="https://repo.jellyfin.org/releases/server/macos/versions/stable/installer/">https://repo.jellyfin.org/releases/server/macos/versions/stable/installer/</a></p>
+<p>Open downloaded file, drag Jellyfin to Applications folder</p>
+<h2 id="add-to-login-items">Add to Login Items<a class="headerlink" href="#add-to-login-items" title="Permanent link">¶</a></h2>
+<p>Add Jellyfin to Login Items</p>
+<p>macOS System Settings -&gt; General -&gt; Login Items</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems.png"><img alt="jellyfin-systemsettings-loginitems.png" src="../../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems.png" width="250"/></a> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems-jellyfin.png"><img alt="jellyfin-systemsettings-loginitems-jellyfin.png" src="../../img/server-apps/jellyfin/jellyfin-systemsettings-loginitems-jellyfin.png" width="250"/></a></p>
+<h2 id="open-web-ui">Open Web UI<a class="headerlink" href="#open-web-ui" title="Permanent link">¶</a></h2>
+<p>Click the 
+  <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/jellyfin/jellyfin-menubar.png"><img alt="jellyfin-menubar.png" src="../../img/jellyfin/jellyfin-menubar.png" width="50"/></a> icon in the menu bar and choose 'Launch Web UI' <br/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/jellyfin/jellyfin-menubar-openui.png"><img alt="jellyfin-menubar-openui.png" src="../../img/jellyfin/jellyfin-menubar-openui.png" width="200"/></a></p>
+<p>Setup Jellyfin</p>
+<ul>
+<li>Default settings</li>
+<li>Create a primary Admin user</li>
+</ul>
+<h2 id="configure-libraries">Configure Libraries<a class="headerlink" href="#configure-libraries" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Click "Add Media Library"
+<br/> <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/jellyfin/jellyfin-add-media-library.png"><img alt="jellyfin-add-media-library.png" src="../../img/jellyfin/jellyfin-add-media-library.png" width="200"/></a></p>
+</li>
+<li>
+<p>Choose "Content Type" -&gt; content type of your folder (likely 'Movies' or 'Shows')</p>
+</li>
+<li>Click + <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="../../img/jellyfin/jellyfin-addfolder.png"><img alt="jellyfin-addfolder.png" src="../../img/jellyfin/jellyfin-addfolder.png" width="100"/></a></li>
+<li>Add the folder that contains the specified Content Type files</li>
+<li>Repeat for other libraries</li>
+</ol>
+<h2 id="live-tv-configuration">Live TV Configuration<a class="headerlink" href="#live-tv-configuration" title="Permanent link">¶</a></h2>
+<details class="note">
+<summary>(click to expand)</summary>
+<h3 id="static-ip-address">Static IP address:<a class="headerlink" href="#static-ip-address" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Find HDHomeRun MAC address at <a href="http://hdhomerun.local/system.html">http://hdhomerun.local/system.html</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If this URL is not working, first locate the IP address of HDHomeRun on modem Web UI at <a href="http://192.168.0.1/modemstatus_landevicelist.html">http://192.168.0.1/modemstatus_landevicelist.html</a> and use the IP Address instead of <code>hdhomerun.local</code></p>
+</div>
+</li>
+<li>
+<p>In <a href="http://192.168.0.1/index.html">modem settings</a> -&gt; Advanced Setup -&gt; DHCP Reservation:<br/>
+Enter (or choose) the MAC address and set a static IP (whatever IP was already set on the HDHR system menu web page)</p>
+</li>
+</ol>
+<h3 id="setup-live-tv">Setup Live TV<a class="headerlink" href="#setup-live-tv" title="Permanent link">¶</a></h3>
+<p>Follow the "Manual Setup" directions located at: 
+<a href="https://jellyfin.org/docs/general/server/live-tv/setup-guide.html">https://jellyfin.org/docs/general/server/live-tv/setup-guide.html</a></p>
+<p>To find the IP address of the HDHomeRun, go to the web UI at <a href="http://hdhomerun.local/system.html">http://hdhomerun.local/system.html</a></p>
+<p>Once setup, change recording paths in Dashboard -&gt; DVR. Change these to folders on the external hard drive. If you wish to separate Movies and Shows, set a recording path. If you wish to group them all together, just specify a default recording path.</p>
+<h3 id="add-guide-data">Add Guide Data<a class="headerlink" href="#add-guide-data" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Create an account at <a href="https://tvlistings.zap2it.com/">https://tvlistings.zap2it.com/</a> </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ensure that the password you use here is not used for ANYTHING else.</p>
+<p>This password will be stored as a command line parameter in the Docker container. </p>
+</div>
+</li>
+<li>
+<p>Create a folder on the Mac: <code>/Users/Shared/xmltvdata</code></p>
+</li>
+<li>
+<p>Install <a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a> </p>
+<ul>
+<li>Settings -&gt; General -&gt; Start Docker Desktop when you log in</li>
+<li>Settings -&gt; Resources -&gt; File Sharing: Remove existing mounts and add /Users/Shared/xmltvdata</li>
+</ul>
+</li>
+<li>
+<p>Create a Docker container for the <a href="https://github.com/shuaiscott/zap2xml">Zap2XML Docker Container</a></p>
+<ul>
+<li>Open Docker Desktop app</li>
+<li>Run terminal command: replace <code>your_zap2it_email@email.com</code> and <code>your_zap2it_password</code> with your <a href="https://tvlistings.zap2it.com/">https://tvlistings.zap2it.com/</a> account details. </li>
+</ul>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--restart<span class="o">=</span>always<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>zap2xml<span class="w"> </span>-v<span class="w"> </span>/Users/Shared/xmltvdata:/data<span class="w"> </span>-e<span class="w"> </span><span class="nv">USERNAME</span><span class="o">=</span>your_zap2it_email@email.com<span class="w"> </span>-e<span class="w"> </span><span class="nv">PASSWORD</span><span class="o">=</span>your_zap2it_password<span class="w"> </span>-e<span class="w"> </span><span class="nv">OPT_ARGS</span><span class="o">=</span><span class="s2">"-I -D -Z 55303"</span><span class="w"> </span>-e<span class="w"> </span><span class="nv">XMLTV_FILENAME</span><span class="o">=</span>xmltv.xml<span class="w"> </span>shuaiscott/zap2xml
+</code></pre></div>
+<p>By default, new guide data will be fetched by this Docker container every 12 hours. Additional command line arguments can be added/changed. See details on GitHub - shuaiscott/zap2xml README.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If troubleshooting is required, and the container needs to be added again, ensure the container and images are deleted before recreating using <code>docker run</code> command</p>
+</div>
+</li>
+<li>
+<p>Open the container</p>
+<ul>
+<li>Cick on on <code>zap2xml</code> from the 'Containers' view</li>
+<li>Click <code>Logs</code></li>
+<li>Let the Container run. When complete, a status message will print like this:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Downloaded 1090062 bytes in 291 http requests using 2 sockets.
+Writing XML file: /data/xmltv.xml
+Completed in 167s (Parse: 164s) 81 stations, 7895 programs, 17063 scheduled.
+Last run time: Fri Mar 11 04:12:49 UTC 2022
+Will run in 43200 seconds
+</code></pre></div>
+</li>
+<li>
+<p>Verify File</p>
+<p>In macOS Finder, verify that a xmltv.xml file was created at location <code>/Users/Shared/xmltvdata</code>. File should start with something like:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE tv SYSTEM "xmltv.dtd"&gt;</span>
+
+<span class="nt">&lt;tv</span><span class="w"> </span><span class="na">source-info-url=</span><span class="s">"http://tvlistings.zap2it.com/"</span><span class="w"> </span><span class="na">source-info-name=</span><span class="s">"zap2it.com"</span><span class="w"> </span><span class="na">generator-info-name=</span><span class="s">"zap2xml"</span><span class="w"> </span><span class="na">generator-info-url=</span><span class="s">"zap2xml@gmail.com"</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;channel</span><span class="w"> </span><span class="na">id=</span><span class="s">"I2.1.21634.zap2it.com"</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;display-name&gt;</span>2.1<span class="w"> </span>KTCADT<span class="nt">&lt;/display-name&gt;</span>
+<span class="w">        </span><span class="nt">&lt;display-name&gt;</span>2.1<span class="nt">&lt;/display-name&gt;</span>
+<span class="w">        </span><span class="nt">&lt;display-name&gt;</span>KTCADT<span class="nt">&lt;/display-name&gt;</span>
+<span class="w">        </span><span class="nt">&lt;icon</span><span class="w"> </span><span class="na">src=</span><span class="s">"https://zap2it.tmsimg.com/h3/NowShowing/21634/s32356_h3_aa.png"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>Scroll down past the <code>&lt;channel&gt;&lt;/channel&gt;</code> sections, and verify that there are <code>&lt;/programme&gt;&lt;/programme&gt;</code> tags, with contents similar to</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;programme</span><span class="w"> </span><span class="na">start=</span><span class="s">"20220311023000 +0000"</span><span class="w"> </span><span class="na">stop=</span><span class="s">"20220311040000 +0000"</span><span class="w"> </span><span class="na">channel=</span><span class="s">"I2.1.21634.zap2it.com"</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;title</span><span class="w"> </span><span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Endeavour:<span class="w"> </span>The<span class="w"> </span>Evolution<span class="nt">&lt;/title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;desc</span><span class="w"> </span><span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>A<span class="w"> </span>look<span class="w"> </span>at<span class="w"> </span>how<span class="w"> </span>…..<span class="nt">&lt;/desc&gt;</span>
+<span class="w">        </span><span class="nt">&lt;category</span><span class="w"> </span><span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Documentary<span class="nt">&lt;/category&gt;</span>
+<span class="w">        </span><span class="nt">&lt;category</span><span class="w"> </span><span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Special<span class="nt">&lt;/category&gt;</span>
+<span class="w">        </span><span class="nt">&lt;length</span><span class="w"> </span><span class="na">units=</span><span class="s">"minutes"</span><span class="nt">&gt;</span>90<span class="nt">&lt;/length&gt;</span>
+<span class="w">        </span><span class="nt">&lt;icon</span><span class="w"> </span><span class="na">src=</span><span class="s">"https://zap2it.tmsimg.com/assets/p21373423_b_v13_aa.jpg"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;url&gt;</span>https://tvlistings.zap2it.com//overview.html?programSeriesId=SH04161006<span class="ni">&amp;amp;</span>tmsId=SH041610060000<span class="nt">&lt;/url&gt;</span>
+<span class="w">        </span><span class="nt">&lt;episode-num</span><span class="w"> </span><span class="na">system=</span><span class="s">"dd_progid"</span><span class="nt">&gt;</span>SH04161006.0000<span class="nt">&lt;/episode-num&gt;</span>
+<span class="w">        </span><span class="nt">&lt;previously-shown</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;subtitles</span><span class="w"> </span><span class="na">type=</span><span class="s">"teletext"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/programme&gt;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Once the file looks correct, it can be added into Jellyfin. </p>
+</li>
+</ol>
+<p>Add the created file to Jellyfin from Administration Dashboard -&gt; Live TV -&gt; TV Guide Data Providers -&gt; XMLTV</p>
+<p>See details on <a href="https://jellyfin.org/docs/general/server/live-tv/setup-guide.html#adding-guide-data">Adding Guide Data - Setup Guide | Documentation - Jellyfin Project</a></p>
+</details>
+<h3 id="post-processing">Post Processing<a class="headerlink" href="#post-processing" title="Permanent link">¶</a></h3>
+<p>Jellyfin supports Post Processing of recorded Live TV shows. This can be used to transcode the recording to a specific format that does not require transcoding on the fly when playing back, extract subtitles, remove commercials, and more.</p>
+<p>More details on post processing is available on <a href="https://jellyfin.org/docs/general/server/live-tv/post-process.html">Live TV Post Processing | Documentation - Jellyfin Project</a></p>
+<h4 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h4>
+<p>Install using <a href="https://brew.sh">Brew</a>:</p>
+<ul>
+<li>Python</li>
+<li>Python3</li>
+<li>Pip</li>
+<li>Pip3</li>
+<li>ffmpeg
+if using Slack notifications: slack_sdk</li>
+</ul>
+<h4 id="create-scripts">Create Scripts<a class="headerlink" href="#create-scripts" title="Permanent link">¶</a></h4>
+<ol>
+<li>
+<p>Create Folders:</p>
+<ul>
+<li><code>/Users/Shared/Scripts</code></li>
+<li><code>/Users/Shared/Scripts/logs</code></li>
+</ul>
+</li>
+<li>
+<p>Create Files:</p>
+<ul>
+<li><code>/Users/Shared/Scripts/run_post_processor.sh</code></li>
+<li><code>/Users/Shared/Scripts/record_post_process.py</code></li>
+</ul>
+</li>
+<li>
+<p>Edit Scripts:
+    Use VSCode or another code editor to add code into these scripts. </p>
+<p>Copy and paste from GitHub links:</p>
+<ul>
+<li><a href="https://gist.github.com/AndrewBreyen/0fc36c868486d48583a369b657e22c69">run_post_processor.sh</a></li>
+<li><a href="https://gist.github.com/AndrewBreyen/1ac109bb485d8523e28fe98b3a222602">record_post_process.py</a></li>
+</ul>
+<p>In <code>run_post_processor.sh</code>:</p>
+<ul>
+<li>Change logging directory to /Users/Shared/Scripts</li>
+<li>Change Python path to the result of <code>which python3</code></li>
+<li>Change path of <code>record_post_process.py</code> to <code>/Users/Shared/Scripts/record_post_process.py</code></li>
+</ul>
+<p>In <code>record_post_process.py</code>:</p>
+<ul>
+<li>Change logging directory to <code>/Users/Shared/Scripts/logs</code></li>
+<li>Add Slack token</li>
+<li>If desired, change deleting non-transcoded file to keep original file and move</li>
+</ul>
+</li>
+<li>
+<p>Make shell script executable -- run in a terminal: 
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>/Users/Shared/Scripts/run_post_processor.sh
+</code></pre></div></p>
+</li>
+</ol>
+<h4 id="add-to-jellyfin">Add to Jellyfin<a class="headerlink" href="#add-to-jellyfin" title="Permanent link">¶</a></h4>
+<ol>
+<li>
+<p>In Jellyfin Dashboard/DVR/Recording Post Processing settings:</p>
+</li>
+<li>
+<p>Set "Post-processing application" to your shell script which calls your actual post processor (details of this 'actual' post processor script below). In this example, that would be <code>/Users/Shared/Scripts/run_post_processor.sh</code></p>
+</li>
+<li>
+<p>Set "Post-processor command line arguments" to <code>"{path}"</code></p>
+</li>
+</ol>
+<h4 id="test-python-script">Test Python Script<a class="headerlink" href="#test-python-script" title="Permanent link">¶</a></h4>
+<ol>
+<li>
+<p>Record a show from the Jellyfin Web UI (this recording can be just a few seconds long)</p>
+</li>
+<li>
+<p>Troubleshoot by viewing logs at <code>/Users/Shared/Scripts/logs/*</code>. </p>
+</li>
+</ol>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Docker" class="md-footer__link md-footer__link--prev" href="../docker/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Docker
+            </div>
+</div>
+</a>
+<a aria-label="Next: Homebridge" class="md-footer__link md-footer__link--next" href="../homebridge/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Homebridge
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+<a href="/MacServer-Documentation/attributions">Attributions</a>
+</div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "toc.follow", "toc.integrate"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
