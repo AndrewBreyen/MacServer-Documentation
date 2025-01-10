@@ -1,5 +1,11 @@
 # Getting Wyze Camera into Home Assistant
 
+!!! bug "Depricated"
+    This documentation is deprecated. The current preferred method is to use the [docker-wyze-bridge](https://github.com/mrlt8/docker-wyze-bridge) in Home Assistant.
+
+    You can run `docker-wyze-bridge` in a [container using Docker](https://github.com/mrlt8/docker-wyze-bridge/wiki#docker-compose-recommended) or as a [Home Assistant Addon](https://github.com/mrlt8/docker-wyze-bridge/wiki/Home-Assistant)
+    
+
 !!! warning
     Virtualbox is required to run Home Assistant. The latest version of Virtualbox has a bug when running on macOS 13.3. 
 

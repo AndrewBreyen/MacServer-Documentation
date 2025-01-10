@@ -24,6 +24,7 @@ nav:
       - 'Home Assistant': 'server-apps/homeassistant.md'
       - 'Scrypted': 'server-apps/scrypted.md'
       - 'Node-RED': 'server-apps/node-red.md'
+      - 'OctoPrint Ubuntu': 'server-apps/octoprint-ubuntu.md'
       - 'Pihole': 'server-apps/pihole.md'
       - 'Tdarr': 'server-apps/tdarr.md'
       - 'Time Machine Editor': 'server-apps/timemachine-editor.md'
@@ -33,9 +34,11 @@ nav:
     - Hardware:
       - 'Hardware': 'hardware/hardware.md'
       - 'Zigbee-Conbee': 'hardware/zigbee-conbee.md'
+      - 'Garage Door': 'hardware/garagedoor.md'
+      - 'Plugs': 'hardware/plugs.md'
     - Usage:
       - 'Wyze Home Assistant camera': 'usage/wyze-ha.md'
-      - 'Garage Door': 'usage/garagedoor-notifications.md'
+      - 'Garage Door Notifications': 'usage/garagedoor-notifications.md'
     - Troubleshooting:
       - 'Reboot': 'troubleshooting/reboot.md'
       - 'Live TV Guide Data Issues': 'troubleshooting/live-tv-data-issues.md'
