@@ -190,6 +190,8 @@ Run the script using this syntax:
 
 2. In a terminal, run
    ```sh
+   mkdir ~/Library/LaunchAgents/
+   
    sh path/to/vboxlaunchagent.sh --headless --verbose "VMName"
    ```
    replacing `VMName` with the name of the VM from the previous step, and `/path/to/vboxlaunchagent.sh` with the full path (likely will be `~/Downloads/vboxlaunchagent.sh` if you just clicked the link above)
