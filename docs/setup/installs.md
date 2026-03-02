@@ -17,3 +17,12 @@ brew install python3
 ## Apps
 
 - VSCode
+- Rectangle
+- Brave
+- Time Machine Editor
+
+## Brew Installs to do everything!
+
+```
+brew install --cask time-machine-editor visual-studio-code brave-browser github 
+```
