@@ -3,8 +3,8 @@
 ```
 Last tested version: 
 
-Virtualbox: Version 7.0.11 r158813 (Qt5.15.2)
-macOS: Ventura 13.5.1
+Virtualbox: Version 7.2.6
+macOS: Tahoe 26.5.2
 Home Assistant:
 
 Home Assistant 2023.8.3
@@ -134,6 +134,10 @@ The Jellyfin plugin allows integration with the Jellyfin media server, offering 
 
 - **Platform Name:** Jellyfin
 
+#### Homekit Plugin
+List of Domains and Entities: [https://docs.google.com/document/d/1HqAa17eq1KW-aDj640yx8Sa9gPyTEvJ0CVcWs06mWrc/](https://docs.google.com/document/d/1HqAa17eq1KW-aDj640yx8Sa9gPyTEvJ0CVcWs06mWrc/)
+
+
 ##### Configuration Details
 
 - **Jellyfin Server:** [URL or IP Address of your Jellyfin server]
@@ -143,5 +147,3 @@ The Jellyfin plugin allows integration with the Jellyfin media server, offering 
 
 ### Scripts
 [https://github.com/AndrewBreyen/homeassistant-scripts](https://github.com/AndrewBreyen/homeassistant-scripts)
-
-

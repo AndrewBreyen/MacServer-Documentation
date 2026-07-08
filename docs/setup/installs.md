@@ -14,6 +14,12 @@ In a terminal, run:
 brew install python3
 ````
 
+### For MacMini headless setup
+In a terminal, run:
+````
+brew install displayplacer
+````
+
 ## Apps
 
 - VSCode
